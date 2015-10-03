@@ -5,6 +5,7 @@
         <title>Kiiri Angular Directive Examples</title>
         <meta charset="utf-8">
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900,100"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
         <style>
             body {
@@ -53,12 +54,13 @@
         </style>
     </head>
     <body ng-controller="ExampleController">
-        <button ng-click="modalOpen = true; $event.stopPropagation();"> Click Me! </button>
+        <kiiri-button click="modalOpen = true">Click Me!</kiiri-button>
         <modal is-open="modalOpen" close-callback="printFoo">
             <div class="example-modal" ng-cloak>
                 <div class="title">Sign In</div>
                 <input type="text" placeholder="Email Address"></input>
                 <input type="password" placeholder="Password"></input>
+                <kiiri-button click="fakeSignIn()" loading="processing" fill="true">Sign In</kiiri-button>
             </div>
         </modal>
 
@@ -69,12 +71,22 @@
         <script>
             var examples = angular.module("Examples", ["kiiri.angular"]);
 
-            angular.module("Examples").controller("ExampleController", function($scope) {
+            angular.module("Examples").controller("ExampleController", function($scope, $timeout) {
                 $scope.modalOpen = false;
+                $scope.processing = false;
 
                 $scope.printFoo = function() {
                     console.log("Foo");
                 };
+
+                $scope.fakeSignIn = function() {
+                    $scope.processing = true;
+
+                    $timeout(function() {
+                        $scope.processing = false;
+                        $scope.modalOpen = false;
+                    }, 2000);
+                }
             });
         </script>
     </body>

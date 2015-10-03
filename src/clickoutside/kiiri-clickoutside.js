@@ -14,10 +14,10 @@ clickOutside.directive("clickoutside", ["$document", "Helpers",
     function ($document, Helpers) {
         "use strict";
         return {
-            restrict: "AE",
+            restrict: "A",
             scope: {
                 onClickOutside: "=",
-                enabled: "=?"
+                isEnabled: "=?"
             },
             link: function($scope, element, attributes) {
                 // If the element has an id, hook onto that id, else generate a guid to use as an id for the element
@@ -30,7 +30,7 @@ clickOutside.directive("clickoutside", ["$document", "Helpers",
 
                 var onClick = function(clickEvent) {
                     // If the directive is disabled, just return
-                    if ($scope.enabled === false) {
+                    if ($scope.isEnabled === false) {
                         return;
                     }
 

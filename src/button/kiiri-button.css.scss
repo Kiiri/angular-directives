@@ -1,0 +1,59 @@
+@import "../constants";
+
+.kiiri-button {
+    display: inline-block;
+    padding: 0px 30px;
+    border: none;
+    border-radius: 2px;
+    font-weight: $light-text-weight;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    background: $yellow-sw-2;
+    color: $black-text-color;
+    border-color: $dark-yellow-sw-2;
+    text-align: center;
+
+    &.fill {
+        width: 100%;
+    }
+
+    &:hover:not(.disabled, .loading) {
+        background: $yellow-sw-1;
+        color: $main-text-color;
+        border-color: $dark-yellow-sw-1;
+    }
+
+    &:active {
+        background: $yellow-sw-3;
+        color: $main-text-color;
+        border-color: $dark-yellow-sw-3;
+    }
+
+    &.disabled {
+        color: $light-grey-sw-3;
+        background: #FAF7DB;
+        cursor: not-allowed;
+    }
+
+    &.loading {
+        cursor: wait;
+    }
+
+    i {
+        margin-left: 5px;
+    }
+
+    &.grey {
+        background: $secondary-background;
+
+        &:hover:not(.disabled, .loading) {
+            background: #F9F8EC;
+        }
+
+        &.disabled {
+            color: $light-grey-sw-3;
+        }
+    }
+}

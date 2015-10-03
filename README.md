@@ -6,9 +6,16 @@ This package contains miscellaneous angular directives that I've found to be use
 various web applications that I have been working on. Better instructions, examples, and more
 directives to come in the future.
 
+Dependencies:
+jQuery, AngularJS, Font-Awesome (for some icons)
+
 Current directives:
+* kiiri-button (Button with loading, disabled, propagate attributes. Works well in conjunction with clickoutside)
 * clickoutside (Call a given function when a user clicks outside of an element)
 * modal (Typical modal)
+
+Examples:
+See the files in the folder 'examples'
 
 To use, include the following in your html file: <br/>
 ```html

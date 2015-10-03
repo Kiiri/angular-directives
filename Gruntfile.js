@@ -3,7 +3,7 @@
 module.exports = function(grunt) {
     [
         "grunt-angular-templates",
-        "grunt-contrib-concat",
+        "grunt-contrib-cssmin",
         "grunt-contrib-jshint",
         "grunt-contrib-sass",
         "grunt-contrib-uglify"
@@ -11,13 +11,16 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
-        concat: {
+        cssmin: {
             options: {
                 banner: "/*! <%= pkg.name %>: Built on <%= grunt.template.today('yyyy-mm-dd') %> */\n",
+                roundingPrecision: -1,
+                shorthandCompacting: false
             },
-            css: {
-                src: ["src/**/*.css"],
-                dest: "build/kiiri-angular-directives.min.css"
+            target: {
+                files: {
+                    "build/kiiri-angular-directives.min.css": ["src/**/*.css"]
+                }
             }
         },
         jshint: {
@@ -28,6 +31,7 @@ module.exports = function(grunt) {
                 browser: true,
                 globals: {
                     angular: true,
+                    console: true,
                     jQuery: true,
                     $: true
                 },
@@ -67,14 +71,14 @@ module.exports = function(grunt) {
             options: {
                 banner: "/*! <%= pkg.name %>: Built on <%= grunt.template.today('yyyy-mm-dd') %> */\n"
             },
-            build: {
+            js: {
                 src: ["src/**/*.js", "build/kiiri-templates.js"],
                 dest: "build/kiiri-angular-directives.min.js"
             }
         }
     });
 
-    grunt.registerTask("default", ["sass", "concat", "jshint", "ngtemplates", 'uglify']);
+    grunt.registerTask("default", ["sass", "cssmin", "jshint", "ngtemplates", 'uglify']);
     grunt.registerTask("build", 'default');
 };
 

@@ -33,6 +33,40 @@
         &.visible {
             visibility: visible;
         }
+
+        &.fade-in {
+            -webkit-animation-name: slidein;
+            -webkit-animation-duration: .5s;
+            animation-name: slidein;
+            animation-duration: .5s;
+
+            @-webkit-keyframes slidein {
+                0% { top: -25%; }
+                100% { top: 10%; }
+            }
+
+            @keyframes slidein {
+                0% { top: -25%;}
+                100% { top: 10%; }
+            }
+        }
+
+        &.fade-out {
+            -webkit-animation-name: fadeout;
+            -webkit-animation-duration: .2s;
+            animation-name: fadeout;
+            animation-duration: .2s;
+
+            @-webkit-keyframes fadeout {
+                0% { visibility: visible; opacity: 1; }
+                100% { visibility: hidden; opacity: 0; }
+            }
+
+            @keyframes fadeout {
+                0% { visibility: visible; opacity: 1; }
+                100% { visibility: hidden; opacity: 0; }
+            }
+        }
     }
 
     .modal-body {

@@ -3,7 +3,8 @@
  * @author Alex Dong (https://github.com/Kiiri)
  */
 
-var app = angular.module("kiiri.angular", ["kiiri.angular.clickoutside",
+var app = angular.module("kiiri.angular", ["kiiri.angular.button",
+                                           "kiiri.angular.clickoutside",
                                            "kiiri.angular.modal"]);
 
 app.service("Helpers", function() {
