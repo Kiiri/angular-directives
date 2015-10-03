@@ -1,0 +1,50 @@
+@import "../constants";
+
+.kiiri-modal {
+    .modal-background{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 900;
+        background-color: #000000;
+        opacity: .5;
+    }
+
+    .modal-frame {
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        z-index: 1000;
+        background-color: #F5F5F5;
+        border: 1px solid #999999;
+        border: 1px solid rgba(0,0,0,0.3);
+        border-radius: .3em;
+        outline: 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        background-clip: padding-box;
+        visibility: hidden;
+
+        &.not-visible {
+            visibility: hidden;
+        }
+
+        &.visible {
+            visibility: visible;
+        }
+    }
+
+    .modal-body {
+        position: relative;
+        overflow-y: auto;
+        background: #FFFFFF;
+        border-radius: 6px;
+        border-top: 5px solid $yellow-sw-2;
+        padding: 0px;
+
+        &.overflow-inherit {
+            overflow: inherit;
+        }
+    }
+}

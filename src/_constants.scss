@@ -1,0 +1,56 @@
+$white-text:    #FFFFFF;
+$grey:          #CCCCCC;
+$dark-grey:     #666666;
+$white:         #FFFFFF;
+$error-color:   #FDDFDF;
+
+$primary-background:    #FFFFFF;
+$secondary-background:  #F5F5F5;
+$tertiary-background:   #313131;
+$input-focus-background:#F9F8EC;
+$error-background:      #FDDFDF;
+
+$main-font:             'Lato', sans-serif;
+$main-text-color:       #666666;
+$main-font-size:        14px;
+$black-text-color:      #444444;
+$footer-text-color:     #BBBBBB;
+
+$light-yellow:          #FFF8BF;
+
+$heavy-text-weight:     900;
+$medium-text-weight:    700;
+$light-text-weight:     400;
+
+$dark-yellow-sw-1:      #D1C344;
+$dark-yellow-sw-2:      #BEB13E;
+$dark-yellow-sw-3:      #B1A328;
+
+$yellow-sw-1:           #FFF06D;
+$yellow-sw-2:           #FEEC53;
+$yellow-sw-3:           #F5E350;
+
+$dark-grey-sw-1:        #999999;
+$dark-grey-sw-2:        #777777;
+$dark-grey-sw-3:        #666666;
+$dark-grey-sw-4:        #444444;
+
+$light-grey-sw-1:       #E0E0E0;
+$light-grey-sw-2:       #CCCCCC;
+$light-grey-sw-3:       #BBBBBB;
+
+$light-blue-sw-1:       #3AB6D1;
+$light-blue-sw-2:       #3199B0;
+$light-blue-sw-3:       #298194;
+
+$blue-sw-1:             #92E9FB;
+$blue-sw-2:             #76D9ED;
+$blue-sw-3:             #51CEE7;
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}

@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html ng-app="Examples">
+    <head>
+        <title>Kiiri Angular Directive Examples</title>
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900,100"></link>
+        <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
+        <style>
+            body {
+                font-family: 'Lato', sans-serif;
+                letter-spacing: .1em;
+            }
+
+            .example-modal {
+                margin: 0px auto;
+                width: 500px;
+                padding: 40px;
+            }
+
+            .example-modal .title {
+                font-size: 24px;
+                font-weight: 300;
+                color: #666666;
+                text-align: center;
+                margin-bottom: 40px;
+                line-height: 24px;
+            }
+
+            input {
+                font-family: 'Lato', sans-serif;
+                border-radius: 4px;
+                background: #F5F5F5;
+                border: none;
+                color: #666666;
+                font-size: 14px;
+                vertical-align: top;
+                padding: 15px 20px;
+                width: 100%;
+                letter-spacing: 0.15em;
+                margin-bottom: 15px;
+            }
+
+            input:focus {
+                background: #F9F8EC;
+                outline: 0;
+            }
+
+            input:active {
+                border-color: #BEB13E;
+                box-shadow: 0px 0px 5px #FEEC53;
+            }
+        </style>
+    </head>
+    <body ng-controller="ExampleController">
+        <button ng-click="modalOpen = true; $event.stopPropagation();"> Click Me! </button>
+        <modal is-open="modalOpen" close-callback="printFoo">
+            <div class="example-modal" ng-cloak>
+                <div class="title">Sign In</div>
+                <input type="text" placeholder="Email Address"></input>
+                <input type="password" placeholder="Password"></input>
+            </div>
+        </modal>
+
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="../build/kiiri-angular-directives.min.js"></script>
+
+        <script>
+            var examples = angular.module("Examples", ["kiiri.angular"]);
+
+            angular.module("Examples").controller("ExampleController", function($scope) {
+                $scope.modalOpen = false;
+
+                $scope.printFoo = function() {
+                    console.log("Foo");
+                };
+            });
+        </script>
+    </body>
+</html>

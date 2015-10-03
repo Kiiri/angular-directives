@@ -1,9 +1,10 @@
-
 /**
  * Miscellaneous angular directives
  * @author Alex Dong (https://github.com/Kiiri)
  */
-var app = angular.module("kiiri.angular", ["kiiri.angular.clickoutside"]);
+
+var app = angular.module("kiiri.angular", ["kiiri.angular.clickoutside",
+                                           "kiiri.angular.modal"]);
 
 app.service("Helpers", function() {
     this.defaultValue = function($scope, variable, value) {

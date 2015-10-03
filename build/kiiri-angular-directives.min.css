@@ -1,0 +1,44 @@
+/*! kiiri-angular-directives: Built on 2015-10-03 */
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
+.kiiri-modal .modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 900;
+  background-color: #000000;
+  opacity: .5; }
+.kiiri-modal .modal-frame {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  z-index: 1000;
+  background-color: #F5F5F5;
+  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: .3em;
+  outline: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  visibility: hidden; }
+  .kiiri-modal .modal-frame.not-visible {
+    visibility: hidden; }
+  .kiiri-modal .modal-frame.visible {
+    visibility: visible; }
+.kiiri-modal .modal-body {
+  position: relative;
+  overflow-y: auto;
+  background: #FFFFFF;
+  border-radius: 6px;
+  border-top: 5px solid #FEEC53;
+  padding: 0px; }
+  .kiiri-modal .modal-body.overflow-inherit {
+    overflow: inherit; }
+
+/*# sourceMappingURL=kiiri-modal.css.map */

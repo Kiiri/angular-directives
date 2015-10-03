@@ -8,10 +8,12 @@ directives to come in the future.
 
 Current directives:
 * clickoutside (Call a given function when a user clicks outside of an element)
+* modal (Typical modal)
 
 To use, include the following in your html file: <br/>
 ```html
-    <script type="javascript" src="kiiri-angular-directives.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="kiiri-angular-directives.min.css"></link>
+    <script type="text/javascript" src="kiiri-angular-directives.min.js"></script>
 ```
 
 and add the following dependency to your main Angular module: <br/>

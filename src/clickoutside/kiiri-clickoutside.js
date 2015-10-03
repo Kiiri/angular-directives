@@ -1,7 +1,10 @@
-
 /**
  * Directive used to automatically call a given function when a user clicks outside
  * of the assigned element. Mainly used in conjunction with modals and togglable panels.
+ * Note: If you link this to some panel that's opened via a button, don't forget to
+ * stop the click from propagating ($event.stopPropagation()), else the panel will be
+ * immediately closed.
+ *
  * @author Alex Dong (https://github.com/Kiiri)
  */
 

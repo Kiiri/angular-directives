@@ -1,1 +1,5 @@
 /node_modules
+/.sass-cache
+/src/**/*.css
+/src/**/*.css.map
+/build/kiiri-templates.js
