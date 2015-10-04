@@ -5,6 +5,7 @@
 
 var app = angular.module("kiiri.angular", ["kiiri.angular.button",
                                            "kiiri.angular.clickoutside",
+                                           "kiiri.angular.input",
                                            "kiiri.angular.modal"]);
 
 app.service("Helpers", function() {

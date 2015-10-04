@@ -28,29 +28,10 @@
                 line-height: 24px;
             }
 
-            input {
-                font-family: 'Lato', sans-serif;
-                border-radius: 4px;
-                background: #F5F5F5;
-                border: none;
-                color: #666666;
-                font-size: 14px;
-                vertical-align: top;
-                padding: 15px 20px;
-                width: 100%;
-                letter-spacing: 0.15em;
-                margin-bottom: 15px;
+            .kiiri-input-field {
+                margin-bottom: 10px;
             }
 
-            input:focus {
-                background: #F9F8EC;
-                outline: 0;
-            }
-
-            input:active {
-                border-color: #BEB13E;
-                box-shadow: 0px 0px 5px #FEEC53;
-            }
         </style>
     </head>
     <body ng-controller="ExampleController">
@@ -58,8 +39,8 @@
         <modal is-open="modalOpen" close-callback="printFoo">
             <div class="example-modal" ng-cloak>
                 <div class="title">Sign In</div>
-                <input type="text" placeholder="Email Address"></input>
-                <input type="password" placeholder="Password"></input>
+                <input-field placeholder="Email Address" name="email" value="fields.email" fill="true"></input-field>
+                <input-field placeholder="Password" name="password" value="fields.password" type="password" fill="true"></input-field>
                 <kiiri-button click="fakeSignIn()" loading="processing" fill="true">Sign In</kiiri-button>
             </div>
         </modal>
@@ -74,6 +55,7 @@
             angular.module("Examples").controller("ExampleController", function($scope, $timeout) {
                 $scope.modalOpen = false;
                 $scope.processing = false;
+                $scope.fields = {};
 
                 $scope.printFoo = function() {
                     console.log("Foo");
@@ -81,6 +63,8 @@
 
                 $scope.fakeSignIn = function() {
                     $scope.processing = true;
+                    console.log("Email: " + $scope.fields.email);
+                    console.log("Password: " + $scope.fields.password);
 
                     $timeout(function() {
                         $scope.processing = false;

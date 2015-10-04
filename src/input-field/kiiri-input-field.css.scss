@@ -1,0 +1,51 @@
+@import "../constants";
+
+.kiiri-input-field {
+    display: inline-block;
+
+    &.fill {
+        width: 100%;
+    }
+
+    input {
+        border-radius: 4px;
+        background: $secondary-background;
+        border: none;
+        font-family: "Lato", sans-serif;
+        color: $main-text-color;
+        font-size: 14px;
+        vertical-align: top;
+        padding: 15px 20px;
+        outline: 0;
+        width: 100%;
+        letter-spacing: 0.15em;
+
+        &:focus {
+            background: #F9F8EC;
+        }
+
+        &::-webkit-input-placeholder { /* WebKit browsers */
+            color: $light-grey-sw-3;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: $light-grey-sw-3;
+            opacity: 1;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: $light-grey-sw-3;
+            opacity: 1;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: $light-grey-sw-3;
+        }
+
+        &:active {
+            border-color: $dark-yellow-sw-2;
+            box-shadow: 0px 0px 5px $yellow-sw-2;
+        }
+
+        &.invalid {
+            background: $error-background;
+        }
+    }
+}
