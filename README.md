@@ -20,7 +20,7 @@ Current directives:
 Examples:
 See the files in the folder 'examples'
 
-In order to see the examples in action, you may have to start up a simple Python server in the directory.
+In order to see the examples in action, you may have to start up a simple Python server in the directory. <br/>
 <code>
     python -m SimpleHTTPServer 8000
 </code>

@@ -6,9 +6,15 @@
     position: relative;
     vertical-align: top;
     font-size: 14px;
+    text-align: left;
     height: 40px;
     width: 100%;
     cursor: pointer;
+    z-index: 0;
+
+    &.open {
+        z-index: 100;
+    }
 
     &.empty, &.disabled {
         cursor: not-allowed;
