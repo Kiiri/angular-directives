@@ -28,20 +28,22 @@
                 line-height: 24px;
             }
 
-            .kiiri-input-field {
+            .kiiri-input-field, .kiiri-text-area {
                 margin-bottom: 10px;
             }
 
         </style>
     </head>
     <body ng-controller="ExampleController">
-        <kiiri-button click="modalOpen = true">Click Me!</kiiri-button>
+        <angular-button click="modalOpen = true">Click Me!</angular-button>
         <modal is-open="modalOpen" close-callback="printFoo">
             <div class="example-modal" ng-cloak>
-                <div class="title">Sign In</div>
+                <div class="title">Sign Up</div>
                 <input-field placeholder="Email Address" name="email" value="fields.email" fill="true"></input-field>
                 <input-field placeholder="Password" name="password" value="fields.password" type="password" fill="true"></input-field>
-                <kiiri-button click="fakeSignIn()" loading="processing" fill="true">Sign In</kiiri-button>
+                <input-field placeholder="Password Confirm" name="password_confirm" value="fields.password_confirm" type="password" fill="true"></input-field>
+                <text-area placeholder="Additional Comments" value="fields.comments" fill="true"></text-area>
+                <angular-button click="fakeSignUp()" loading="processing" fill="true">Sign Up</angular-button>
             </div>
         </modal>
 
@@ -61,10 +63,11 @@
                     console.log("Foo");
                 };
 
-                $scope.fakeSignIn = function() {
+                $scope.fakeSignUp = function() {
                     $scope.processing = true;
                     console.log("Email: " + $scope.fields.email);
                     console.log("Password: " + $scope.fields.password);
+                    console.log("Comments: " + $scope.fields.comments);
 
                     $timeout(function() {
                         $scope.processing = false;

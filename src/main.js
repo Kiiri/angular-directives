@@ -6,7 +6,8 @@
 var app = angular.module("kiiri.angular", ["kiiri.angular.button",
                                            "kiiri.angular.clickoutside",
                                            "kiiri.angular.input",
-                                           "kiiri.angular.modal"]);
+                                           "kiiri.angular.modal",
+                                           "kiiri.angular.textarea"]);
 
 app.service("Helpers", function() {
     this.defaultValue = function($scope, variable, value) {

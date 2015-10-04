@@ -10,10 +10,11 @@ Dependencies:
 jQuery, AngularJS, Font-Awesome (for some icons)
 
 Current directives:
-* kiiri-button (Button with loading, disabled, propagate attributes. Works well in conjunction with clickoutside)
+* angular-button (Button with loading, disabled, propagate attributes. Works well in conjunction with clickoutside)
 * clickoutside (Call a given function when a user clicks outside of an element)
 * input-field (Basic customizable text input field)
 * modal (Typical modal)
+* text-area (Customizable auto-resizing text area)
 
 Examples:
 See the files in the folder 'examples'

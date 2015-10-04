@@ -1,0 +1,47 @@
+@import "../constants";
+
+.kiiri-text-area {
+    display: inline-block;
+
+    &.fill {
+        width: 100%;
+    }
+
+    textarea {
+        border-radius: 4px;
+        background: $secondary-background;
+        border: none;
+        color: $main-text-color;
+        font-family: "Lato", sans-serif;
+        font-size: 14px;
+        vertical-align: top;
+        outline: 0;
+        padding: 20px;
+        letter-spacing: 0.15em;
+        resize: none;
+        width: 100%;
+
+        &:focus {
+            background: #F9F8EC;
+        }
+
+        &::-webkit-input-placeholder { /* WebKit browsers */
+            color: $light-grey-sw-3;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: $light-grey-sw-3;
+            opacity: 1;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: $light-grey-sw-3;
+            opacity: 1;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: $light-grey-sw-3;
+        }
+
+        &.invalid {
+            background: $error-background;
+        }
+    }
+}

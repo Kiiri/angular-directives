@@ -32,7 +32,9 @@ module.exports = function(grunt) {
                 globals: {
                     angular: true,
                     console: true,
+                    exports: true,
                     jQuery: true,
+                    module: true,
                     $: true
                 },
             },

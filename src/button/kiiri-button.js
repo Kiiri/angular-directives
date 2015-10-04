@@ -19,7 +19,7 @@ button.controller("buttonController", ["$scope", "Helpers",
     }
 ]);
 
-button.directive("kiiriButton", [
+button.directive("angularButton", [
     function () {
         "use strict";
         return {
