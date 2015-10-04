@@ -3,6 +3,7 @@
 module.exports = function(grunt) {
     [
         "grunt-angular-templates",
+        "grunt-contrib-copy",
         "grunt-contrib-cssmin",
         "grunt-contrib-jshint",
         "grunt-contrib-sass",
@@ -11,6 +12,15 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
+        copy: {
+            icons: {
+                files: [{
+                    src: ["icons/**"],
+                    dest: "build/",
+                    filter: "isFile"
+                }]
+            }
+        },
         cssmin: {
             options: {
                 banner: "/*! <%= pkg.name %>: Built on <%= grunt.template.today('yyyy-mm-dd') %> */\n",
@@ -80,7 +90,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask("default", ["sass", "cssmin", "jshint", "ngtemplates", 'uglify']);
-    grunt.registerTask("build", 'default');
+    grunt.registerTask("default", ["sass", "cssmin", "jshint", "ngtemplates", "uglify", "copy"]);
+    grunt.registerTask("build", "default");
 };
 

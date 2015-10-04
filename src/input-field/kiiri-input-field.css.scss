@@ -39,6 +39,10 @@
             color: $light-grey-sw-3;
         }
 
+        &:disabled {
+            cursor: not-allowed;
+        }
+
         &:active {
             border-color: $dark-yellow-sw-2;
             box-shadow: 0px 0px 5px $yellow-sw-2;

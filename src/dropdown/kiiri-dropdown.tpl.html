@@ -1,0 +1,12 @@
+
+<div class="kiiri-dropdown" ng-click="toggleDropdown()" clickoutside on-click-outside="closeDropdown" is-enabled="dropdownOpen" ng-class="{ empty: (items.length === 0), disabled: disabled }">
+    <table id="table-id" ng-class="{ open: dropdownOpen }">
+        <tr id="table-current"><td><div class="kiiri-dropdown-current-item" style="background-image: url('{{icon}}');" ng-class="{ 'has-icon': icon, empty: (items.length === 0), disabled: disabled }">{{ itemDisplay(selectedItem) || (items.length === 0 && emptyText) || defaultText }}</div></td></tr>
+        <tr><td>
+            <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }">
+                <div class="kiiri-dropdown-item" ng-repeat="item in items" ng-class="{ 'has-icon': icon }" ng-click="selectItem(item); $event.stopPropagation()">{{itemDisplay(item)}}</div>
+            </div>
+        </td></tr>
+    </table>
+    <input ng-if="formName" name="{{formName}}" value="{{ itemValue(selectedItem) }}"></input>
+</div>

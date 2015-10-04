@@ -80,5 +80,24 @@
         &.overflow-inherit {
             overflow: inherit;
         }
+
+        .modal-title {
+            margin: 0px 0px 40px 0px;
+            font-size: 24px;
+            font-weight: 300;
+            color: $main-text-color;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .modal-small {
+            width: 400px;
+            padding: 40px;
+        }
+
+        .modal-normal {
+            width: 500px;
+            padding: 40px;
+        }
     }
 }

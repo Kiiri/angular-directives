@@ -30,6 +30,7 @@ input.directive("inputField", [
             templateUrl: "src/input-field/kiiri-input-field.tpl.html",
             scope: {
                 defaultValue: "@?",
+                disabled: "=?",
                 fill: "=?",
                 invalid: "=?",
                 name: "@?",

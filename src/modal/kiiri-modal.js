@@ -15,7 +15,9 @@ var modal = angular.module("kiiri.angular.modal", []);
 modal.controller("modalController", ["$scope", "Helpers",
     function ($scope, Helpers) {
         "use strict";
+
         Helpers.defaultValue($scope, 'closeCallback', angular.noop);
+        Helpers.defaultValue($scope, 'isOpen', false);
 
         $scope.closeModal = function() {
             $scope.isOpen = false;
