@@ -11,6 +11,7 @@ jQuery, AngularJS, Font-Awesome (for some icons)
 
 Current directives:
 * angular-button (Button with loading, disabled, propagate attributes. Works well in conjunction with clickoutside)
+* checkbox (Angular wrapper for checkbox)
 * clickoutside (Call a given function when a user clicks outside of an element)
 * dropdown (Simple dropdown directive. Can be given either a list of objects or strings)
 * input-field (Basic customizable text input field)

@@ -4,6 +4,7 @@
  */
 
 var app = angular.module("kiiri.angular", ["kiiri.angular.button",
+                                           "kiiri.angular.checkbox",
                                            "kiiri.angular.clickoutside",
                                            "kiiri.angular.dropdown",
                                            "kiiri.angular.input",

@@ -15,9 +15,10 @@ module.exports = function(grunt) {
         copy: {
             icons: {
                 files: [{
-                    src: ["icons/**"],
+                    src: "icons/**",
                     dest: "build/",
-                    filter: "isFile"
+                    filter: "isFile",
+                    expand: true
                 }]
             }
         },
