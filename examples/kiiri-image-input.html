@@ -1,0 +1,85 @@
+
+
+<!DOCTYPE html>
+<html ng-app="Examples">
+    <head>
+        <title>Kiiri Angular Directive Examples</title>
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900,100"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
+        <style>
+            body {
+                font-family: 'Lato', sans-serif;
+                letter-spacing: .1em;
+                padding: 40px;
+            }
+
+            .image-input-wrapper {
+                position: relative;
+                display: inline-block;
+                width: 150px;
+                height: 150px;
+                border: 5px dashed #999999;
+                background-image: url("../build/icons/add-photo.png");
+                background-size: 60px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .image-input-wrapper:hover {
+                opacity: .5;
+            }
+
+            .image-input-wrapper.no-border {
+                border: 0px;
+            }
+
+            .gradient-input {
+                position: relative;
+                display: inline-block;
+                width: 150px;
+                height: 150px;
+                text-align: center;
+                line-height: 150px;
+            }
+
+            .gradient-input:hover {
+                opacity: .5;
+            }
+        </style>
+    </head>
+    <body ng-controller="ExampleController">
+        <div class="image-input-wrapper" ng-class="{ 'no-border': fields.image1 }">
+            <image-input value="fields.image1" get-file="fields.getFile"></image-input>
+        </div>
+
+        <div class="image-input-wrapper" ng-class="{ 'no-border': fields.image2 }">
+            <image-input value="fields.image2" get-file="fields.getFile2" on-change="onChange2" auto-loading="true" loading="fields.loading2"></image-input>
+        </div>
+
+        <div class="gradient-input">
+            <image-input value="fields.image3" get-file="fields.getFile3" on-change="onChange3" default-gradient="true">
+                Click Me
+            </image-input>
+        </div>
+
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="../build/kiiri-angular-directives.min.js"></script>
+
+        <script>
+            var examples = angular.module("Examples", ["kiiri.angular"]);
+
+            angular.module("Examples").controller("ExampleController", function($scope, $timeout) {
+                $scope.fields = {};
+
+                $scope.onChange2 = function(image) {
+                    $timeout(function() {
+                        $scope.fields.loading2 = false;
+                    }, 2000);
+                };
+            });
+        </script>
+    </body>
+</html>

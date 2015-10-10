@@ -14,6 +14,7 @@ Current directives:
 * checkbox (Angular wrapper for checkbox)
 * clickoutside (Call a given function when a user clicks outside of an element)
 * dropdown (Simple dropdown directive. Can be given either a list of objects or strings)
+* image-input (Makes parent element a clickable image upload field. Useful for updating user avatars and similar applications)
 * input-field (Basic customizable text input field)
 * modal (Typical modal)
 * text-area (Customizable auto-resizing text area)
