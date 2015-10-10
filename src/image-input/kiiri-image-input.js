@@ -1,5 +1,5 @@
 /**
- * Fills itself to fill its parent element. Overlays a hidden file input field on top of its parent.
+ * Resizes itself to fill its parent element. Overlays a hidden file input field on top of its parent.
  * Previews the chosen image in the element. See examples/kiiri-image-input.
  *
  * Note: The parent element must have the property 'position' set to 'relative' in order for

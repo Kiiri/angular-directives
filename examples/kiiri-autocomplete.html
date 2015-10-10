@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html ng-app="Examples">
     <head>
@@ -14,16 +13,15 @@
                 letter-spacing: .1em;
                 padding: 40px;
             }
-
-            dropdown:first-child .kiiri-dropdown {
-                width: 100%;
-            }
         </style>
     </head>
     <body ng-controller="ExampleController">
-        <input-field placeholder="Some Placeholder"></input-field>
-        <input-field icon="../build/icons/icon-time.png" placeholder="Some Placeholder"></input-field>
-        <input-field value="'Disabled Input'" is-disabled="true"></input-field>
+        <autocomplete placeholder="Test Autocomplete" endpoint="autocomplete-test-response.html" search-field="name" result-field="data" method="GET" hide-results="fields.hideResults" is-results-hidden="fields.hideResults" on-enter="searchClicked" search="fields.search" is-disabled="fields.disabled">
+            <div ng-click="resultClicked(result)">
+                <div class="kiiri-autocomplete-image" ng-style="{ 'background-image': 'url({{result.user.profile_picture}})' }"></div>
+                {{ result.user.username }}
+            </div>
+        </autocomplete>
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
@@ -33,6 +31,14 @@
             var examples = angular.module("Examples", ["kiiri.angular"]);
 
             angular.module("Examples").controller("ExampleController", function($scope, $timeout) {
+                $scope.fields = {};
+
+                $scope.resultClicked = function(result) {
+                    $scope.fields.hideResults = true;
+                    $scope.fields.search = result.user.full_name;
+                    $scope.fields.disabled = true;
+                    console.log(result);
+                }
             });
         </script>
     </body>

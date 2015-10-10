@@ -16,7 +16,8 @@ input.controller("inputController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, "invalid", false);
         Helpers.defaultValue($scope, "type", "text");
         Helpers.defaultValue($scope, "placeholder", "");
-        Helpers.defaultValue($scope, "disabled", false);
+        Helpers.defaultValue($scope, "isDisabled", false);
+        Helpers.defaultValue($scope, "onEnter", angular.noop);
 
         if ($scope.defaultValue) {
             $scope.value = $scope.defaultValue;
@@ -32,7 +33,7 @@ input.directive("inputField", [
             templateUrl: "src/input-field/kiiri-input-field.tpl.html",
             scope: {
                 defaultValue: "@?",
-                disabled: "=?",
+                isDisabled: "=?",
                 fill: "=?",
                 icon: "@?",
                 invalid: "=?",
@@ -40,6 +41,7 @@ input.directive("inputField", [
                 placeholder: "@?",
                 type: "@?",
                 value: "=",
+                onEnter: "=?"
             },
             controller: "inputController"
         };

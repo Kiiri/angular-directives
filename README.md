@@ -10,6 +10,7 @@ Dependencies:
 jQuery, AngularJS, Font-Awesome (for some icons)
 
 Current directives:
+* autocomplete (Directive used to display ajax autocomplete results)
 * angular-button (Button with loading, disabled, propagate attributes. Works well in conjunction with clickoutside)
 * checkbox (Angular wrapper for checkbox)
 * clickoutside (Call a given function when a user clicks outside of an element)

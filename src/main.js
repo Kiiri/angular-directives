@@ -3,7 +3,8 @@
  * @author Alex Dong (https://github.com/Kiiri)
  */
 
-var app = angular.module("kiiri.angular", ["kiiri.angular.button",
+var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
+                                           "kiiri.angular.button",
                                            "kiiri.angular.checkbox",
                                            "kiiri.angular.clickoutside",
                                            "kiiri.angular.dropdown",
