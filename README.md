@@ -17,6 +17,7 @@ Current directives:
 * input-field (Basic customizable text input field)
 * modal (Typical modal)
 * text-area (Customizable auto-resizing text area)
+* tooltip (Tooltip directive that wraps an element)
 
 Examples:
 See the files in the folder 'examples'

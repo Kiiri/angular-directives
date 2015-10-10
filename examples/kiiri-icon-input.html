@@ -1,0 +1,39 @@
+
+
+<!DOCTYPE html>
+<html ng-app="Examples">
+    <head>
+        <title>Kiiri Angular Directive Examples</title>
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900,100"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
+        <style>
+            body {
+                font-family: 'Lato', sans-serif;
+                letter-spacing: .1em;
+                padding: 40px;
+            }
+
+            dropdown:first-child .kiiri-dropdown {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body ng-controller="ExampleController">
+        <input-field placeholder="Some Placeholder"></input-field>
+        <input-field icon="../build/icons/icon-time.png" placeholder="Some Placeholder"></input-field>
+        <input-field value="'Disabled Input'" disabled="true"></input-field>
+
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="../build/kiiri-angular-directives.min.js"></script>
+
+        <script>
+            var examples = angular.module("Examples", ["kiiri.angular"]);
+
+            angular.module("Examples").controller("ExampleController", function($scope, $timeout) {
+            });
+        </script>
+    </body>
+</html>

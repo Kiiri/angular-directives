@@ -54,3 +54,35 @@ $blue-sw-3:             #51CEE7;
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+
+@mixin left-arrow($size, $color, $top-offset) {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: " ";
+        width: 0px;
+        height: 0px;
+        top: $top-offset;
+        left: -$size;
+        border-right: $size solid $color;
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+    }
+}
+
+@mixin top-arrow($size, $color, $left-offset) {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: " ";
+        width: 0px;
+        height: 0px;
+        top: -$size;
+        left: $left-offset;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        border-left: $size solid transparent;
+    }
+}

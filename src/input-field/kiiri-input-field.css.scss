@@ -2,6 +2,15 @@
 
 .kiiri-input-field {
     display: inline-block;
+    position: relative;
+
+    img {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: 11px;
+        left: 15px;
+    }
 
     &.fill {
         width: 100%;
@@ -20,8 +29,12 @@
         width: 100%;
         letter-spacing: 0.15em;
 
+        &.has-icon {
+            padding-left: 55px;
+        }
+
         &:focus {
-            background: #F9F8EC;
+            background: $input-focus-background;
         }
 
         &::-webkit-input-placeholder { /* WebKit browsers */
@@ -41,6 +54,7 @@
 
         &:disabled {
             cursor: not-allowed;
+            background: $light-grey-sw-3;
         }
 
         &:active {

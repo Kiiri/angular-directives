@@ -22,7 +22,7 @@
         width: 100%;
 
         &:focus {
-            background: #F9F8EC;
+            background: $input-focus-background;
         }
 
         &::-webkit-input-placeholder { /* WebKit browsers */

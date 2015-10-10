@@ -1,4 +1,5 @@
 
 <div class="kiiri-input-field" ng-class="{ fill: fill }">
-    <input type="{{type}}" placeholder="{{placeholder}}" name="{{name}}" ng-model="value" ng-class="{ invalid: invalid }" disabled="{{disabled}}"></input>
+    <img ng-src="{{icon}}" ng-if="icon"></img>
+    <input type="{{type}}" placeholder="{{placeholder}}" name="{{name}}" ng-model="value" ng-class="{ invalid: invalid, 'has-icon': icon }" ng-disabled="disabled"></input>
 </div>

@@ -1,0 +1,36 @@
+
+@import "../constants";
+
+.kiiri-tooltip {
+    position: relative;
+    display: inline-block;
+
+    .tooltip-content {
+        font-size: 14px;
+        padding: 20px;
+        background: $input-focus-background;
+        max-width: 400px;
+        white-space: normal;
+        z-index: 2;
+        visibility: hidden;
+
+        &.bottom {
+            @include top-arrow(8px, $input-focus-background, 20px);
+            position: absolute;
+        }
+
+        &.right {
+            @include left-arrow(8px, $input-focus-background, 20px);
+            top: 0px;
+            position: absolute;
+        }
+
+        &.visible {
+            visibility: visible;
+        }
+    }
+}
+
+.kiiri-tooltip-length-calculator {
+    display: none;
+}

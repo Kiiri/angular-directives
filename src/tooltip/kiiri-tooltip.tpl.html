@@ -1,0 +1,7 @@
+
+<div class="kiiri-tooltip">
+    <div class="tooltip-hover" ng-mouseover="showTooltip($event)" ng-mouseout="hideTooltip()" ng-transclude></div>
+    <div class="tooltip-content {{position}}" ng-class="{ visible: isVisible }">{{ text }}</div>
+</div>
+
+<div class="kiiri-tooltip-length-calculator">{{ text }}</div>

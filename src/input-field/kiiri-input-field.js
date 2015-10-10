@@ -15,6 +15,8 @@ input.controller("inputController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, "fill", false);
         Helpers.defaultValue($scope, "invalid", false);
         Helpers.defaultValue($scope, "type", "text");
+        Helpers.defaultValue($scope, "placeholder", "");
+        Helpers.defaultValue($scope, "disabled", false);
 
         if ($scope.defaultValue) {
             $scope.value = $scope.defaultValue;
@@ -32,6 +34,7 @@ input.directive("inputField", [
                 defaultValue: "@?",
                 disabled: "=?",
                 fill: "=?",
+                icon: "@?",
                 invalid: "=?",
                 name: "@?",
                 placeholder: "@?",
