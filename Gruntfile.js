@@ -46,8 +46,9 @@ module.exports = function(grunt) {
                     exports: true,
                     jQuery: true,
                     module: true,
-                    $: true
-                },
+                    $: true,
+                    qrcode: true
+                }
             },
             with_overrides: {
                 options: {
@@ -55,7 +56,7 @@ module.exports = function(grunt) {
                     undef: true,
                 },
                 files: {
-                    src: ["src/**/*.js"]
+                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js"]
                 },
             }
         },

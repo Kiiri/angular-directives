@@ -11,6 +11,7 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.input",
                                            "kiiri.angular.imageinput",
                                            "kiiri.angular.modal",
+                                           "kiiri.angular.qrcodescanner",
                                            "kiiri.angular.textarea",
                                            "kiiri.angular.tooltip"]);
 

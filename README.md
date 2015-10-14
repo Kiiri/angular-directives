@@ -9,6 +9,13 @@ directives to come in the future.
 Dependencies:
 jQuery, AngularJS, Font-Awesome (for some icons)
 
+Other external libraries:
+Some of the directives make use of other external libraries. The external libraries are already minified and bundled
+into the built "kiiri-angular-directives.min.js" file, however.
+
+text-area: https://github.com/monospaced/angular-elastic
+qrcode-scanner: https://github.com/dwa012/html5-qrcode, https://github.com/LazarSoft/jsqrcode
+
 Current directives:
 * autocomplete (Directive used to display ajax autocomplete results)
 * angular-button (Button with loading, disabled, propagate attributes. Works well in conjunction with clickoutside)
@@ -18,6 +25,7 @@ Current directives:
 * image-input (Makes parent element a clickable image upload field. Useful for updating user avatars and similar applications)
 * input-field (Basic customizable text input field)
 * modal (Typical modal)
+* qrcode-scanner (Angular wrapper for HTML5 compatible QR-code scanner)
 * text-area (Customizable auto-resizing text area)
 * tooltip (Tooltip directive that wraps an element)
 
