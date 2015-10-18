@@ -5,6 +5,9 @@
  * dropdown will automatically resize to fit the largest element if the width of
  * .kiiri-dropdown is not set in the CSS. See the example in examples/kiiri-dropdown.html
  *
+ * Note: There is a bug right now where the dropdown element will cover up elements below it
+ * unless you set the css property 'position' to 'relative'
+ *
  * @author Alex Dong (https://github.com/Kiiri)
  */
 
