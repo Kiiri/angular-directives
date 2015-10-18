@@ -36,4 +36,8 @@ app.service("Helpers", function() {
         }
         return _p8() + _p8(true) + _p8(true) + _p8();
     };
+
+    this.weekdayNumberToWeekday = function(weekdayNumber) {
+        return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][weekdayNumber];
+    };
 });

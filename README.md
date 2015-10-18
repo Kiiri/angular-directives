@@ -9,11 +9,11 @@ directives to come in the future.
 Dependencies:
 jQuery, AngularJS, Font-Awesome (for some icons)
 
-Other external libraries:
+Other external libraries: <br/>
 Some of the directives make use of other external libraries. The external libraries are already minified and bundled
 into the built "kiiri-angular-directives.min.js" file, however.
 
-text-area: https://github.com/monospaced/angular-elastic
+text-area: https://github.com/monospaced/angular-elastic <br/>
 qrcode-scanner: https://github.com/dwa012/html5-qrcode, https://github.com/LazarSoft/jsqrcode
 
 Current directives:

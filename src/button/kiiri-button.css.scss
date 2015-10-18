@@ -19,7 +19,7 @@
         width: 100%;
     }
 
-    &:hover:not(.disabled, .loading) {
+    &:hover {
         background: $yellow-sw-1;
         color: $main-text-color;
         border-color: $dark-yellow-sw-1;
@@ -31,14 +31,17 @@
         border-color: $dark-yellow-sw-3;
     }
 
-    &.disabled {
+    &.disabled, &.disabled:hover {
         color: $light-grey-sw-3;
         background: #FAF7DB;
         cursor: not-allowed;
     }
 
-    &.loading {
+    &.loading, &.loading:hover {
         cursor: wait;
+        background: $yellow-sw-2;
+        color: $black-text-color;
+        border-color: $dark-yellow-sw-2;
     }
 
     i {
