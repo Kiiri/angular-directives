@@ -3,7 +3,7 @@
     <div class="gradient-overlay" ng-if="defaultGradient && !value"
          style="background: linear-gradient(to bottom, rgba({{gradientValues[0]}},{{gradientValues[1]}},{{gradientValues[2]}},1), rgba({{gradientValues[0]-100}},{{gradientValues[1]-100}},{{gradientValues[2]-100}},1));"></div>
     <div class="image-text" ng-if="!value" ng-transclude></div>
-    <input type="file" onchange="angular.element(this).scope().fileChanged(this)"></input>
-    <div class="opacity-overlay" ng-if="loading"></div>
+    <input type="file" onchange="angular.element(this).scope().fileChanged(this)" ng-mouseover="showOpacityOverlay()" ng-mouseout="hideOpacityOverlay()"></input>
+    <div class="opacity-overlay" ng-if="opacityShowing || loading"></div>
     <div class="spinner-overlay" ng-if="loading"><div class="spinner-wrapper"><i class="fa fa-refresh fa-spin"></i></div></div>
 </div>

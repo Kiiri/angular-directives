@@ -27,6 +27,14 @@ imageInput.controller("imageInputController", ["$scope", "$timeout", "$http", "H
             ];
         }
 
+        $scope.showOpacityOverlay = function() {
+            $scope.opacityShowing = true;
+        };
+
+        $scope.hideOpacityOverlay = function() {
+            $scope.opacityShowing = false;
+        };
+
         $scope.getFile = function() {
             return $scope.file;
         };
@@ -51,9 +59,13 @@ imageInput.controller("imageInputController", ["$scope", "$timeout", "$http", "H
                     }
 
                     reader.onload = function (dataUrl) {
-                        $scope.$apply(function() {
-                            $scope.value = dataUrl.target.result;
-                        });
+                        if (!$scope.uploadUrl) {
+                            $scope.$apply(function() {
+                                $scope.value = dataUrl.target.result;
+                            });
+                        } else {
+                            $scope.onloadResult = dataUrl.target.result;
+                        }
                     };
 
                     if (file && file.files && file.files.length > 0) {
@@ -63,6 +75,32 @@ imageInput.controller("imageInputController", ["$scope", "$timeout", "$http", "H
                         });
                     }
                     reader.readAsDataURL(file.files[0]);
+
+                    if ($scope.uploadUrl) {
+                        $scope.formData = new FormData();
+                        $scope.formData.append("file", file.files[0]);
+
+                        if ($scope.authenticityToken) {
+                            $scope.formData.append("authenticity_token", $scope.authenticityToken);
+                        }
+
+                        $scope.$apply(function() {
+                            $scope.loading = true;
+
+                            $http({
+                                url: $scope.uploadUrl,
+                                method: "POST",
+                                data: $scope.formData,
+                                headers: {'Content-Type': undefined}
+                            }).success(function(response) {
+                                $scope.value = $scope.onloadResult;
+                            }).error(function(response) {
+                                console.log("There was an error uploading the file.");
+                            })["finally"](function() {
+                                $scope.loading = false;
+                            });
+                        });
+                    }
                 }
             }, 0);
         };
@@ -81,7 +119,9 @@ imageInput.directive("imageInput", [
                 onChange: "=?",
                 loading: "=?",
                 autoLoading: "=?",
-                defaultGradient: "=?"
+                defaultGradient: "=?",
+                uploadUrl: "@?",
+                authenticityToken: "@?"
             },
             transclude: true,
             controller: "imageInputController"
