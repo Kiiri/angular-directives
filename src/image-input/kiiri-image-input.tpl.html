@@ -6,4 +6,12 @@
     <input type="file" onchange="angular.element(this).scope().fileChanged(this)" ng-mouseover="showOpacityOverlay()" ng-mouseout="hideOpacityOverlay()"></input>
     <div class="opacity-overlay" ng-if="opacityShowing || loading"></div>
     <div class="spinner-overlay" ng-if="loading"><div class="spinner-wrapper"><i class="fa fa-refresh fa-spin"></i></div></div>
+
+    <modal is-open="displayCropModal" close-callback="destroyCropper">
+        <div class="modal-normal" style="width: calc({{cropWidth}}px+60px);">
+            <div class="modal-title"> Crop </div>
+            <img class="kiiri-crop-image" ng-src="{{onloadResult}}" style="width: {{cropWidth}}px; height: {{cropHeight}}px;"></img>
+            <angular-button click="finishCropping()"> Finish Cropping </angular-button>
+        </div>
+    </modal>
 </div>

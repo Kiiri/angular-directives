@@ -15,6 +15,7 @@ into the built "kiiri-angular-directives.min.js" file, however.
 
 text-area: https://github.com/monospaced/angular-elastic <br/>
 qrcode-scanner: https://github.com/dwa012/html5-qrcode, https://github.com/LazarSoft/jsqrcode
+cropper: https://github.com/fengyuanchen/cropper
 
 Current directives:
 * autocomplete (Directive used to display ajax autocomplete results)

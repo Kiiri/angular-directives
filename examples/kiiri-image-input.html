@@ -28,7 +28,6 @@
             }
 
             .image-input-wrapper:hover {
-                opacity: .5;
             }
 
             .image-input-wrapper.no-border {
@@ -51,11 +50,11 @@
     </head>
     <body ng-controller="ExampleController">
         <div class="image-input-wrapper" ng-class="{ 'no-border': fields.image1 }">
-            <image-input value="fields.image1" get-file="fields.getFile"></image-input>
+            <image-input value="fields.image1" get-file="fields.getFile" hover-effect-off="true" crop-image="true" crop-width="400" crop-height="400"></image-input>
         </div>
 
         <div class="image-input-wrapper" ng-class="{ 'no-border': fields.image2 }">
-            <image-input value="fields.image2" get-file="fields.getFile2" on-change="onChange2" auto-loading="true" loading="fields.loading2"></image-input>
+            <image-input value="fields.image2" get-file="fields.getFile2" on-change="onChange2" auto-loading="true" loading="fields.loading2" hover-effect-off="true" crop-image="true"></image-input>
         </div>
 
         <div class="gradient-input">

@@ -1,6 +1,7 @@
 /**
  * Resizes itself to fill its parent element. Overlays a hidden file input field on top of its parent.
- * Previews the chosen image in the element. See examples/kiiri-image-input.
+ * Previews the chosen image in the element. Also allows for cropping of given image.
+ * See examples/kiiri-image-input.
  *
  * Note: The parent element must have the property 'position' set to 'relative' in order for
  * for the css to work properly.
@@ -10,11 +11,13 @@
 
 var imageInput = angular.module("kiiri.angular.imageinput", []);
 
-imageInput.controller("imageInputController", ["$scope", "$timeout", "$http", "Helpers",
-    function ($scope, $timeout, $http, Helpers) {
+imageInput.controller("imageInputController", ["$scope", "$element", "$timeout", "$http", "Helpers",
+    function ($scope, $element, $timeout, $http, Helpers) {
         'use strict';
 
         Helpers.defaultValue($scope, "onChange", angular.noop);
+        Helpers.defaultValue($scope, "cropWidth", 640);
+        Helpers.defaultValue($scope, "cropHeight", 360);
 
         if ($scope.defaultGradient) {
             var min = 152;
@@ -28,11 +31,15 @@ imageInput.controller("imageInputController", ["$scope", "$timeout", "$http", "H
         }
 
         $scope.showOpacityOverlay = function() {
-            $scope.opacityShowing = true;
+            if (!$scope.hoverEffectOff) {
+                $scope.opacityShowing = true;
+            }
         };
 
         $scope.hideOpacityOverlay = function() {
-            $scope.opacityShowing = false;
+            if (!$scope.hoverEffectOff) {
+                $scope.opacityShowing = false;
+            }
         };
 
         $scope.getFile = function() {
@@ -49,26 +56,80 @@ imageInput.controller("imageInputController", ["$scope", "$timeout", "$http", "H
             }, 0);
         };
 
+        $scope.uploadImage = function(image) {
+            $scope.formData = new FormData();
+            $scope.formData.append("file", image);
+
+            if ($scope.authenticityToken) {
+                $scope.formData.append("authenticity_token", $scope.authenticityToken);
+            }
+
+            $scope.$apply(function() {
+                $scope.loading = true;
+
+                $http({
+                    url: $scope.uploadUrl,
+                    method: "POST",
+                    data: $scope.formData,
+                    headers: {'Content-Type': undefined}
+                }).success(function(response) {
+                    $scope.value = $scope.onloadResult;
+                }).error(function(response) {
+                    console.log("There was an error uploading the file.");
+                })["finally"](function() {
+                    $scope.loading = false;
+                });
+            });
+        };
+
+        $scope.destroyCropper = function() {
+            $element.find(".kiiri-crop-image").cropper("destroy");
+        };
+
+        $scope.finishCropping = function() {
+            var croppedResult = $element.find(".kiiri-crop-image").cropper("getCroppedCanvas");
+            $scope.onloadResult = croppedResult.toDataURL();
+
+            croppedResult.toBlob(function(blob) {
+                $scope.$apply(function() {
+                    $scope.onChange(blob);
+                    $scope.displayCropModal = false;
+
+                    if ($scope.uploadUrl) {
+                        $scope.uploadImage(blob);
+                    } else {
+                        $scope.value = $scope.onloadResult;
+                    }
+
+                    if ($scope.autoLoading) {
+                        $scope.loading = true;
+                    }
+                });
+            });
+        };
+
         $scope.fileChanged = function(file) {
             $timeout(function() {
                 if (!$scope.loading) {
                     var reader = new FileReader();
 
-                    if ($scope.autoLoading) {
+                    if ($scope.autoLoading && !$scope.cropImage) {
                         $scope.loading = true;
                     }
 
                     reader.onload = function (dataUrl) {
-                        if (!$scope.uploadUrl) {
+                        if ($scope.cropImage || $scope.uploadUrl) {
+                            $scope.$apply(function() {
+                                $scope.onloadResult = dataUrl.target.result;
+                            });
+                        } else {
                             $scope.$apply(function() {
                                 $scope.value = dataUrl.target.result;
                             });
-                        } else {
-                            $scope.onloadResult = dataUrl.target.result;
                         }
                     };
 
-                    if (file && file.files && file.files.length > 0) {
+                    if (file && file.files && file.files.length > 0 && !$scope.cropImage) {
                         $scope.$apply(function() {
                             $scope.file = file.files[0];
                             $scope.onChange(file.files[0]);
@@ -76,30 +137,23 @@ imageInput.controller("imageInputController", ["$scope", "$timeout", "$http", "H
                     }
                     reader.readAsDataURL(file.files[0]);
 
-                    if ($scope.uploadUrl) {
-                        $scope.formData = new FormData();
-                        $scope.formData.append("file", file.files[0]);
-
-                        if ($scope.authenticityToken) {
-                            $scope.formData.append("authenticity_token", $scope.authenticityToken);
-                        }
-
+                    if ($scope.cropImage) {
                         $scope.$apply(function() {
-                            $scope.loading = true;
+                            $scope.displayCropModal = true;
 
-                            $http({
-                                url: $scope.uploadUrl,
-                                method: "POST",
-                                data: $scope.formData,
-                                headers: {'Content-Type': undefined}
-                            }).success(function(response) {
-                                $scope.value = $scope.onloadResult;
-                            }).error(function(response) {
-                                console.log("There was an error uploading the file.");
-                            })["finally"](function() {
-                                $scope.loading = false;
-                            });
+                            /* Needs a slight timeout, so that the modal is open before cropper is called */
+                            $timeout(function() {
+                                $element.find(".kiiri-crop-image").cropper({
+                                    aspectRatio: $scope.cropWidth / $scope.cropHeight,
+                                    movable: false,
+                                    zoomable: false,
+                                    rotatable: false,
+                                    scalable: false
+                                });
+                            }, 25);
                         });
+                    } else if ($scope.uploadUrl) {
+                        $scope.uploadImage(file.files[0]);
                     }
                 }
             }, 0);
@@ -121,7 +175,11 @@ imageInput.directive("imageInput", [
                 autoLoading: "=?",
                 defaultGradient: "=?",
                 uploadUrl: "@?",
-                authenticityToken: "@?"
+                authenticityToken: "@?",
+                hoverEffectOff: "@?",
+                cropImage: "@?",
+                cropWidth: "@?",
+                cropHeight: "@?"
             },
             transclude: true,
             controller: "imageInputController"
