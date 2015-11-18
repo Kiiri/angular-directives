@@ -42,7 +42,8 @@ tooltip.directive("tooltip", [
                 text: "@",
                 isVisible: "=?",
                 isDisabled: "=?",
-                position: "@?"
+                position: "@?",
+                fill: "=?"
             },
             link: function($scope, element, attributes) {
                 $scope.$watch("text", function() {

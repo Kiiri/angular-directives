@@ -1,18 +1,18 @@
 
-<div class="kiiri-autocomplete" clickoutside on-click-outside="hideResults">
+<div class="kiiri-autocomplete" clickoutside on-click-outside="hideResults" ng-cloak>
     <input-field type="text" value="search" placeholder="{{placeholder}}" ng-click="!isDisabled && (isResultsHidden = false)" is-disabled="isDisabled" on-enter="onEnter" fill="true"></input-field>
     <div class="disabled-button" ng-if="isDisabled" ng-click="clearDisabled()">x</div>
     <div class="loading-spinner" ng-if="numAutocompleting > 0"><i class="fa fa-refresh fa-spin"></i></div>
     <div class="kiiri-autocomplete-results" ng-show="!isResultsHidden">
-        <div class="kiiri-autocomplete-item" ng-repeat="item in results">
+        <div class="kiiri-autocomplete-item" ng-repeat="item in results" ng-if="results.length > 0">
             <div class="kiiri-autocomplete-result" autocomplete-result result="item"></div>
         </div>
-        <div class="kiiri-autocomplete-result" ng-show="search && searchNotEmail() && searchEnabled" ng-click="searchClicked()">
-            <img class="kiiri-autocomplete-image" src="<%= asset_path 'icons/icon-search-999.png' %>"></img>
+        <div class="kiiri-autocomplete-result" ng-show="search && searchNotEmail() && searchEnabled" ng-click="searchClicked(); $event.stopPropagation()">
+            <img class="kiiri-autocomplete-image" ng-src="{{searchIcon}}"></img>
             Find "{{search}}" on GymFlash
         </div>
-        <div class="kiiri-autocomplete-result" ng-show="search && !searchNotEmail() && emailEnabled" ng-click="emailClicked()">
-            <img class="kiiri-autocomplete-image" src="<%= asset_path 'icons/icon-envelope-999.png' %>"></img>
+        <div class="kiiri-autocomplete-result" ng-show="search && !searchNotEmail() && emailEnabled" ng-click="emailClicked(); $event.stopPropagation()">
+            <img class="kiiri-autocomplete-image" ng-src="{{emailIcon}}"></img>
             Invite "{{search}}"
         </div>
     </div>

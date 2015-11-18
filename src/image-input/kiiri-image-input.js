@@ -64,21 +64,19 @@ imageInput.controller("imageInputController", ["$scope", "$element", "$timeout",
                 $scope.formData.append("authenticity_token", $scope.authenticityToken);
             }
 
-            $scope.$apply(function() {
-                $scope.loading = true;
+            $scope.loading = true;
 
-                $http({
-                    url: $scope.uploadUrl,
-                    method: "POST",
-                    data: $scope.formData,
-                    headers: {'Content-Type': undefined}
-                }).success(function(response) {
-                    $scope.value = $scope.onloadResult;
-                }).error(function(response) {
-                    console.log("There was an error uploading the file.");
-                })["finally"](function() {
-                    $scope.loading = false;
-                });
+            $http({
+                url: $scope.uploadUrl,
+                method: "POST",
+                data: $scope.formData,
+                headers: {'Content-Type': undefined}
+            }).success(function(response) {
+                $scope.value = $scope.onloadResult;
+            }).error(function(response) {
+                console.log("There was an error uploading the file.");
+            })["finally"](function() {
+                $scope.loading = false;
             });
         };
 
@@ -91,7 +89,7 @@ imageInput.controller("imageInputController", ["$scope", "$element", "$timeout",
             $scope.onloadResult = croppedResult.toDataURL();
 
             croppedResult.toBlob(function(blob) {
-                $scope.$apply(function() {
+                $timeout(function() {
                     $scope.onChange(blob);
                     $scope.displayCropModal = false;
 
@@ -99,12 +97,13 @@ imageInput.controller("imageInputController", ["$scope", "$element", "$timeout",
                         $scope.uploadImage(blob);
                     } else {
                         $scope.value = $scope.onloadResult;
+                        $scope.blob = blob;
                     }
 
                     if ($scope.autoLoading) {
                         $scope.loading = true;
                     }
-                });
+                }, 0);
             });
         };
 
@@ -150,13 +149,24 @@ imageInput.controller("imageInputController", ["$scope", "$element", "$timeout",
                                     rotatable: false,
                                     scalable: false
                                 });
-                            }, 25);
+                            }, 100);
                         });
                     } else if ($scope.uploadUrl) {
-                        $scope.uploadImage(file.files[0]);
+                        $scope.$apply(function() {
+                            $scope.uploadImage(file.files[0]);
+                        });
                     }
                 }
             }, 0);
+        };
+
+        // http://stackoverflow.com/questions/1043957/clearing-input-type-file-using-jquery
+        $scope.clear = function() {
+            var $fileInput = $element.find("input[type='file']");
+
+            $fileInput.wrap('<form>').closest('form').get(0).reset();
+            $fileInput.unwrap();
+            $scope.value = "";
         };
     }
 ]);
@@ -169,6 +179,7 @@ imageInput.directive("imageInput", [
             templateUrl: "src/image-input/kiiri-image-input.tpl.html",
             scope: {
                 value: "=?",
+                blob: "=?",
                 getFile: "=?",
                 onChange: "=?",
                 loading: "=?",
@@ -179,7 +190,8 @@ imageInput.directive("imageInput", [
                 hoverEffectOff: "@?",
                 cropImage: "@?",
                 cropWidth: "@?",
-                cropHeight: "@?"
+                cropHeight: "@?",
+                clear: "=?"
             },
             transclude: true,
             controller: "imageInputController"

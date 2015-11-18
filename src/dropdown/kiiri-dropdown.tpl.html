@@ -4,7 +4,7 @@
         <tr><td><div class="kiiri-dropdown-current-item" ng-style="{'background-image': (icon && 'url('+icon+')')}" ng-class="{ 'has-icon': icon, empty: (items.length === 0), disabled: disabled }">{{ itemDisplay(selectedItem) || (items.length === 0 && emptyText) || defaultText }}</div></td></tr>
         <tr ng-click="$event.stopPropagation()" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
             <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }">
-                <div class="kiiri-dropdown-item" ng-repeat="item in items" ng-class="{ 'has-icon': icon }" ng-click="selectItem(item); $event.stopPropagation()">{{itemDisplay(item)}}</div>
+                <div class="kiiri-dropdown-item" ng-repeat="item in items track by $index" ng-class="{ 'has-icon': icon }" ng-click="selectItem(item); $event.stopPropagation()">{{itemDisplay(item)}}</div>
             </div>
         </td></tr>
     </table>

@@ -24,8 +24,17 @@ autocomplete.controller("autocompleteController", ["$scope", "$http", "$timeout"
         Helpers.defaultValue($scope, "emailEnabled", false);
         Helpers.defaultValue($scope, "method", "POST");
         Helpers.defaultValue($scope, "placeholder", "");
+        Helpers.defaultValue($scope, "results", []);
 
         $scope.latestResponse = new Date();
+
+        if ($scope.initialResults) {
+            if ($scope.resultField) {
+                $scope.results = $scope.initialResults[$scope.resultField];
+            } else {
+                $scope.results = $scope.resultField;
+            }
+        }
 
         $scope.$watch("search", function() {
             if (!$scope.disabled && !$scope.isResultsHidden) {
@@ -36,7 +45,7 @@ autocomplete.controller("autocompleteController", ["$scope", "$http", "$timeout"
                     var data = {};
                     data[$scope.searchField] = $scope.search;
 
-                    if ($scope.authenticity_token) {
+                    if ($scope.authenticityToken) {
                         data.authenticity_token = $scope.authenticityToken;
                     }
 
@@ -58,10 +67,12 @@ autocomplete.controller("autocompleteController", ["$scope", "$http", "$timeout"
                     }).finally(function() {
                         $scope.numAutocompleting -= 1;
                     });
-                } else {
-                    $scope.results = {
-                        items: $scope.initialResults
-                    };
+                } else if ($scope.initialResults) {
+                    if ($scope.resultField) {
+                        $scope.results = $scope.initialResults[$scope.resultField];
+                    } else {
+                        $scope.results = $scope.resultField;
+                    }
                 }
             }
         });
@@ -100,7 +111,7 @@ autocomplete.directive("autocomplete", [
                 searchField: "@",
                 resultField: "@?",
                 results: '=?',
-                resultClicked: '=',
+                resultClicked: '=?',
                 isResultsHidden: '=?',
                 emailClicked: '=?',
                 searchClicked: '=?',
@@ -109,7 +120,9 @@ autocomplete.directive("autocomplete", [
                 onEnter: '=?',
                 searchEnabled: '=?',
                 emailEnabled: '=?',
-                authenticityToken: "@?"
+                authenticityToken: "@?",
+                emailIcon: "@?",
+                searchIcon: "@?"
             },
             transclude: true,
             controller: "autocompleteController"

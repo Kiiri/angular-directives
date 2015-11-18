@@ -5,6 +5,10 @@
     position: relative;
     display: inline-block;
 
+    &.fill {
+        width: 100%;
+    }
+
     .tooltip-content {
         font-size: 14px;
         padding: 20px;
