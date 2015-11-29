@@ -25,6 +25,9 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.5);
         background-clip: padding-box;
         visibility: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 85%;
 
         &.not-visible {
             visibility: hidden;

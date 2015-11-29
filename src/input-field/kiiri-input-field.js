@@ -17,6 +17,7 @@ input.controller("inputController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, "type", "text");
         Helpers.defaultValue($scope, "placeholder", "");
         Helpers.defaultValue($scope, "isDisabled", false);
+        Helpers.defaultValue($scope, "stripe", "");
         Helpers.defaultValue($scope, "onEnter", angular.noop);
 
         if ($scope.defaultValue) {
@@ -41,7 +42,8 @@ input.directive("inputField", [
                 placeholder: "@?",
                 type: "@?",
                 value: "=",
-                onEnter: "=?"
+                onEnter: "=?",
+                stripe: "@?"
             },
             controller: "inputController"
         };

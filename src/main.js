@@ -4,6 +4,7 @@
  */
 
 var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
+                                           "kiiri.angular.backgroundImage",
                                            "kiiri.angular.button",
                                            "kiiri.angular.checkbox",
                                            "kiiri.angular.clickoutside",
@@ -12,6 +13,7 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.imageinput",
                                            "kiiri.angular.modal",
                                            "kiiri.angular.qrcodescanner",
+                                           "kiiri.angular.radio",
                                            "kiiri.angular.textarea",
                                            "kiiri.angular.tooltip"]);
 

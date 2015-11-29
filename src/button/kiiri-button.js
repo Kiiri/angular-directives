@@ -30,7 +30,8 @@ button.directive("angularButton", [
                 loading: "=?",
                 type: "@?",
                 disabled: "=?",
-                fill: "=?"
+                fill: "=?",
+                link: "@?"
             },
             transclude: true,
             controller: "buttonController"

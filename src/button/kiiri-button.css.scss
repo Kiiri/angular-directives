@@ -16,6 +16,12 @@
     border-color: $dark-yellow-sw-2;
     text-align: center;
 
+    a, a:hover {
+        text-decoration: none;
+        color: $main-text-color;
+        font-weight: $light-text-weight;
+    }
+
     &.fill {
         width: 100%;
     }

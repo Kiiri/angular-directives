@@ -1,4 +1,7 @@
 
 <div class="kiiri-button" ng-class="{ grey: type === 'grey', disabled: disabled, loading: loading, fill: fill }" ng-click="onClick($event)">
-    <span ng-transclude></span><i class="fa fa-refresh fa-spin" ng-if="loading"></i>
+    <a ng-href="{{link}}" ng-if="link">
+        <span ng-transclude></span><i class="fa fa-refresh fa-spin" ng-if="loading"></i>
+    </a>
+    <span ng-if="!link" ng-transclude></span><i class="fa fa-refresh fa-spin" ng-if="loading"></i>
 </div>
