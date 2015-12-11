@@ -69,12 +69,15 @@
     }
 
     .kiiri-dropdown-items {
-        visibility: hidden;
         padding-top: 3px;
         z-index: -1;
 
+        &.dropdown-hidden {
+            display: none;
+        }
+
         &.visible {
-            visibility: visible;
+            display: block;
             z-index: 100;
         }
 

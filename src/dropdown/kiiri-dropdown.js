@@ -78,7 +78,7 @@ dropdown.directive("dropdown", [
                         if (!$scope.selectedItem || newValue !== oldValue) {
                             $scope.selectedItem = $scope.items[0];
                         }
-                    } else {
+                    } else if (!(newValue !== oldValue || $scope.selectedItem)) {
                         $scope.selectedItem = null;
                     }
 
@@ -88,6 +88,8 @@ dropdown.directive("dropdown", [
                         $(element).find(".kiiri-dropdown").width(dropdownWidth);
                         $scope.previouslyResized = true;
                     }
+
+                    $(element).find(".kiiri-dropdown-items").addClass("dropdown-hidden");
                 }, true);
             }
         };

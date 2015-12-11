@@ -12,10 +12,38 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.input",
                                            "kiiri.angular.imageinput",
                                            "kiiri.angular.modal",
+                                           "kiiri.angular.oauth",
                                            "kiiri.angular.qrcodescanner",
                                            "kiiri.angular.radio",
                                            "kiiri.angular.textarea",
                                            "kiiri.angular.tooltip"]);
+
+/*
+ * Extends angular's default $q service to support success and error chaining.
+ * Adapted from: http://tiny/eujp44y8/stacques1679howc
+ */
+app.config(['$provide', function ($provide) {
+    $provide.decorator('$q', ['$delegate', function ($delegate) {
+        var defer = $delegate.defer;
+        $delegate.defer = function () {
+            var deferred = defer();
+            deferred.promise.success = function (fn) {
+                deferred.promise.then(function(response) {
+                    fn(response);
+                });
+                return deferred.promise;
+            };
+            deferred.promise.error = function (fn) {
+                deferred.promise.then(null, function(response) {
+                    fn(response);
+                });
+                return deferred.promise;
+            };
+            return deferred;
+        };
+        return $delegate;
+    }]);
+}]);
 
 app.service("Helpers", function() {
     this.defaultValue = function($scope, variable, value) {

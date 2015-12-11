@@ -18,6 +18,7 @@ imageInput.controller("imageInputController", ["$scope", "$element", "$timeout",
         Helpers.defaultValue($scope, "onChange", angular.noop);
         Helpers.defaultValue($scope, "cropWidth", 640);
         Helpers.defaultValue($scope, "cropHeight", 360);
+        Helpers.defaultValue($scope, "disabled", false);
 
         if ($scope.defaultGradient) {
             var min = 152;
@@ -82,6 +83,9 @@ imageInput.controller("imageInputController", ["$scope", "$element", "$timeout",
 
         $scope.destroyCropper = function() {
             $element.find(".kiiri-crop-image").cropper("destroy");
+            if ($scope.uploadUrl) {
+                $scope.clear();
+            }
         };
 
         $scope.finishCropping = function() {
@@ -191,7 +195,8 @@ imageInput.directive("imageInput", [
                 cropImage: "@?",
                 cropWidth: "@?",
                 cropHeight: "@?",
-                clear: "=?"
+                clear: "=?",
+                isDisabled: "=?"
             },
             transclude: true,
             controller: "imageInputController"

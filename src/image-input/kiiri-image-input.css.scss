@@ -8,6 +8,10 @@
     position: absolute;
     background-size: cover;
 
+    &.disabled {
+        cursor: inherit;
+    }
+
     img {
         height: 20px;
         width: 20px;
