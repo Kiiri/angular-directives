@@ -1,0 +1,27 @@
+
+@import "../constants";
+
+.kiiri-scrollbar-wrapper {
+    .mCSB_1_scrollbar_vertical {
+        opacity: .75;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        width: 5px;
+        background-color: $light-grey-sw-1;
+        margin-right: 3px;
+        height: calc(100% - 6px);
+        margin-top: 3px;
+    }
+
+    .mCSB_scrollTools .mCSB_draggerRail {
+        background: transparent;
+    }
+
+    &.mCS_no_scrollbar {
+        padding-right: 30px;
+    }
+}

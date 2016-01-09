@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                     undef: true,
                 },
                 files: {
-                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js", "!src/image-input/*.min.js", "!src/image-input/canvas-toBlob.js"]
+                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js", "!src/image-input/*.min.js", "!src/image-input/canvas-toBlob.js", "!src/scrollbar/jquery.mCustomScrollbar.concat.min.js"]
                 },
             }
         },

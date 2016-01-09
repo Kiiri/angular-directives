@@ -55,6 +55,10 @@ $blue-sw-3:             #51CEE7;
     display: none !important;
 }
 
+.clearfix {
+    clear: both;
+}
+
 @mixin left-arrow($size, $color, $top-offset) {
     position: relative;
 

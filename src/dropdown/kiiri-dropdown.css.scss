@@ -34,6 +34,12 @@
         display: none;
     }
 
+    .kiiri-input-field {
+        input {
+            display: block;
+        }
+    }
+
     .kiiri-dropdown-current-item, .kiiri-dropdown-item {
         position: relative;
         width: 100%;
@@ -71,6 +77,14 @@
     .kiiri-dropdown-items {
         padding-top: 3px;
         z-index: -1;
+
+        .mCSB_inside > .mCSB_container {
+            margin-right: 0px;
+        }
+
+        &.kiiri-scrollbar-wrapper.mCS_no_scrollbar {
+            padding-right: 0px;
+        }
 
         &.dropdown-hidden {
             display: none;

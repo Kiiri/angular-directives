@@ -15,6 +15,9 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.oauth",
                                            "kiiri.angular.qrcodescanner",
                                            "kiiri.angular.radio",
+                                           "kiiri.angular.scrollbar",
+                                           "kiiri.angular.scrollposition",
+                                           "kiiri.angular.switch",
                                            "kiiri.angular.textarea",
                                            "kiiri.angular.tooltip"]);
 

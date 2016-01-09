@@ -14,7 +14,6 @@
 
     .modal-frame {
         position: fixed;
-        top: 10%;
         left: 50%;
         z-index: 1000;
         background-color: #F5F5F5;
@@ -24,51 +23,25 @@
         outline: 0;
         box-shadow: 0 2px 4px rgba(0,0,0,0.5);
         background-clip: padding-box;
-        visibility: hidden;
         overflow-x: hidden;
         overflow-y: auto;
         max-height: 85%;
+        transition: top .4s ease-out;
+
+        &.kiiri-scrollbar-wrapper {
+            padding-right: 0px;
+
+            .mCSB_inside>.mCSB_container {
+                margin-right: 0px;
+            }
+        }
 
         &.not-visible {
-            visibility: hidden;
+            top: -85%;
         }
 
         &.visible {
-            visibility: visible;
-        }
-
-        &.fade-in {
-            -webkit-animation-name: slidein;
-            -webkit-animation-duration: .5s;
-            animation-name: slidein;
-            animation-duration: .5s;
-
-            @-webkit-keyframes slidein {
-                0% { top: -25%; }
-                100% { top: 10%; }
-            }
-
-            @keyframes slidein {
-                0% { top: -25%;}
-                100% { top: 10%; }
-            }
-        }
-
-        &.fade-out {
-            -webkit-animation-name: fadeout;
-            -webkit-animation-duration: .2s;
-            animation-name: fadeout;
-            animation-duration: .2s;
-
-            @-webkit-keyframes fadeout {
-                0% { visibility: visible; opacity: 1; }
-                100% { visibility: hidden; opacity: 0; }
-            }
-
-            @keyframes fadeout {
-                0% { visibility: visible; opacity: 1; }
-                100% { visibility: hidden; opacity: 0; }
-            }
+            top: 10%;
         }
     }
 

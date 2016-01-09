@@ -1,6 +1,6 @@
 
 <div class="kiiri-modal" ng-cloak>
-    <div class="modal-frame not-visible" ng-class="{ visible: isOpen, 'fade-in': isOpen, 'fade-out': fadeOut }">
+    <div class="modal-frame not-visible" ng-class="{ visible: isOpen, 'fade-in': isOpen, 'fade-out': fadeOut }" scrollbar>
         <div class="modal-body" ng-class="{'overflow-inherit': overflow === 'inherit'}" clickoutside is-enabled="isOpen" on-click-outside="closeModal" ng-transclude></div>
     </div>
     <div ng-show="isOpen" class="modal-background ng-hide"></div>

@@ -28,8 +28,11 @@ Current directives:
 * input-field (Basic customizable text input field)
 * modal (Typical modal)
 * oauth (Oauth popup directive attribute. Wraps the oauth response in a promise)
-* radio-button (Typical radio button directive)
 * qrcode-scanner (Angular wrapper for HTML5 compatible QR-code scanner)
+* radio-button (Typical radio button directive)
+* scroll-position (Attribute directive that hides/displays elements depending on current window scroll position)
+* scrollbar (Allows better styling of element scrollbars)
+* switch-button (Sliding switch button directive)
 * text-area (Customizable auto-resizing text area)
 * tooltip (Tooltip directive that wraps an element)
 

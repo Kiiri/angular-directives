@@ -31,6 +31,13 @@
         display: inline-block;
     }
 
+    input[type=checkbox]:disabled + label {
+        background: image-url('icons/checkbox-disabled.png');
+        background-size: 14px 14px;
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
+    }
+
     label {
         cursor: pointer;
         font-size: $main-font-size;

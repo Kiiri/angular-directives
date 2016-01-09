@@ -1,0 +1,11 @@
+
+<div class="kiiri-switch-button">
+    <div class="kiiri-switch-item left-switch" ng-class="{ selected: selectedValue === leftValue }" ng-click="selectedValue = leftValue">
+        <span>{{ leftValue }}</span>
+        <div class="kiiri-switch-slider" ng-class="{ 'left-switch': selectedValue === leftValue, 'right-switch': selectedValue === rightValue }"></div>
+    </div>
+    <div class="kiiri-switch-item right-switch" ng-class="{ selected: selectedValue === rightValue }" ng-click="selectedValue = rightValue">
+        <span>{{ rightValue }}</span>
+    </div>
+    <div class="clearfix"></div>
+</div>

@@ -19,6 +19,12 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
 
         Helpers.defaultValue($scope, "items", []);
         Helpers.defaultValue($scope, "previouslyResized", false);
+        Helpers.defaultValue($scope, "hideSelected", false);
+        Helpers.defaultValue($scope, "openOnHover", false);
+        Helpers.defaultValue($scope, "menuHeight", 200);
+        Helpers.defaultValue($scope, "inputFilter", false);
+
+        $scope.fields = {};
 
         // The list of items can either be a list of values, or a list of objects
         // with the keys 'name' and 'value'
@@ -41,6 +47,10 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
         $scope.selectItem = function(item) {
             $scope.selectedItem = item;
             $scope.dropdownOpen = false;
+
+            if ($scope.inputFilter) {
+                $scope.fields.filterValue = angular.copy($scope.selectedItem);
+            }
         };
 
         $scope.toggleDropdown = function() {
@@ -51,7 +61,25 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
             $scope.dropdownOpen = false;
         };
 
+        $scope.openDropdown = function() {
+            $scope.dropdownOpen = true;
+        };
 
+        $scope.dropdownItems = function() {
+            if ($scope.inputFilter && $scope.fields.filterValue) {
+                return $scope.items.filter(function(item) {
+                    return String(item).toLowerCase().indexOf(String($scope.fields.filterValue).toLowerCase()) !== -1;
+                });
+            } else {
+                return $scope.items;
+            }
+        };
+
+        $scope.$watch("fields.filterValue", function(newValue, oldValue) {
+            if ($scope.inputFilter && newValue !== oldValue) {
+                $scope.selectedItem = angular.copy($scope.fields.filterValue);
+            }
+        });
     }
 ]);
 
@@ -66,10 +94,16 @@ dropdown.directive("dropdown", [
                 defaultText: "@?",
                 disabled: "=?",
                 emptyText: "@?",
-                icon: '@?',
+                icon: "@?",
+                imageIcon: "@?",
                 formName: "@?",
                 items: "=?",
-                selectedItem: "=?"
+                linkItems: "=?",
+                selectedItem: "=?",
+                hideSelected: "=?",
+                openOnHover: "@?",
+                menuHeight: "@?",
+                inputFilter: "@?"
             },
             controller: "dropdownController",
             link: function ($scope, element) {

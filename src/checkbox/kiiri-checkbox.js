@@ -6,6 +6,7 @@ checkbox.controller("checkboxController", ["$scope", "Helpers",
         "use strict";
 
         Helpers.defaultValue($scope, "identifier", Helpers.guid());
+        Helpers.defaultValue($scope, "isDisabled", false);
     }
 ]);
 
@@ -17,7 +18,8 @@ checkbox.directive("checkbox", [
             templateUrl: "src/checkbox/kiiri-checkbox.tpl.html",
             scope: {
                 checked: "=",
-                identifier: "=?"
+                identifier: "=?",
+                isDisabled: "=?"
             },
             transclude: true,
             controller: "checkboxController"
