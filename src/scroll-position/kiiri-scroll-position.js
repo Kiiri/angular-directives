@@ -19,12 +19,17 @@ scrollPosition.directive("scrollPosition", ["$window",
             restrict: "A",
             scope: {
                 minScrollHeight: "@?",
-                maxScrollHeight: "@?"
+                maxScrollHeight: "@?",
+                currentScrollHeight: "=?"
             },
             link: function ($scope, element) {
-                var currentScrollHeight = $window.scrollY;
+                $scope.currentScrollHeight = $window.scrollY;
 
                 var refreshElementDisplay = function() {
+                    $scope.$apply(function() {
+                        $scope.currentScrollHeight = $window.scrollY;
+                    });
+
                     try {
                         // If the given height is a percentage, attempt to parse it with respect to window height
                         if ($scope.minScrollHeight && $scope.minScrollHeight.indexOf("%") === $scope.minScrollHeight.length -1) {

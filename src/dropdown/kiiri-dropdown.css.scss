@@ -13,6 +13,10 @@
 
     &.open {
         z-index: 100;
+
+        .kiiri-dropdown-current-item, .kiiri-dropdown-item {
+            background-color: $input-focus-background;
+        }
     }
 
     &.empty, &.disabled {
@@ -48,7 +52,7 @@
         background-size: 20px 20px;
         background-position: 15px center;
         background-repeat: no-repeat;
-        background-color: $input-focus-background;
+        background-color: $secondary-background;
         cursor: pointer;
         padding: 0px 40px 0px 20px;
         color: $main-text-color;
