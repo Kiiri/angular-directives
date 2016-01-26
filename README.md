@@ -16,13 +16,14 @@ into the built "kiiri-angular-directives.min.js" file, however.
 text-area: https://github.com/monospaced/angular-elastic <br/>
 qrcode-scanner: https://github.com/dwa012/html5-qrcode, https://github.com/LazarSoft/jsqrcode
 cropper: https://github.com/fengyuanchen/cropper
-
+draggable: https://jqueryui.com/draggable
 Current directives:
 * autocomplete (Directive used to display ajax autocomplete results)
 * angular-button (Button with loading, disabled, propagate attributes. Works well in conjunction with clickoutside)
 * background-image (Attribute directive used to cover an html element with a background image)
 * checkbox (Angular wrapper for checkbox)
 * clickoutside (Call a given function when a user clicks outside of an element)
+* draggable (Wrapper for jQuery UI draggable plus some extra functionality)
 * dropdown (Simple dropdown directive. Can be given either a list of objects or strings)
 * image-input (Makes parent element a clickable image upload field. Useful for updating user avatars and similar applications)
 * input-field (Basic customizable text input field)
@@ -34,6 +35,7 @@ Current directives:
 * scrollbar (Allows better styling of element scrollbars)
 * switch-button (Sliding switch button directive)
 * text-area (Customizable auto-resizing text area)
+* timepicker (Timepicker directive. Currently only supports hour range)
 * tooltip (Tooltip directive that wraps an element)
 
 Examples:

@@ -7,7 +7,8 @@ module.exports = function(grunt) {
         "grunt-contrib-cssmin",
         "grunt-contrib-jshint",
         "grunt-contrib-sass",
-        "grunt-contrib-uglify"
+        "grunt-contrib-uglify",
+        "grunt-contrib-watch"
     ].forEach(grunt.loadNpmTasks);
 
     grunt.initConfig({
@@ -47,7 +48,8 @@ module.exports = function(grunt) {
                     jQuery: true,
                     module: true,
                     $: true,
-                    qrcode: true
+                    qrcode: true,
+                    moment: true
                 }
             },
             with_overrides: {
@@ -56,7 +58,7 @@ module.exports = function(grunt) {
                     undef: true,
                 },
                 files: {
-                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js", "!src/image-input/*.min.js", "!src/image-input/canvas-toBlob.js", "!src/scrollbar/jquery.mCustomScrollbar.concat.min.js"]
+                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js", "!src/image-input/*.min.js", "!src/image-input/canvas-toBlob.js", "!src/scrollbar/jquery.mCustomScrollbar.concat.min.js", "!src/timepicker/moment.js", "!src/draggable/jquery-ui-draggable.min.js"]
                 },
             }
         },
@@ -88,6 +90,12 @@ module.exports = function(grunt) {
             js: {
                 src: ["src/**/*.js", "build/kiiri-templates.js"],
                 dest: "build/kiiri-angular-directives.min.js"
+            }
+        },
+        watch: {
+            scripts: {
+                files: ["src/**/*.js", "src/**/*.css.scss", "src/**/*.tpl.html"],
+                tasks: ["build"]
             }
         }
     });

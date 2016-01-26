@@ -6,6 +6,7 @@ button.controller("buttonController", ["$scope", "Helpers",
         "use strict";
 
         Helpers.defaultValue($scope, "propagate", false);
+        Helpers.defaultValue($scope, "slideHover", false);
 
         $scope.onClick = function($event) {
             if (!$scope.propagate) {
@@ -14,6 +15,18 @@ button.controller("buttonController", ["$scope", "Helpers",
 
             if (!$scope.disabled && !$scope.loading) {
                 $scope.click();
+            }
+        };
+
+        $scope.buttonHover = function() {
+            if ($scope.slideHover) {
+                $scope.sliding = true;
+            }
+        };
+
+        $scope.buttonLeave = function() {
+            if ($scope.slideHover) {
+                $scope.sliding = false;
             }
         };
     }
@@ -31,7 +44,8 @@ button.directive("angularButton", [
                 type: "@?",
                 disabled: "=?",
                 fill: "=?",
-                link: "@?"
+                link: "@?",
+                slideHover: "@?"
             },
             transclude: true,
             controller: "buttonController"

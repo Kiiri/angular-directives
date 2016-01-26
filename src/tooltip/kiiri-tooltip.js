@@ -47,7 +47,8 @@ tooltip.directive("tooltip", [
             },
             link: function($scope, element, attributes) {
                 $scope.$watch("text", function() {
-                    $scope.tooltipWidth = $(element).find(".kiiri-tooltip-length-calculator").width();
+                    var calculatorElement = $(element).find(".kiiri-tooltip-length-calculator");
+                    $scope.tooltipWidth = calculatorElement.width();
                 });
             },
             transclude: true,

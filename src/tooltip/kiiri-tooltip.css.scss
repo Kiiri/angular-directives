@@ -12,19 +12,20 @@
     .tooltip-content {
         font-size: 14px;
         padding: 20px;
-        background: $input-focus-background;
+        background: $primary-background;
         max-width: 400px;
         white-space: normal;
         z-index: 2;
         visibility: hidden;
+        border: 2px solid $yellow-sw-2;
 
         &.bottom {
-            @include top-arrow(8px, $input-focus-background, 20px);
+            @include top-arrow(8px, $primary-background, 20px, 2px, $yellow-sw-2);
             position: absolute;
         }
 
         &.right {
-            @include left-arrow(8px, $input-focus-background, 20px);
+            @include left-arrow(8px, $primary-background, 20px, 2px, $yellow-sw-2);
             top: 0px;
             position: absolute;
         }
@@ -37,4 +38,6 @@
 
 .kiiri-tooltip-length-calculator {
     display: none;
+    visibility: hidden;
+    font-size: 14px;
 }

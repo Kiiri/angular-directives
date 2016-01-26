@@ -8,6 +8,7 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.button",
                                            "kiiri.angular.checkbox",
                                            "kiiri.angular.clickoutside",
+                                           "kiiri.angular.draggable",
                                            "kiiri.angular.dropdown",
                                            "kiiri.angular.input",
                                            "kiiri.angular.imageinput",
@@ -19,6 +20,7 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.scrollposition",
                                            "kiiri.angular.switch",
                                            "kiiri.angular.textarea",
+                                           "kiiri.angular.timepicker",
                                            "kiiri.angular.tooltip"]);
 
 /*
