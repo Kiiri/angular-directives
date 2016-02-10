@@ -2,6 +2,7 @@
 
 .kiiri-modal {
     .modal-background{
+        cursor: pointer;
         position: fixed;
         top: 0;
         right: 0;
@@ -10,6 +11,37 @@
         z-index: 900;
         background-color: #000000;
         opacity: .5;
+
+        .modal-close-cross {
+            position: absolute;
+            top: 75px;
+            right: 75px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+
+            &::before {
+                background: $primary-background;
+                content: ' ';
+                height: 42.42px;
+                position: absolute;
+                top: -7px;
+                transform: rotate(45deg);
+                right: 13px;
+                width: 2px;
+            }
+
+            &:after {
+                background: $primary-background;
+                content: ' ';
+                height: 2px;
+                left: -5px;
+                position: absolute;
+                top: 13px;
+                transform: rotate(225deg);
+                width: 42.42px;
+            }
+        }
     }
 
     .modal-frame {

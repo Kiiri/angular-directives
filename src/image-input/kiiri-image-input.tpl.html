@@ -12,7 +12,8 @@
         <modal is-open="displayCropModal" close-callback="destroyCropper">
             <div class="modal-normal" style="width: calc({{cropWidth}}px+60px);">
                 <div class="modal-title"> Crop </div>
-                <img class="kiiri-crop-image" ng-src="{{onloadResult}}" style="width: {{cropWidth}}px; height: {{cropHeight}}px;"></img>
+                <div class="delay-spinner"><i ng-if="cropperDelay" class="fa fa-refresh fa-spin"></i></div>
+                <img ng-show="!cropperDelay" class="kiiri-crop-image" ng-src="{{onloadResult}}" style="width: {{cropWidth}}px; height: {{cropHeight}}px;"></img>
                 <angular-button click="finishCropping()"> Finish Cropping </angular-button>
             </div>
         </modal>

@@ -24,7 +24,9 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, "menuHeight", 200);
         Helpers.defaultValue($scope, "inputFilter", false);
 
-        $scope.fields = {};
+        $scope.fields = {
+            filterValue: angular.copy($scope.selectedItem)
+        };
 
         // The list of items can either be a list of values, or a list of objects
         // with the keys 'name' and 'value'

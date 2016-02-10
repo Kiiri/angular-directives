@@ -1,0 +1,46 @@
+
+@import "../constants";
+
+.kiiri-gallery {
+    .kiiri-image {
+        display: inline-block;
+        height: 250px;
+        margin-right: 10px;
+        position: relative;
+        width: 250px;
+
+        &:last-child {
+            margin-right: 0px;
+        }
+
+        .kiiri-gallery-show-more {
+            background: rgba(0,0,0,.5);
+            color: $white;
+            cursor: pointer;
+            display: table;
+            font-size: 16px;
+            font-weight: 400;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            text-align: center;
+            top: 0;
+            width: 100%;
+
+            > span {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            img.icon {
+                height: 20px;
+                margin-right: 10px;
+                width: 20px;
+            }
+
+            &:hover {
+                background: rgba(0,0,0,.3);
+            }
+        }
+    }
+}

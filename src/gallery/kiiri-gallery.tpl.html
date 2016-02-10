@@ -1,0 +1,8 @@
+
+<div class="kiiri-gallery">
+    <div class="kiiri-image" ng-repeat="image in images | limitTo: maxDisplay" background-image="{{image}}">
+        <div class="kiiri-gallery-show-more" ng-if="$index === (maxDisplay-1) && images.length > maxDisplay">
+            <span ng-transclude></span>
+        </div>
+    </div>
+</div>

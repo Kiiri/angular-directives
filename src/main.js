@@ -10,10 +10,13 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.clickoutside",
                                            "kiiri.angular.draggable",
                                            "kiiri.angular.dropdown",
+                                           "kiiri.angular.fillBar",
+                                           "kiiri.angular.gallery",
                                            "kiiri.angular.input",
                                            "kiiri.angular.imageinput",
                                            "kiiri.angular.modal",
                                            "kiiri.angular.oauth",
+                                           "kiiri.angular.pagination",
                                            "kiiri.angular.qrcodescanner",
                                            "kiiri.angular.radio",
                                            "kiiri.angular.scrollbar",
@@ -51,9 +54,11 @@ app.config(['$provide', function ($provide) {
 }]);
 
 app.service("Helpers", function() {
-    this.defaultValue = function($scope, variable, value) {
+    this.defaultValue = function($scope, variable, value, func) {
         if (!$scope[variable]) {
             $scope[variable] = value;
+        } else if (func) {
+            $scope[variable] = func($scope[variable]);
         }
     };
 
@@ -74,5 +79,20 @@ app.service("Helpers", function() {
 
     this.weekdayNumberToWeekday = function(weekdayNumber) {
         return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][weekdayNumber];
+    };
+});
+
+// http://stackoverflow.com/questions/15417125/submit-form-on-pressing-enter-with-angularjs
+app.directive("ngEnter", function() {
+    return function(scope, element, attrs) {
+        element.bind("keydown keypress", function(event) {
+            if(event.which === 13) {
+                scope.$apply(function(){
+                    scope.$eval(attrs.ngEnter, {'event': event});
+                });
+
+                event.preventDefault();
+            }
+        });
     };
 });

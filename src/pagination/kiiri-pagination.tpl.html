@@ -1,0 +1,9 @@
+
+<div class="kiiri-pagination">
+    <div class="button-wrapper left-wrapper" ng-click="back()"><span class="back-button"></span></div>
+    <span ng-repeat="page in pageDisplay track by $index">
+        <span class="page-button" ng-class="{ selected : page === currentPage }" ng-click="setPage(page)">{{page}}</span>
+        <span class="ellipsis" ng-if="$index !== pageDisplay.length - 1 && pageDisplay[$index+1] !== page + 1"> &hellip; </span>
+    </span>
+    <div class="button-wrapper right-wrapper" ng-click="next()"><span class="forward-button"></span></div>
+</div>

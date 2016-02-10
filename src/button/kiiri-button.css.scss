@@ -86,4 +86,16 @@
             color: $light-grey-sw-3;
         }
     }
+
+    &.text {
+        background: $primary-background;
+
+        &:hover:not(.disabled, .loading) {
+            background: inherit;
+        }
+
+        &.disabled {
+            color: $light-grey-sw-3;
+        }
+    }
 }

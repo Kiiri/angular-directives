@@ -36,14 +36,14 @@
                 if (newValue !== oldValue) {
                     var time = $scope.currentStartPosition.left / 12.5;
                     $scope.currentStartTime = $filter("momentTime")(time + ":00");
-                    $scope.minEndLeft = 12.5 * (time + 1) + 40;
+                    $scope.minEndLeft = 12.5 * (time + 1) + 37.5;
                     updateColoredBar();
                 }
             });
 
             $scope.$watch("currentEndPosition", function(newValue, oldValue) {
                 if (newValue !== oldValue) {
-                    var time = ($scope.currentEndPosition.left - 40) / 12.5;
+                    var time = ($scope.currentEndPosition.left - 37.5) / 12.5;
                     $scope.currentEndTime = $filter("momentTime")(time + ":00");
                     $scope.maxStartLeft = 12.5 * (time - 1);
                     updateColoredBar();

@@ -18,6 +18,7 @@ backgroundImage.directive("backgroundImage", ["Helpers",
             link: function($scope, element) {
                 $scope.$watch("backgroundImage", function() {
                     if ($scope.backgroundImage) {
+                        $(element).addClass("kiiri-background-image");
                         $(element).css("background-image", "url(" + $scope.backgroundImage + ")");
                     }
                 });

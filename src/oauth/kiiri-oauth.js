@@ -30,13 +30,13 @@ oauth.directive("oauth", ["$window", "$q",
                     // These has to be called on every click, so that $window.oauthCallback and $window.oauthErrorCallback
                     // are bound to the expected callbacks
                     $window.oauthCallback = function(response) {
-                        if ($scope.promise) { $scope.promise.resolve(response); }
-                        ($scope.successCallback || angular.noop)(response);
+                        if ($scope.promise) { $scope.promise.resolve({ url: $scope.url, data: response }); }
+                        ($scope.successCallback || angular.noop)({ url: $scope.url, data: response });
                     };
 
                     $window.oauthErrorCallback = function(response) {
-                        if ($scope.promise) { $scope.promise.reject(response); }
-                        ($scope.errorCallback || angular.noop)(response);
+                        if ($scope.promise) { $scope.promise.reject({ url: $scope.url, data: response }); }
+                        ($scope.errorCallback || angular.noop)({ url: $scope.url, data: response });
                     };
                 });
             }

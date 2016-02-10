@@ -1,0 +1,40 @@
+
+@import "../constants";
+
+.kiiri-fill-bar {
+    display: inline-block;
+
+    .kiiri-fill-bar-wrapper {
+        display: inline-block;
+        height: 20px;
+        position: relative;
+        width: 150px;
+
+        .kiiri-grey-fill, .kiiri-yellow-fill {
+            display: inline-block;
+            height: 10px;
+            left: 0;
+            position: absolute;
+            top: 5px;
+            width: 100%;
+        }
+
+        .kiiri-grey-fill {
+            background-color: $secondary-background;
+        }
+
+        .kiiri-yellow-fill {
+            background-color: $yellow-sw-2;
+        }
+    }
+
+    .kiiri-fill-bar-label {
+        color: $dark-grey-sw-2;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: right;
+        vertical-align: top;
+        width: 150px;
+    }
+}

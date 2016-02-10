@@ -1,0 +1,83 @@
+
+@import "../constants";
+
+.kiiri-pagination {
+    font-size: 0px;
+
+    .button-wrapper {
+        display: inline-block;
+        cursor: pointer;
+        width: 12px;
+        height: 20px;
+
+        &.left-wrapper {
+            margin-right: 20px;
+        }
+
+        &.right-wrapper {
+            margin-left: 20px;
+        }
+
+        &:hover {
+            .back-button, .forward-button {
+                background: $yellow-sw-2;
+
+                &:after {
+                    background: $yellow-sw-2;
+                }
+            }
+        }
+    }
+
+    .back-button, .forward-button {
+        position: relative;
+        display: inline-block;
+        width: 3px;
+        height: 12px;
+        background: #DDDDDD;
+        overflow: visible;
+        top: 6px;
+
+        &:after {
+            position: absolute;
+            width: 12px;
+            height: 3px;
+            background: #DDDDDD;
+            content: " ";
+        }
+    }
+
+    .back-button {
+        transform: rotate(-45deg);
+    }
+
+    .forward-button {
+        transform: rotate(45deg);
+
+        &:after {
+            left: -9px;
+        }
+    }
+
+    .page-button {
+        display: inline-block;
+        color: $light-grey-sw-3;
+        padding: 0px 10px 10px 10px;
+        border-bottom: 5px solid $secondary-background;
+        font-size: 14px;
+        cursor: pointer;
+
+        &.selected {
+            color: $dark-grey;
+            border-bottom: 5px solid $yellow-sw-2;
+        }
+
+        &:hover {
+            border-bottom: 5px solid $light-grey-sw-1;
+        }
+    }
+
+    .ellipsis {
+        font-size: 14px;
+    }
+}

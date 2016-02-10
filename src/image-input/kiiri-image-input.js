@@ -143,9 +143,11 @@ imageInput.controller("imageInputController", ["$scope", "$element", "$timeout",
                     if ($scope.cropImage) {
                         $scope.$apply(function() {
                             $scope.displayCropModal = true;
+                            $scope.cropperDelay = true;
 
                             /* Needs a slight timeout, so that the modal is open before cropper is called */
                             $timeout(function() {
+                                $scope.cropperDelay = false;
                                 $element.find(".kiiri-crop-image").cropper({
                                     aspectRatio: $scope.cropWidth / $scope.cropHeight,
                                     movable: false,
@@ -153,7 +155,7 @@ imageInput.controller("imageInputController", ["$scope", "$element", "$timeout",
                                     rotatable: false,
                                     scalable: false
                                 });
-                            }, 100);
+                            }, 1000);
                         });
                     } else if ($scope.uploadUrl) {
                         $scope.$apply(function() {

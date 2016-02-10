@@ -1,12 +1,12 @@
 
 <a ng-href="{{link}}" ng-if="link">
-    <div class="kiiri-button" ng-class="{ grey: type === 'grey', disabled: disabled, loading: loading, fill: fill }" ng-mouseover="buttonHover()" ng-mouseout="buttonLeave()">
+    <div class="kiiri-button" ng-class="{ grey: type === 'grey', disabled: disabled, loading: loading, fill: fill, text: type === 'text' }" ng-mouseover="buttonHover()" ng-mouseout="buttonLeave()">
         <span ng-transclude></span><i class="fa fa-refresh fa-spin" ng-if="loading"></i>
         <div class="kiiri-hover-background-slide not-visible" ng-class="{ visible: sliding }"></div>
     </div>
 </a>
 
-<div class="kiiri-button" ng-class="{ grey: type === 'grey', disabled: disabled, loading: loading, fill: fill }" ng-click="onClick($event)" ng-mouseover="buttonHover()" ng-mouseout="buttonLeave()" ng-if="!link" >
+<div class="kiiri-button" ng-class="{ grey: type === 'grey', disabled: disabled, loading: loading, fill: fill, text: type === 'text' }" ng-click="onClick($event)" ng-mouseover="buttonHover()" ng-mouseout="buttonLeave()" ng-if="!link" >
     <span ng-transclude></span><i class="fa fa-refresh fa-spin" ng-if="loading"></i>
     <div class="kiiri-hover-background-slide not-visible" ng-class="{ visible: sliding }"></div>
 </div>

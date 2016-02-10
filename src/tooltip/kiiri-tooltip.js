@@ -10,7 +10,7 @@ tooltip.controller("tooltipController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, "position", "bottom");
 
         $scope.showTooltip = function($event) {
-            if (!$scope.isDisabled) {
+            if (!$scope.isDisabled && $scope.text) {
                 var element = $($event.currentTarget).parent();
                 var $tooltipContent = $(element).find(".tooltip-content");
                 $tooltipContent.css("width", $scope.tooltipWidth + 40);

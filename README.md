@@ -14,9 +14,10 @@ Some of the directives make use of other external libraries. The external librar
 into the built "kiiri-angular-directives.min.js" file, however.
 
 text-area: https://github.com/monospaced/angular-elastic <br/>
-qrcode-scanner: https://github.com/dwa012/html5-qrcode, https://github.com/LazarSoft/jsqrcode
-cropper: https://github.com/fengyuanchen/cropper
-draggable: https://jqueryui.com/draggable
+qrcode-scanner: https://github.com/dwa012/html5-qrcode, https://github.com/LazarSoft/jsqrcode <br/>
+cropper: https://github.com/fengyuanchen/cropper <br/>
+draggable: https://jqueryui.com/draggable <br/>
+
 Current directives:
 * autocomplete (Directive used to display ajax autocomplete results)
 * angular-button (Button with loading, disabled, propagate attributes. Works well in conjunction with clickoutside)

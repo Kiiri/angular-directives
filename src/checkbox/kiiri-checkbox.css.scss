@@ -20,7 +20,7 @@
        width: 100%;
        text-align: left;
        margin-left: 0px;
-       color: $light-grey-sw-3;
+       color: $dark-grey-sw-2;
     }
 
     input[type=checkbox]:checked + label {
@@ -30,7 +30,7 @@
         height: 20px;
         background-repeat: no-repeat;
         display: inline-block;
-        color: $dark-grey-sw-1;
+        color: $main-text-color;
     }
 
     input[type=checkbox]:disabled + label {
