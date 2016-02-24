@@ -40,7 +40,7 @@
 
         &:after {
             position: absolute;
-            width: 12px;
+            width: 9px;
             height: 3px;
             background: #DDDDDD;
             content: " ";
@@ -60,12 +60,14 @@
     }
 
     .page-button {
-        display: inline-block;
-        color: $light-grey-sw-3;
-        padding: 0px 10px 10px 10px;
         border-bottom: 5px solid $secondary-background;
-        font-size: 14px;
+        color: $light-grey-sw-3;
         cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        margin: 0px 3px;
+        padding: 0px 10px 10px 10px;
+
 
         &.selected {
             color: $dark-grey;

@@ -27,8 +27,8 @@ modal.controller("modalController", ["$scope", "Helpers",
     }
 ]);
 
-modal.directive("modal", [
-    function () {
+modal.directive("modal", ["$window",
+    function ($window) {
         "use strict";
         return {
             restrict: "E",
@@ -49,6 +49,11 @@ modal.directive("modal", [
                     if (newValue !== oldValue) {
                         $scope.fadeOut = !$scope.isOpen;
                     }
+                });
+
+                // Forces a scrollbar reset when the window is resized
+                angular.element($window).bind("resize", function () {
+                    $(element).find(".kiiri-scrollbar-wrapper").mCustomScrollbar("update");
                 });
             }
         };

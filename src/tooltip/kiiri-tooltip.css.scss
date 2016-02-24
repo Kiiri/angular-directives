@@ -2,30 +2,30 @@
 @import "../constants";
 
 .kiiri-tooltip {
-    position: relative;
     display: inline-block;
+    position: relative;
 
     &.fill {
         width: 100%;
     }
 
     .tooltip-content {
+        background: $primary-background;
+        box-shadow: 0 0 5px rgba(0,0,0,.15);
         font-size: 14px;
         padding: 20px;
-        background: $primary-background;
         max-width: 400px;
+        visibility: hidden;
         white-space: normal;
         z-index: 2;
-        visibility: hidden;
-        border: 2px solid $yellow-sw-2;
 
         &.bottom {
-            @include top-arrow(8px, $primary-background, 20px, 2px, $yellow-sw-2);
+            @include top-arrow(8px, $primary-background, 20px, 1px, rgba(0,0,0,.08));
             position: absolute;
         }
 
         &.right {
-            @include left-arrow(8px, $primary-background, 20px, 2px, $yellow-sw-2);
+            @include left-arrow(8px, $primary-background, 20px, 1px, rgba(0,0,0,.08));
             top: 0px;
             position: absolute;
         }
@@ -38,6 +38,6 @@
 
 .kiiri-tooltip-length-calculator {
     display: none;
-    visibility: hidden;
     font-size: 14px;
+    visibility: hidden;
 }
