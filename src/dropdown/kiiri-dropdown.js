@@ -105,7 +105,8 @@ dropdown.directive("dropdown", [
                 hideSelected: "=?",
                 openOnHover: "@?",
                 menuHeight: "@?",
-                inputFilter: "@?"
+                inputFilter: "@?",
+                fill: "@?"
             },
             controller: "dropdownController",
             link: function ($scope, element) {

@@ -7,8 +7,9 @@ $error-color:   #FDDFDF;
 $primary-background:    #FFFFFF;
 $secondary-background:  #F5F5F5;
 $tertiary-background:   #313131;
-$input-focus-background:#F9F8EC;
+$input-focus-background:#FAF7DB;
 $error-background:      #FDDFDF;
+$disabled:              #FFF38D;
 
 $main-font:             'Lato', sans-serif;
 $main-text-color:       #666666;
@@ -114,6 +115,36 @@ $blue-sw-3:             #51CEE7;
             left: $left-offset - (2 * $border-width);
             border-right: ($size + (2* $border-width)) solid transparent;
             border-bottom: ($size + (2 * $border-width)) solid $border-color;
+            border-left: ($size + (2 * $border-width)) solid transparent;
+        }
+    }
+}
+
+@mixin bottom-arrow($size, $color, $left-offset, $border-width:"", $border-color:"") {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: " ";
+        width: 0px;
+        height: 0px;
+        bottom: -$size;
+        left: $left-offset;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        border-left: $size solid transparent;
+    }
+
+    @if $border-width != "" {
+        &::before {
+            position: absolute;
+            content: " ";
+            width: 0px;
+            height: 0px;
+            bottom: -($size + (2 * $border-width));
+            left: $left-offset - (2 * $border-width);
+            border-right: ($size + (2* $border-width)) solid transparent;
+            border-top: ($size + (2 * $border-width)) solid $border-color;
             border-left: ($size + (2 * $border-width)) solid transparent;
         }
     }

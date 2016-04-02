@@ -16,8 +16,9 @@ clickOutside.directive("clickoutside", ["$document", "Helpers",
         return {
             restrict: "A",
             scope: {
-                onClickOutside: "=",
-                isEnabled: "=?"
+                onClickOutside: "=?",
+                isEnabled: "=?",
+                clickoutside: "&?"
             },
             link: function($scope, element, attributes) {
                 // If the element has an id, hook onto that id, else generate a guid to use as an id for the element
@@ -50,7 +51,13 @@ clickOutside.directive("clickoutside", ["$document", "Helpers",
                     }
 
                     $scope.$apply(function() {
-                        $scope.onClickOutside();
+                        if ($scope.onClickOutside) {
+                            $scope.onClickOutside();
+                        }
+
+                        if ($scope.clickoutside) {
+                            $scope.clickoutside();
+                        }
                     });
                 };
 

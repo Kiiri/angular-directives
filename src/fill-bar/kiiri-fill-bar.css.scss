@@ -6,9 +6,9 @@
 
     .kiiri-fill-bar-wrapper {
         display: inline-block;
-        height: 20px;
+        height: 14px;
         position: relative;
-        width: 140px;
+        width: 160px;
 
         .kiiri-grey-fill, .kiiri-yellow-fill {
             display: inline-block;
@@ -34,7 +34,7 @@
         font-size: 14px;
         font-weight: 400;
         text-align: right;
-        vertical-align: top;
+        vertical-align: middle;
         width: 160px;
     }
 }
