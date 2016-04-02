@@ -11,7 +11,9 @@
         <tr ng-click="$event.stopPropagation()" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
             <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }" scrollbar ng-style="{ 'max-height': (menuHeight + 'px')}">
                 <a ng-repeat="item in linkItems track by $index" ng-href="{{item.href}}"><div class="kiiri-dropdown-item" ng-class="{ 'has-icon': icon }">{{item.text}}</div></a>
-                <div class="kiiri-dropdown-item" ng-repeat="item in dropdownItems() track by $index" ng-class="{ 'has-icon': icon }" ng-click="selectItem(item); $event.stopPropagation()" ng-hide="hideSelected && selectedItem === item">{{itemDisplay(item)}}</div>
+                <div class="kiiri-dropdown-item" ng-repeat="item in dropdownItems() track by $index" ng-class="{ 'has-icon': icon }" ng-click="selectItem(item); $event.stopPropagation()" ng-hide="hideSelected && selectedItem === item">
+                    <dropdown-item item="item"> {{itemDisplay(item)}} </dropdown-item>
+                </div>
             </div>
         </td></tr>
     </table>

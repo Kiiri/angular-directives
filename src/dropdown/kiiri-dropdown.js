@@ -108,6 +108,7 @@ dropdown.directive("dropdown", [
                 inputFilter: "@?",
                 fill: "@?"
             },
+            transclude: true,
             controller: "dropdownController",
             link: function ($scope, element) {
                 $scope.$watch("items", function(newValue, oldValue) {
@@ -128,6 +129,24 @@ dropdown.directive("dropdown", [
 
                     $(element).find(".kiiri-dropdown-items").addClass("dropdown-hidden");
                 }, true);
+            }
+        };
+    }
+]);
+
+dropdown.directive("dropdownItem", [
+    function () {
+        "use strict";
+        return {
+            restrict: "E",
+            link: function (scope, elem, attrs, ctrl, $transclude) {
+                var newScope = scope.$parent.$parent.$new();
+                newScope.item = scope.$eval(attrs.item);
+                $transclude(newScope, function (clone) {
+                    if (clone.length) {
+                        elem.replaceWith(clone);
+                    }
+                });
             }
         };
     }

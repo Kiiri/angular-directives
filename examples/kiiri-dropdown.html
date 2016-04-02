@@ -23,10 +23,14 @@
         <form id="test-form">
             <dropdown empty-text="No valid items found" items="sortBy" default-text="Sort By" selected-item="fields.sortByOne" form-name="sortOne" icon="/icons/icon-time.png"></dropdown><br/><br/>
             <dropdown empty-text="No valid items found" items="sortByObjects" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true"></dropdown><br/><br/>
+
+            <dropdown empty-text="No valid items found" items="sortByObjects" link-items="linkItems" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true">
+                {{ item }}
+            </dropdown><br/><br/>
         </form>
         <angular-button click="submitForm()">Submit Form</angular-button>
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.5.3/angular.min.js"></script>
         <script type="text/javascript" src="../build/kiiri-angular-directives.min.js"></script>
 
         <script>
@@ -53,6 +57,17 @@
                         value: "distance"
                     }
                 ];
+                $scope.linkItems = [
+                    {
+                        text: "Go to Google",
+                        href: "https://www.google.com"
+                    },
+                    {
+                        text: "Go to Facebook",
+                        href: "https://www.facebook.com"
+                    }
+                ];
+
                 $scope.submitForm = function() {
                     console.log($scope.fields.sortByOne);
                     console.log($scope.fields.sortByTwo);
