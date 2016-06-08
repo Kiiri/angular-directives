@@ -45,10 +45,16 @@ button.directive("angularButton", [
                 disabled: "=?",
                 fill: "=?",
                 link: "@?",
-                slideHover: "@?"
+                size: "@?"
             },
             transclude: true,
-            controller: "buttonController"
+            controller: "buttonController",
+            link: function($scope, element, attributes) {
+                // For backwards compatibility
+                if ($scope.fill) {
+                    $(element).addClass("fill");
+                }
+            }
         };
     }
 ]);

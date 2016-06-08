@@ -12,14 +12,16 @@ backgroundImage.directive("backgroundImage", ["Helpers",
         "use strict";
         return {
             restrict: "A",
-            scope: {
-                backgroundImage: "@?"
-            },
             link: function($scope, element) {
-                $scope.$watch("backgroundImage", function() {
-                    if ($scope.backgroundImage) {
+                $scope.$watch(function() { element.attr("background-image"); }, function() {
+                    var backgroundImage = element.attr("background-image");
+                    if (backgroundImage) {
                         $(element).addClass("kiiri-background-image");
-                        $(element).css("background-image", "url(" + $scope.backgroundImage + ")");
+                        if (backgroundImage.indexOf("rgb(") === -1 && backgroundImage.indexOf("rgba(") === -1) {
+                            $(element).css("background-image", "url(" + backgroundImage + ")");
+                        } else {
+                            $(element).css("background-color", backgroundImage);
+                        }
                     }
                 });
             }

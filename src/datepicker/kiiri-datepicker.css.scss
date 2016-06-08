@@ -1,0 +1,113 @@
+
+@import "../constants";
+
+.kiiri-datepicker {
+    position: relative;
+
+    .kiiri-input-field img {
+        top: 7.5px;
+    }
+
+    .kiiri-datepicker-container {
+        &.datepicker-left .ui-datepicker {
+            left: 0;
+        }
+
+        &.datepicker-right .ui-datepicker {
+            right: 0;
+        }
+    }
+
+    .ui-datepicker {
+        border: 2px solid $input-focus-background;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+        margin-top: 5px;
+        padding: 0 20px;
+        position: absolute;
+        top: 40px;
+        width: auto;
+        z-index: 999;
+
+        .ui-datepicker-header {
+            background: $input-focus-background;
+            border: none;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 -20px;
+
+            .ui-datepicker-title {
+                line-height: inherit;
+                margin: 0;
+            }
+
+            .ui-datepicker-month {
+                color: $main-text-color;
+                font-size: 14px;
+                font-weight: 700;
+            }
+            .ui-datepicker-year {
+                display: none;
+            }
+
+            .ui-datepicker-next, .ui-datepicker-prev {
+                background-image: url("icons/arrow-lnr-666.png");
+                background-position: -9px center;
+                background-repeat: no-repeat;
+                background-size: 18px 14px;
+                cursor: pointer;
+                top: 19.5px;
+                right: 30px;
+                height: 14px;
+                width: 9px;
+
+                &.ui-datepicker-prev {
+                    background-position: 0px center;
+                    left: 30px;
+                    right: auto;
+                }
+            }
+        }
+
+        .ui-datepicker-calendar {
+            margin: 10px 0;
+
+            th {
+                color: $light-grey-sw-3;
+                font-size: 14px;
+                font-weight: 400;
+                padding: 10px;
+            }
+
+            td {
+                color: $main-text-color;
+                font-size: 14px;
+                font-weight: 400;
+
+                .ui-state-default {
+                    background: $white;
+                    border: none;
+                    padding: 10px;
+                    text-align: center;
+
+                    &.ui-state-active {
+                        background: $yellow-sw-2;
+                        color: $main-text-color;
+                        font-weight: 400;
+                    }
+                }
+
+                .ui-priority-secondary {
+                    color: $light-grey-sw-2;
+                }
+
+                &.ui-datepicker-today .ui-state-default {
+                    color: $main-text-color;
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+}

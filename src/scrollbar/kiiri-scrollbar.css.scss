@@ -23,5 +23,13 @@
 
     &.mCS_no_scrollbar {
         padding-right: 30px;
+
+        .mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden {
+            margin-right: 0px;
+        }
+    }
+
+    .mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden {
+        margin-right: 30px;
     }
 }

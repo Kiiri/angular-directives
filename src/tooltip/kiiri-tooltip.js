@@ -50,6 +50,11 @@ tooltip.directive("tooltip", [
                     var calculatorElement = $(element).find(".kiiri-tooltip-length-calculator");
                     $scope.tooltipWidth = calculatorElement.width();
                 });
+
+                // For backwards compatibility
+                if ($scope.fill) {
+                    $(element).addClass("fill");
+                }
             },
             transclude: true,
             controller: "tooltipController"

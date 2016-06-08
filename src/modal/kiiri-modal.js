@@ -20,9 +20,11 @@ modal.controller("modalController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, 'isOpen', false);
 
         $scope.closeModal = function() {
-            $scope.isOpen = false;
-            $scope.fadeOut = true;
-            $scope.closeCallback();
+            if (!$scope.disableOutsideClick) {
+                $scope.isOpen = false;
+                $scope.fadeOut = true;
+                $scope.closeCallback();
+            }
         };
     }
 ]);
@@ -36,7 +38,9 @@ modal.directive("modal", ["$window",
             scope: {
                 isOpen: "=",
                 closeCallback: "=?",
-                overflow: "=?"
+                overflow: "=?",
+                disableOutsideClick: "@?",
+                disableScroll: "@?"
             },
             transclude: true,
             controller: "modalController",
@@ -48,6 +52,13 @@ modal.directive("modal", ["$window",
 
                     if (newValue !== oldValue) {
                         $scope.fadeOut = !$scope.isOpen;
+                    }
+                });
+
+                $(document).bind("keydown keypress", function (event) {
+                    if($scope.isOpen && (event.keyCode || event.which) === 27) { // 27 = esc key
+                        $scope.$apply(function() { $scope.closeModal(); });
+                        event.preventDefault();
                     }
                 });
 

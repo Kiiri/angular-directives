@@ -1,23 +1,36 @@
 @import "../constants";
 
 .kiiri-switch-button {
-    position: relative;
     border-radius: 4px;
     background: $secondary-background;
     display: inline-block;
+    position: relative;
+    vertical-align: top;
+
+    &.fill {
+        width: 100%;
+
+        .kiiri-switch-item {
+            width: 50%;
+        }
+
+        .kiiri-switch-slider {
+            width: 100%;
+        }
+    }
 
     .kiiri-switch-item, .kiiri-switch-slider {
-        position: relative;
-        float: left;
-        min-width: 70px;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 400;
         color: $light-grey-sw-3;
         cursor: pointer;
+        float: left;
+        font-size: 14px;
+        font-weight: 400;
+        height: 40px;
+        line-height: 40px;
+        min-width: 70px;
         padding: 0px 15px;
+        position: relative;
+        text-align: center;
 
         span {
             position: relative;

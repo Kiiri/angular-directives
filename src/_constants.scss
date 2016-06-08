@@ -1,3 +1,55 @@
+// Backgrounds
+$background-theme: #F5F9F9;
+//$background-blue:
+$background-grey: #F5F5F5;
+$background-red: #FFEAEA;
+$background-white: #FFFFFF;
+$background-black: #000000;
+$background-navigation: #303747;
+
+// Main Theme
+$primary-theme: #00E2E2;
+$light-theme: #59E7E7;
+$dark-theme: #00D0D0;
+$disabled-theme: #AAF6F6;
+$primary-theme-opposite: #E20000;
+
+// Blue
+$primary-blue: #4174E9;
+$light-blue: #6A9EEB;
+$dark-blue: #1C58E1;
+
+// Red
+$primary-red: #FF3232;
+$light-red: #FF9797;
+// $dark-red:
+
+// Grey
+$primary-grey: #BBBBBB;
+$light-grey: #CCCCCC;
+$dark-grey: #999999;
+$ruler-grey: #ECECEC;
+
+// Font
+$main-font:                     'Quattrocento Sans', sans-serif;
+$header-font:                   'Montserrat', sans-serif;
+$button-font-color:             #FFFFFF;
+$button-font-color-opposite:    #000000;
+$default-font-color:            #777777;
+$default-font-family:           $main-font;
+$default-font-size:             14px;
+$default-font-weight:           400;
+$default-line-height:           1.5;
+$default-letter-spacing:        .05em;
+
+// Default Transitions
+$transition-all:            all 150ms ease-in-out;
+$transition-cubic:          all 500ms cubic-bezier(.09,.38,.35,.69);
+
+// Breakpoints
+$tablet:                768px;
+$small-screen-size:     400px;
+
 $white-text:    #FFFFFF;
 $grey:          #CCCCCC;
 $dark-grey:     #666666;
@@ -11,8 +63,9 @@ $input-focus-background:#FAF7DB;
 $error-background:      #FDDFDF;
 $disabled:              #FFF38D;
 
-$main-font:             'Lato', sans-serif;
-$main-text-color:       #666666;
+
+
+$main-text-color:       #777777;
 $main-font-size:        14px;
 $black-text-color:      #444444;
 $footer-text-color:     #BBBBBB;
@@ -27,9 +80,9 @@ $dark-yellow-sw-1:      #D1C344;
 $dark-yellow-sw-2:      #BEB13E;
 $dark-yellow-sw-3:      #B1A328;
 
-$yellow-sw-1:           #FFF06D;
-$yellow-sw-2:           #FEEC53;
-$yellow-sw-3:           #F5E350;
+$yellow-sw-1:           #FFE739;
+$yellow-sw-2:           #FFDE00;
+$yellow-sw-3:           #EFD000;
 
 $dark-grey-sw-1:        #999999;
 $dark-grey-sw-2:        #777777;
@@ -48,17 +101,8 @@ $blue-sw-1:             #92E9FB;
 $blue-sw-2:             #76D9ED;
 $blue-sw-3:             #51CEE7;
 
-*, *:before, *:after {
-    box-sizing: border-box;
-}
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
-}
-
-.clearfix {
-    clear: both;
-}
+// Breakpoints
+$tablet:                768px;
 
 @mixin left-arrow($size, $color, $top-offset, $border-width:"", $border-color:"") {
     position: relative;

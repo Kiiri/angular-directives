@@ -1,8 +1,16 @@
 
 <div class="kiiri-gallery">
-    <div class="kiiri-image" ng-repeat="image in images | limitTo: maxDisplay" background-image="{{image}}">
-        <div class="kiiri-gallery-show-more" ng-if="$index === (maxDisplay-1) && images.length > maxDisplay">
+    <div class="kiiri-image opacity-overlay" ng-repeat="image in images | limitTo: maxDisplay" background-image="{{image}}" ng-click="openImageModal($index); $event.stopPropagation();">
+        <div class="kiiri-gallery-show-more" ng-show="$index === (maxDisplay-1) && images.length > maxDisplay">
             <span ng-transclude></span>
         </div>
     </div>
+
+    <modal is-open="imageModalOpen" disable-scroll="true">
+        <div class="gallery-modal-container">
+            <img class="modal-image" ng-src="{{ images[currentIndex] }}" image-onload="hideSpinner()"></img>
+            <div class="arrow-container arrow-container-left" ng-click="previousImage()"><div class="arrow-left"></div></div>
+            <div class="arrow-container arrow-container-right" ng-click="nextImage()"><div class="arrow-right"></div></div>
+        </div>
+    </modal>
 </div>

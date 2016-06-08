@@ -1,6 +1,18 @@
 
 @import "../constants";
 
+tooltip {
+    display: inline-block;
+
+    &.fill {
+        width: 100%;
+
+        .kiiri-tooltip {
+            width: 100%;
+        }
+    }
+}
+
 .kiiri-tooltip {
     display: inline-block;
     position: relative;

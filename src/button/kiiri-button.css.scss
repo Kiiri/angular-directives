@@ -1,37 +1,109 @@
 @import "../constants";
 
-.kiiri-button {
-    position: relative;
+angular-button {
     display: inline-block;
-    padding: 0px 30px;
+
+    &.fill {
+        width: 100%;
+
+        .kiiri-button {
+            width: 100%;
+        }
+    }
+}
+
+.kiiri-button {
+    background: $primary-theme;
     border-radius: 4px;
-    font-weight: $light-text-weight;
-    font-size: 14px;
+    color: $button-font-color;
+    cursor: pointer;
+    display: inline-block;
     height: 40px;
     line-height: 40px;
-    cursor: pointer;
-    background: $yellow-sw-2;
-    color: $black-text-color;
-    text-align: center;
-    vertical-align: top;
     overflow: hidden;
+    padding: 0 30px;
+    position: relative;
+    text-align: center;
+    transition: $transition-all;
+    vertical-align: top;
 
-    .kiiri-hover-background-slide {
-        position: absolute;
-        top: 0;
-        right: 100%;
-        height: 100%;
-        width: 100%;
-        background-color: $white;
-        transition: right .5s ease-out;
-        z-index: 0;
+    &.small {
+        height: 32px;
+        line-height: 32px;
+        padding: 0 20px;
+    }
 
-        &.not-visible {
-            right: 100%;
+    &.large {
+        height: 50px;
+        line-height: 50px;
+        padding: 0 40px;
+    }
+
+    &.xlarge {
+        height: 60px;
+        line-height: 60px;
+        padding: 0 40px;
+    }
+
+    &.sliding, &.hollow {
+        &:before {
+            background: -webkit-linear-gradient(left, #6A9EEB  ,#00E2E2 60%);
+            background: linear-gradient(to right, #6A9EEB  ,#00E2E2 60%);
+            content: ' ';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            transition: width 500ms cubic-bezier(.09,.38,.35,.69), opacity 500ms cubic-bezier(.09,.38,.35,.69);
+            width: 0;
         }
 
-        &.visible {
-            right: 0;
+        &:hover {
+            background: $primary-theme;
+
+            &:before {
+                opacity: .75;
+                width: 100%;
+            }
+        }
+    }
+
+    &.hollow {
+        background: transparent;
+        border: 2px solid $primary-theme;
+        color: $primary-theme;
+        line-height: 36px;
+        transition: color 500ms cubic-bezier(.09,.38,.35,.69);
+
+        &.small {
+            line-height: 28px;
+        }
+
+        &.large {
+            line-height: 46px;
+        }
+
+        &.xlarge {
+            line-height: 56px;
+        }
+
+
+        &:before {
+            background: $primary-theme;
+            display: block;
+            opacity: 1;
+            text-align: center;
+            transition: width 500ms cubic-bezier(.09,.38,.35,.69);
+        }
+
+        &:hover {
+            background: transparent;
+            color: $button-font-color;
+
+            &:before {
+                opacity: 1;
+            }
         }
     }
 
@@ -51,18 +123,11 @@
     }
 
     &:hover {
-        background: $yellow-sw-1;
-        color: $main-text-color;
-    }
-
-    &:active {
-        background: $yellow-sw-3;
-        color: $main-text-color;
+        background: $dark-theme;
     }
 
     &.disabled, &.disabled:hover {
-        color: $light-grey-sw-3;
-        background: $disabled;
+        background: $disabled-theme;
         cursor: not-allowed;
     }
 
@@ -70,10 +135,6 @@
         cursor: wait;
         background: $yellow-sw-2;
         color: $black-text-color;
-    }
-
-    i {
-        margin-left: 5px;
     }
 
     &.grey {
@@ -89,14 +150,17 @@
     }
 
     &.text {
-        background: $primary-background;
+        background: transparent;
+        color: $default-font-color;
 
-        &:hover:not(.disabled, .loading) {
-            background: inherit;
+        &:hover:not(.disabled) {
+            background: transparent;
+            color: $primary-theme;
         }
 
         &.disabled {
-            color: $light-grey-sw-3;
+            background: transparent;
+            color: $light-grey;
         }
     }
 }

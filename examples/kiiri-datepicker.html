@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html ng-app="Examples">
     <head>
@@ -21,18 +20,21 @@
         </style>
     </head>
     <body ng-controller="ExampleController">
-        <input-field placeholder="Some Placeholder"></input-field>
-        <input-field icon="../build/icons/icon-time.png" placeholder="Some Placeholder"></input-field>
-        <input-field value="'Disabled Input'" is-disabled="true"></input-field>
+        <datepicker icon="../build/icons/icon-date.png"></datepicker>
 
+        <datepicker current-date="nextWeek" icon="../build/icons/icon-date.png"></datepicker>
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.5.3/angular.min.js"></script>
         <script type="text/javascript" src="../build/kiiri-angular-directives.min.js"></script>
 
         <script>
             var examples = angular.module("Examples", ["kiiri.angular"]);
 
-            angular.module("Examples").controller("ExampleController", function($scope, $timeout) {
+            angular.module("Examples").controller("ExampleController", function($filter, $scope, $timeout) {
+                var currentDate = new Date();
+                currentDate.setDate(currentDate.getDate() + 14);
+
+                $scope.nextWeek = $filter("date")(new Date(), "MM/dd/yyyy");
             });
         </script>
     </body>

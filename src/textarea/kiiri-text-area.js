@@ -7,9 +7,16 @@
 
 var textarea = angular.module("kiiri.angular.textarea", ["monospaced.elastic"]);
 
-textarea.controller("textareaController", ["$scope", "Helpers",
-    function ($scope, Helpers) {
+textarea.controller("textareaController", ["$scope", "$timeout", "Helpers",
+    function ($scope, $timeout, Helpers) {
         "use strict";
+        Helpers.defaultValue($scope, "value", "");
+
+        // This is to fix some issues with the size calculation when the textarea
+        // is initially hidden
+        $timeout(function() {
+            $scope.$broadcast("elastic:adjust");
+        }, 0);
     }
 ]);
 
@@ -24,7 +31,8 @@ textarea.directive("textArea", [
                 "invalid": "=?",
                 "name": "@?",
                 "placeholder": "@?",
-                "value": "="
+                "value": "=",
+                "max": "@?"
             },
             controller: "textareaController"
         };

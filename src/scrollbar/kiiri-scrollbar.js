@@ -12,12 +12,15 @@ scrollbar.directive("scrollbar", ["Helpers", "$timeout",
             restrict: "A",
             templateUrl: "src/scrollbar/kiiri-scrollbar.tpl.html",
             scope: {
-                maxHeight: "@?"
+                maxHeight: "@?",
+                disabled: "@?"
             },
             transclude: true,
             link: function($scope, element) {
-                $(element).addClass("kiiri-scrollbar-wrapper");
-                $(element).mCustomScrollbar();
+                if (!$scope.disabled) {
+                    $(element).addClass("kiiri-scrollbar-wrapper");
+                    $(element).mCustomScrollbar();
+                }
             }
         };
     }

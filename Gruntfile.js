@@ -31,7 +31,7 @@ module.exports = function(grunt) {
             },
             target: {
                 files: {
-                    "build/kiiri-angular-directives.min.css": ["src/**/*.css"]
+                    "build/kiiri-angular-directives.min.css": ["src/*.css", "src/**/*.css"]
                 }
             }
         },
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                     undef: true,
                 },
                 files: {
-                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js", "!src/image-input/*.min.js", "!src/image-input/canvas-toBlob.js", "!src/scrollbar/jquery.mCustomScrollbar.concat.min.js", "!src/timepicker/moment.js", "!src/draggable/jquery-ui-draggable.min.js"]
+                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js", "!src/image-input/*.min.js", "!src/image-input/canvas-toBlob.js", "!src/scrollbar/jquery.mCustomScrollbar.concat.min.js", "!src/timepicker/moment.js", "!src/draggable/jquery-ui-draggable.min.js", "!src/datepicker/jquery-ui-datepicker.min.js"]
                 },
             }
         },
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    src: "src/**/*.scss",
+                    src: ["src/*.scss", "src/**/*.scss"],
                     ext: ".css"
                 }]
             }
@@ -94,8 +94,16 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ["src/**/*.js", "src/**/*.css.scss", "src/**/*.tpl.html"],
-                tasks: ["build"]
+                files: ["src/**/*.js"],
+                tasks: ["jshint", "uglify", "copy"]
+            },
+            styles: {
+                files: ["src/*.scss", "src/**/*.scss"],
+                tasks: ["sass", "cssmin", "copy"]
+            },
+            templates: {
+                files: ["src/**/*.tpl.html"],
+                tasks: ["ngtemplates", "uglify", "copy"]
             }
         }
     });

@@ -2,16 +2,14 @@
 @import "../constants";
 
 .kiiri-gallery {
+    margin: 0px -5px;
+
     .kiiri-image {
         display: inline-block;
         height: 250px;
-        margin-right: 10px;
+        margin: 0px 5px;
         position: relative;
         width: 250px;
-
-        &:last-child {
-            margin-right: 0px;
-        }
 
         .kiiri-gallery-show-more {
             background: rgba(0,0,0,.5);
@@ -22,6 +20,7 @@
             font-weight: 400;
             height: 100%;
             left: 0;
+            min-width: 100%;
             position: absolute;
             text-align: center;
             top: 0;
@@ -41,6 +40,87 @@
             &:hover {
                 background: rgba(0,0,0,.3);
             }
+        }
+    }
+
+    .gallery-modal-container {
+        min-height: 100px;
+        width: 500px;
+
+        .modal-image {
+            width: 100%
+        }
+    }
+
+    .mCustomScrollBox, .mCSB_container {
+        overflow: visible;
+    }
+
+    .arrow-container {
+        cursor: pointer;
+        height: 100vh;
+        padding-left: 30px;
+        padding-top: calc(10vh + 250px);
+        position: absolute;
+        top: -10vh;
+        vertical-align: middle;
+        width: calc(50% + 250px);
+
+        &.arrow-container-left {
+            left: -250px;
+        }
+
+        &.arrow-container-right {
+            padding-left: calc(50% + 225px);
+            right: -250px;
+        }
+
+        .arrow-left {
+            display: inline-block;
+            position: relative;
+            width: 2px;
+            height: 60px;
+            background: $light-grey-sw-1;
+            transform: rotate(-45deg);
+
+            &:after {
+                position: absolute;
+                width: 60px;
+                height: 2px;
+                background: $light-grey-sw-1;
+                content: ' ';
+
+            }
+        }
+
+        .arrow-right {
+            display: inline-block;
+            position: relative;
+            width: 2px;
+            height: 60px;
+            background: $light-grey-sw-1;
+            transform: rotate(45deg);
+
+            &:after {
+                position: absolute;
+                width: 60px;
+                height: 2px;
+                background: $light-grey-sw-1;
+                content: ' ';
+                left: -60px;
+            }
+        }
+    }
+
+    .kiiri-modal {
+        .modal-body {
+            border: none;
+            border-radius: 0;
+            overflow: visible;
+        }
+
+        .modal-frame {
+            overflow: visible;
         }
     }
 }

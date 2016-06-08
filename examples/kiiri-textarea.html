@@ -13,11 +13,17 @@
                 letter-spacing: .1em;
                 padding: 40px;
             }
+
+            .text-area-example {
+                width: 500px;
+            }
         </style>
     </head>
     <body ng-controller="ExampleController">
-
-        <text-area></text-area>
+        <div class="text-area-example">
+            <text-area fill="true" max="250"></text-area>
+            <text-area fill="true"></text-area>
+        </div>
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>

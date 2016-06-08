@@ -96,6 +96,23 @@
             color: $main-text-color;
             text-align: center;
             line-height: 24px;
+
+            &.bold {
+                color: $main-text-color;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 28px;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            &.sub {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 14px;
+                margin-bottom: 0;
+                text-align: left;
+            }
         }
 
         .modal-small {

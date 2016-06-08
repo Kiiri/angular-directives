@@ -23,6 +23,10 @@ input.controller("inputController", ["$scope", "Helpers",
         if ($scope.defaultValue) {
             $scope.value = $scope.defaultValue;
         }
+
+        $scope.clearInvalid = function() {
+            $scope.invalid = false;
+        };
     }
 ]);
 
@@ -43,9 +47,16 @@ input.directive("inputField", [
                 type: "@?",
                 value: "=",
                 onEnter: "=?",
-                stripe: "@?"
+                stripe: "@?",
+                size: "@?"
             },
-            controller: "inputController"
+            controller: "inputController",
+            link: function($scope, element, attributes) {
+                // For backwards compatibility
+                if ($scope.fill) {
+                    $(element).addClass("fill");
+                }
+            }
         };
     }
 ]);

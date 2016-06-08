@@ -1,0 +1,6 @@
+
+<div class="kiiri-selector {{ variant }}" ng-class="{ fill: fill }">
+    <div class="kiiri-selector-items-wrapper">
+        <div class="kiiri-selector-item" ng-repeat="item in items" ng-class="{ disabled: itemDisabled(item), selected: itemSelected(item) }" ng-click="selectItem(item)"> {{ itemDisplay(item) }} </div>
+    </div>
+</div>

@@ -11,6 +11,16 @@ switchButton.controller("switchButtonController", ["$scope", "Helpers",
         "use strict";
 
         Helpers.defaultValue($scope, "selectedValue", $scope.leftValue);
+
+        $scope.select = function(value) {
+            if (!$scope.disabled) {
+                $scope.selectedValue = value;
+
+                if ($scope.onChange) {
+                    $scope.onChange();
+                }
+            }
+        };
     }
 ]);
 
@@ -23,17 +33,22 @@ switchButton.directive("switchButton", [
             scope: {
                 leftValue: "@",
                 rightValue: "@",
-                selectedValue: "=?"
+                selectedValue: "=?",
+                fill: "@?",
+                onChange: "&?",
+                disabled: "=?"
             },
             controller: "switchButtonController",
             link: function ($scope, element) {
-                $scope.$watchCollection("[leftValue, rightValue]", function() {
-                    var leftWidth = element.find(".kiiri-switch-item.left-switch").width();
-                    var rightWidth = element.find(".kiiri-switch-item.right-switch").width();
-                    var largerWidth = Math.max(leftWidth, rightWidth);
+                if (!$scope.fill) {
+                    $scope.$watchCollection("[leftValue, rightValue]", function() {
+                        var leftWidth = element.find(".kiiri-switch-item.left-switch").width();
+                        var rightWidth = element.find(".kiiri-switch-item.right-switch").width();
+                        var largerWidth = Math.max(leftWidth, rightWidth);
 
-                    element.find(".kiiri-switch-item, .kiiri-switch-slider").width(largerWidth);
-                });
+                        element.find(".kiiri-switch-item, .kiiri-switch-slider").width(largerWidth);
+                    });
+                }
             }
         };
     }

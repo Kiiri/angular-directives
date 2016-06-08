@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html ng-app="Examples">
+    <head>
+        <title>Kiiri Angular Directive Examples</title>
+        <meta charset="utf-8">
+        <link href='https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
+    </head>
+    <body ng-controller="ExampleController">
+        <h2> Default Input Field </h2>
+        <input-field placeholder="Some Placeholder"></input-field>
+        <input-field icon="../build/icons/icon-time.png" placeholder="Some Placeholder"></input-field>
+        <input-field value="'Disabled Input'" is-disabled="true"></input-field>
+        <input-field value="'Invalid Input'" invalid="true"></input-field>
+        <input-field placeholder="Large Input" size="large"></input-field>
+
+        <h2> White Input Field </h2>
+        <input-field placeholder="Some Placeholder" type="white"></input-field>
+        <input-field icon="../build/icons/icon-time.png" placeholder="Some Placeholder" type="white"></input-field>
+        <input-field value="'Disabled Input'" is-disabled="true" type="white"></input-field>
+        <input-field value="'Invalid Input'" type="white" invalid="true"></input-field>
+        <input-field placeholder="Large Input" type="white" size="large"></input-field>
+
+        <h2> Underline Input Field </h2>
+        <input-field placeholder="Some Placeholder" type="underline"></input-field>
+        <input-field icon="../build/icons/icon-time.png" placeholder="Some Placeholder" type="underline"></input-field>
+        <input-field value="'Disabled Input'" is-disabled="true" type="underline"></input-field>
+        <input-field value="'Invalid Input'" type="underline" invalid="true"></input-field>
+        <input-field placeholder="Large Input" type="underline" size="large"></input-field>
+
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="../build/kiiri-angular-directives.min.js"></script>
+
+        <script>
+            var examples = angular.module("Examples", ["kiiri.angular"]);
+
+            angular.module("Examples").controller("ExampleController", function($scope, $timeout) {
+            });
+        </script>
+    </body>
+</html>
