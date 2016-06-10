@@ -1,5 +1,5 @@
 
 <div class="kiiri-text-area" ng-class="{ fill: fill }">
-    <textarea ng-model="value" placeholder="{{placeholder}}" name="{{name}}" msd-elastic ng-class="{ invalid: invalid }" maxlength="{{max}}"></textarea>
+    <textarea ng-model="value" placeholder="{{placeholder}}" name="{{name}}" msd-elastic ng-class="{ invalid: invalid }" maxlength="{{max}}" ng-change="clearInvalid()"></textarea>
     <div class="textarea-max-length" ng-show="max">{{ max - value.length }} characters remaining </div>
 </div>

@@ -17,8 +17,8 @@ selector {
     }
 
     .kiiri-selector-item {
-        background: $secondary-background;
-        color: $main-text-color;
+        background: $background-theme;
+        color: $default-font-color;
         cursor: pointer;
         display: table-cell;
         font-weight: normal;
@@ -33,7 +33,7 @@ selector {
         }
 
         &.selected {
-            background: $yellow-sw-2;
+            background: $primary-theme;
         }
 
         &:first-child {

@@ -4,31 +4,25 @@
     <head>
         <title>Kiiri Angular Directive Examples</title>
         <meta charset="utf-8">
-        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900,100"></link>
+        <link href='https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
-        <style>
-            body {
-                font-family: 'Lato', sans-serif;
-                letter-spacing: .1em;
-                padding: 40px;
-            }
-
-            dropdown:first-child .kiiri-dropdown {
-                width: 100%;
-            }
-        </style>
     </head>
     <body ng-controller="ExampleController">
         <form id="test-form">
+            <h2> Default Dropdowns </h2>
             <dropdown empty-text="No valid items found" items="sortBy" default-text="Sort By" selected-item="fields.sortByOne" form-name="sortOne" icon="/icons/icon-time.png"></dropdown><br/><br/>
             <dropdown empty-text="No valid items found" items="sortByObjects" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true"></dropdown><br/><br/>
-
             <dropdown empty-text="No valid items found" items="sortByObjects" link-items="linkItems" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true">
                 {{ item }}
-            </dropdown><br/><br/>
+            </dropdown>
+            <h2> White Dropdown </h2>
+            <dropdown empty-text="No valid items found" items="sortByObjects" link-items="linkItems" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true" type="white" icon="/icons/icon-time.png"></dropdown>
+            <dropdown empty-text="No valid items found" items="sortByObjects" link-items="linkItems" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true" type="white"></dropdown>
+            <h2> Disabled Dropdowns </h2>
+            <dropdown empty-text="No valid items found" items="sortBy" default-text="Sort By" selected-item="fields.sortByOne" form-name="sortOne" icon="/icons/icon-time.png" disabled="true"></dropdown>
         </form>
-        <angular-button click="submitForm()">Submit Form</angular-button>
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="https://code.angularjs.org/1.5.3/angular.min.js"></script>
         <script type="text/javascript" src="../build/kiiri-angular-directives.min.js"></script>

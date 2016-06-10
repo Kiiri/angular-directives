@@ -52,9 +52,9 @@
             cursor: pointer;
 
             &:hover {
-                background: $yellow-sw-2;
+                background: $primary-theme;
                 font-weight: 700;
-                color: $main-text-color;
+                color: $default-font-color;
             }
 
             .kiiri-autocomplete-image {

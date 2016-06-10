@@ -6,6 +6,7 @@ $background-red: #FFEAEA;
 $background-white: #FFFFFF;
 $background-black: #000000;
 $background-navigation: #303747;
+$transparent-mask: rgba(0, 0, 0, .1);
 
 // Main Theme
 $primary-theme: #00E2E2;
@@ -34,7 +35,7 @@ $ruler-grey: #ECECEC;
 $main-font:                     'Quattrocento Sans', sans-serif;
 $header-font:                   'Montserrat', sans-serif;
 $button-font-color:             #FFFFFF;
-$button-font-color-opposite:    #000000;
+$black-font-color:              #000000;
 $default-font-color:            #777777;
 $default-font-family:           $main-font;
 $default-font-size:             14px;
@@ -52,7 +53,6 @@ $small-screen-size:     400px;
 
 $white-text:    #FFFFFF;
 $grey:          #CCCCCC;
-$dark-grey:     #666666;
 $white:         #FFFFFF;
 $error-color:   #FDDFDF;
 

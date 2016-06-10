@@ -14,8 +14,8 @@
         border-radius: 6px;
         height: 40px;
         width: 40px;
-        border: 2px solid $yellow-sw-2;
-        background: $primary-background;
+        border: 2px solid $primary-theme;
+        background: $background-white;
         font-size: 14px;
         line-height: 18px;
         text-align: center;
@@ -28,7 +28,7 @@
         height: 10px;
         width: 380px;
         z-index: 0;
-        background-color: $secondary-background;
+        background-color: $background-theme;
     }
 
     .kiiri-timepicker-colored-bar-wrapper {
@@ -42,7 +42,7 @@
             position: relative;
             display: inline-block;
             height: 10px;
-            background-color: $yellow-sw-2;
+            background-color: $primary-theme;
         }
     }
 }

@@ -20,16 +20,16 @@
         }
 
         .kiiri-grey-fill {
-            background-color: $secondary-background;
+            background-color: $background-theme;
         }
 
         .kiiri-yellow-fill {
-            background-color: $yellow-sw-2;
+            background-color: $primary-theme;
         }
     }
 
     .kiiri-fill-bar-label {
-        color: $dark-grey-sw-2;
+        color: $dark-grey;
         display: inline-block;
         font-size: 14px;
         font-weight: 400;

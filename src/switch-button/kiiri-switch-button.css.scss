@@ -2,7 +2,7 @@
 
 .kiiri-switch-button {
     border-radius: 4px;
-    background: $secondary-background;
+    background: $background-theme;
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -20,11 +20,11 @@
     }
 
     .kiiri-switch-item, .kiiri-switch-slider {
-        color: $light-grey-sw-3;
+        color: $light-grey;
         cursor: pointer;
         float: left;
-        font-size: 14px;
-        font-weight: 400;
+        font-size: $default-font-size;
+        font-weight: $default-font-weight;
         height: 40px;
         line-height: 40px;
         min-width: 70px;
@@ -38,9 +38,7 @@
         }
 
         &.selected {
-            font-size: 14px;
-            font-weight: 400;
-            color: $dark-grey-sw-3;
+            color: $button-font-color;
         }
 
         &.left-switch {
@@ -55,7 +53,7 @@
     }
 
     .kiiri-switch-slider {
-        background: $yellow-sw-2;
+        background: $primary-theme;
         position: absolute;
         transition: left .2s ease-out;
         top: 0;

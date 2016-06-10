@@ -9,28 +9,29 @@
     }
 
     .kiiri-datepicker-container {
-        &.datepicker-left .ui-datepicker {
+        position: absolute;
+        top: 40px;
+        z-index: 999;
+
+        &.datepicker-left {
             left: 0;
         }
 
-        &.datepicker-right .ui-datepicker {
+        &.datepicker-right {
             right: 0;
         }
     }
 
     .ui-datepicker {
-        border: 2px solid $input-focus-background;
+        border: 2px solid $background-theme;
         border-radius: 4px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
         margin-top: 5px;
         padding: 0 20px;
-        position: absolute;
-        top: 40px;
         width: auto;
-        z-index: 999;
 
         .ui-datepicker-header {
-            background: $input-focus-background;
+            background: $background-theme;
             border: none;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
@@ -44,7 +45,7 @@
             }
 
             .ui-datepicker-month {
-                color: $main-text-color;
+                color: $default-font-color;
                 font-size: 14px;
                 font-weight: 700;
             }
@@ -75,14 +76,14 @@
             margin: 10px 0;
 
             th {
-                color: $light-grey-sw-3;
+                color: $primary-grey;
                 font-size: 14px;
                 font-weight: 400;
                 padding: 10px;
             }
 
             td {
-                color: $main-text-color;
+                color: $default-font-color;
                 font-size: 14px;
                 font-weight: 400;
 
@@ -93,18 +94,18 @@
                     text-align: center;
 
                     &.ui-state-active {
-                        background: $yellow-sw-2;
-                        color: $main-text-color;
+                        background: $primary-theme;
+                        color: $button-font-color !important;
                         font-weight: 400;
                     }
                 }
 
                 .ui-priority-secondary {
-                    color: $light-grey-sw-2;
+                    color: $light-grey;
                 }
 
                 &.ui-datepicker-today .ui-state-default {
-                    color: $main-text-color;
+                    color: $primary-theme;
                     font-weight: 900;
                 }
             }

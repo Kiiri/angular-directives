@@ -4,27 +4,23 @@
     <head>
         <title>Kiiri Angular Directive Examples</title>
         <meta charset="utf-8">
-        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900,100"></link>
+        <link href='https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
-        <style>
-            body {
-                font-family: 'Lato', sans-serif;
-                letter-spacing: .1em;
-                padding: 40px;
-            }
-            span {
-                display: inline-block;
-                line-height: 40px;
-                vertical-align: top;
-                margin-left: 10px;
-            }
-        </style>
     </head>
     <body ng-controller="ExampleController">
-        <switch-button left-value="Free" right-value="Paid" selected-value="freeOrPaid"></switch-button><span>{{ freeOrPaid }}</span>
-        <br/>
-        <switch-button left-value="DO IT NOW" right-value="DO IT LATER" selected-value="nowOrLater"></switch-button><span>{{ nowOrLater }}</span>
+        <h2> Default Switch Buttons </h2>
+        <table>
+            <tr>
+                <td><switch-button left-value="Free" right-value="Paid" selected-value="freeOrPaid"></switch-button></td>
+                <td> Current Value: {{ freeOrPaid }}</td>
+            </tr>
+            <tr>
+                <td><switch-button left-value="DO IT NOW" right-value="DO IT LATER" selected-value="nowOrLater"></switch-button></td>
+                <td> Current Value: {{ nowOrLater }} </td>
+            </tr>
+        </table>
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>

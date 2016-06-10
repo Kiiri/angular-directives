@@ -56,7 +56,9 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
         };
 
         $scope.toggleDropdown = function() {
-            $scope.dropdownOpen = !$scope.dropdownOpen;
+            if (!$scope.disabled) {
+                $scope.dropdownOpen = !$scope.dropdownOpen;
+            }
         };
 
         $scope.closeDropdown = function() {
@@ -106,7 +108,8 @@ dropdown.directive("dropdown", [
                 openOnHover: "@?",
                 menuHeight: "@?",
                 inputFilter: "@?",
-                fill: "@?"
+                fill: "@?",
+                type: "@?"
             },
             transclude: true,
             controller: "dropdownController",
@@ -118,6 +121,11 @@ dropdown.directive("dropdown", [
                         }
                     } else if (!(newValue !== oldValue || $scope.selectedItem)) {
                         $scope.selectedItem = null;
+                    }
+
+                    // For backwards compatibility
+                    if ($scope.fill) {
+                        $(element).addClass("fill");
                     }
 
                     // Only resize the dropdown if it is not already set in the CSS

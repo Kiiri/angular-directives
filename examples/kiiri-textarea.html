@@ -4,16 +4,11 @@
     <head>
         <title>Kiiri Angular Directive Examples</title>
         <meta charset="utf-8">
-        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900,100"></link>
+        <link href='https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
         <style>
-            body {
-                font-family: 'Lato', sans-serif;
-                letter-spacing: .1em;
-                padding: 40px;
-            }
-
             .text-area-example {
                 width: 500px;
             }
@@ -21,8 +16,14 @@
     </head>
     <body ng-controller="ExampleController">
         <div class="text-area-example">
-            <text-area fill="true" max="250"></text-area>
+            <h2> Default Text Area </h2>
             <text-area fill="true"></text-area>
+            <h2> Default Text Area Placeholder </h2>
+            <text-area fill="true" placeholder="TEST PLACEHOLDER"></text-area>
+            <h2> Max Text Area </h2>
+            <text-area fill="true" max="250"></text-area>
+            <h2> Invalid Text Area </h2>
+            <text-area fill="true" max="250" invalid="true" value="'SOME INVALID VALUE'"></text-area>
         </div>
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>

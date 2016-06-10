@@ -17,6 +17,10 @@ textarea.controller("textareaController", ["$scope", "$timeout", "Helpers",
         $timeout(function() {
             $scope.$broadcast("elastic:adjust");
         }, 0);
+
+        $scope.clearInvalid = function() {
+            $scope.invalid = false;
+        };
     }
 ]);
 

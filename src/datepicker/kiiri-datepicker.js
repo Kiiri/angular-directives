@@ -12,23 +12,33 @@
     datepicker.controller("datepickerController", ["$element", "$filter", "$scope", "$timeout", "Helpers",
         function($element, $filter, $scope, $timeout, Helpers) {
             Helpers.defaultValue($scope, "currentDate", $filter("date")(new Date(), "MM/dd/yyyy"));
+            Helpers.defaultValue($scope, "currentDatepickerMonth", new Date().getMonth());
             Helpers.defaultValue($scope, "position", "left");
 
-            $element.find(".kiiri-datepicker-container").datepicker({
-                showOtherMonths: true,
-                selectOtherMonths: true,
-                onSelect: function(date) {
-                    $scope.$apply(function() {
-                        if (date) {
-                            $scope.currentDate = date;
-                        }
-                        $scope.closeDatepicker();
-                    });
-                }
-            });
+            $timeout(function() {
+                $element.find(".kiiri-datepicker-container").datepicker({
+                    showOtherMonths: true,
+                    selectOtherMonths: true,
+                    onSelect: function(date) {
+                        $scope.$apply(function() {
+                            if (date) {
+                                $scope.currentDate = date;
+                                $scope.closeDatepicker();
+                            }
+                        });
+                    },
+                    onChangeMonthYear: function(year, month) {
+                        $scope.selectedDatepickerMonth = month;
+                    }
+                });
+            }, 0);
 
             $scope.closeDatepicker = function() {
-                $scope.isOpen = false;
+                if ($scope.selectedDatepickerMonth === $scope.currentDatepickerMonth) {
+                    $scope.isOpen = false;
+                } else {
+                    $scope.currentDatepickerMonth = $scope.selectedDatepickerMonth;
+                }
             };
 
             $scope.toggleDatepicker = function() {

@@ -10,7 +10,9 @@ switchButton.controller("switchButtonController", ["$scope", "Helpers",
     function ($scope, Helpers) {
         "use strict";
 
-        Helpers.defaultValue($scope, "selectedValue", $scope.leftValue);
+        if (!$scope.selectedValue || ($scope.selectedValue !== $scope.leftValue && $scope.selectedValue !== $scope.rightValue)) {
+            $scope.selectedValue = $scope.leftValue;
+        }
 
         $scope.select = function(value) {
             if (!$scope.disabled) {
