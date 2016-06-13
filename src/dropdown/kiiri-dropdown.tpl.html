@@ -6,7 +6,7 @@
                 <img ng-hide="!imageIcon" ng-src="{{imageIcon}}"></img>
                 {{ itemDisplay(selectedItem) || (items.length === 0 && emptyText) || defaultText }}
             </div>
-            <input-field ng-if="inputFilter" value="fields.filterValue" fill="true"></input-field>
+            <input-field ng-if="inputFilter" value="fields.filterValue" fill="true" placeholder="{{ defaultText }}"></input-field>
         </td></tr>
         <tr ng-click="$event.stopPropagation()" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
             <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }" scrollbar ng-style="{ 'max-height': (menuHeight + 'px')}">
