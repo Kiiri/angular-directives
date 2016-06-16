@@ -135,7 +135,7 @@ kiiri-dropdown {
                 border-bottom-right-radius: 4px;
             }
 
-            &:hover {
+            &:hover, &.tab-index-selected {
                 background: $primary-theme;
                 color: $button-font-color;
             }

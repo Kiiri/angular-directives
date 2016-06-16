@@ -1,5 +1,5 @@
 
-<div class="kiiri-dropdown {{ type }}" ng-click="toggleDropdown()" clickoutside on-click-outside="closeDropdown" is-enabled="dropdownOpen" ng-class="{ empty: (items.length === 0), disabled: disabled, open: dropdownOpen, fill: fill }" ng-mouseleave="openOnHover && closeDropdown()">
+<div class="kiiri-dropdown {{ type }}" ng-click="toggleDropdown()" clickoutside on-click-outside="closeDropdown" is-enabled="dropdownOpen" ng-class="{ empty: (items.length === 0), disabled: disabled, open: dropdownOpen, fill: fill }" ng-mouseleave="openOnHover && closeDropdown()" tabindex="0" ng-keydown="tabIndexKeyDown($event)">
     <table ng-class="{ open: dropdownOpen }">
         <tr><td>
             <div class="kiiri-dropdown-current-item" ng-style="{'background-image': (icon && 'url('+icon+')')}" ng-class="{ 'has-icon': icon, empty: (items.length === 0), disabled: disabled }" ng-mouseover="openOnHover && openDropdown()" ng-if="!inputFilter">
@@ -11,7 +11,7 @@
         <tr ng-click="$event.stopPropagation()" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
             <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }" scrollbar ng-style="{ 'max-height': (menuHeight + 'px')}">
                 <a ng-repeat="item in linkItems track by $index" ng-href="{{item.href}}"><div class="kiiri-dropdown-item" ng-class="{ 'has-icon': icon }">{{item.text}}</div></a>
-                <div class="kiiri-dropdown-item" ng-repeat="item in dropdownItems() track by $index" ng-class="{ 'has-icon': icon }" ng-click="selectItem(item); $event.stopPropagation()" ng-hide="hideSelected && selectedItem === item">
+                <div class="kiiri-dropdown-item" ng-repeat="item in dropdownItems() track by $index" ng-class="{ 'has-icon': icon, 'tab-index-selected': currentTabSelectedIndex === $index }" ng-click="selectItem(item); $event.stopPropagation()" ng-hide="hideSelected && selectedItem === item">
                     <dropdown-item item="item"> {{itemDisplay(item)}} </dropdown-item>
                 </div>
             </div>

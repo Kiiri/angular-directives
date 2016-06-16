@@ -67,6 +67,8 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
 
         $scope.openDropdown = function() {
             $scope.dropdownOpen = true;
+            // Unset current tab selected for the tabIndex events. See tabIndexKeyDown below.
+            $scope.currentTabSelectedIndex = undefined;
         };
 
         $scope.dropdownItems = function() {
@@ -76,6 +78,35 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
                 });
             } else {
                 return $scope.items;
+            }
+        };
+
+        $scope.tabIndexKeyDown = function($event) {
+            var keyEvent = $event || window.event;
+
+            if ($scope.currentTabSelectedIndex === undefined) {
+                $scope.currentTabSelectedIndex = -1;
+            }
+
+            if (keyEvent.keyCode === 40 || keyEvent.keyCode === 39) {
+                if (!$scope.dropdownOpen) {
+                    $scope.openDropdown();
+                } else if ($scope.currentTabSelectedIndex < $scope.items.length - 1) {
+                    $scope.currentTabSelectedIndex += 1;
+                }
+            } else if (keyEvent.keyCode === 38 || keyEvent.keyCode === 37) {
+                if (!$scope.currentTabSelectedIndex) {
+                    $scope.closeDropdown();
+                } else {
+                    $scope.currentTabSelectedIndex -= 1;
+                }
+            } else if (keyEvent.keyCode === 13) {
+                if ($scope.currentTabSelectedIndex !== undefined) {
+                    $scope.selectedItem = $scope.items[$scope.currentTabSelectedIndex];
+                    $scope.closeDropdown();
+                }
+            } else if (keyEvent.keyCode === 27) {
+                $scope.closeDropdown();
             }
         };
 
