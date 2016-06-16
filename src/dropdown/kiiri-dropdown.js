@@ -13,8 +13,8 @@
 
 var dropdown = angular.module("kiiri.angular.dropdown", []);
 
-dropdown.controller("dropdownController", ["$scope", "Helpers",
-    function ($scope, Helpers) {
+dropdown.controller("dropdownController", ["$element", "$scope", "Helpers",
+    function ($element, $scope, Helpers) {
         "use strict";
 
         Helpers.defaultValue($scope, "items", []);
@@ -83,6 +83,7 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
 
         $scope.tabIndexKeyDown = function($event) {
             var keyEvent = $event || window.event;
+            keyEvent.preventDefault();
 
             if ($scope.currentTabSelectedIndex === undefined) {
                 $scope.currentTabSelectedIndex = -1;
@@ -93,12 +94,14 @@ dropdown.controller("dropdownController", ["$scope", "Helpers",
                     $scope.openDropdown();
                 } else if ($scope.currentTabSelectedIndex < $scope.items.length - 1) {
                     $scope.currentTabSelectedIndex += 1;
+                    $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[$scope.currentTabSelectedIndex], { scrollInertia: 0 });
                 }
             } else if (keyEvent.keyCode === 38 || keyEvent.keyCode === 37) {
                 if (!$scope.currentTabSelectedIndex) {
                     $scope.closeDropdown();
                 } else {
                     $scope.currentTabSelectedIndex -= 1;
+                    $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[$scope.currentTabSelectedIndex], { scrollInertia: 0 });
                 }
             } else if (keyEvent.keyCode === 13) {
                 if ($scope.currentTabSelectedIndex !== undefined) {
