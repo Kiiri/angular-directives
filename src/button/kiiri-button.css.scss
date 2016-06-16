@@ -146,8 +146,11 @@ angular-button {
 
     &.loading, &.loading:hover {
         cursor: wait;
-        background: $yellow-sw-2;
-        color: $black-text-color;
+        background: $disabled-theme;
+
+        .fa-refresh {
+            margin-left: 5px;
+        }
     }
 
     &.grey {

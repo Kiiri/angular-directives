@@ -1,10 +1,10 @@
 
 <a ng-href="{{link}}" ng-if="link">
-    <div class="kiiri-button {{ size }} {{ type }}" ng-class="{ disabled: disabled, fill: fill }" ng-mouseover="buttonHover()" ng-mouseout="buttonLeave()">
-        <span ng-transclude></span>
+    <div class="kiiri-button {{ size }} {{ type }}" ng-class="{ disabled: disabled, fill: fill, loading: loading }" ng-mouseover="buttonHover()" ng-mouseout="buttonLeave()">
+        <span ng-transclude></span><i class="fa fa-refresh fa-spin" ng-if="loading"></i>
     </div>
 </a>
 
-<div class="kiiri-button {{ size }} {{ type }}" ng-class="{ disabled: disabled, fill: fill }" ng-click="onClick($event)" ng-mouseover="buttonHover()" ng-mouseout="buttonLeave()" ng-if="!link" >
-    <span ng-transclude></span>
+<div class="kiiri-button {{ size }} {{ type }}" ng-class="{ disabled: disabled, fill: fill, loading: loading }" ng-click="onClick($event)" ng-mouseover="buttonHover()" ng-mouseout="buttonLeave()" ng-if="!link" >
+    <span ng-transclude></span><i class="fa fa-refresh fa-spin" ng-if="loading"></i>
 </div>
