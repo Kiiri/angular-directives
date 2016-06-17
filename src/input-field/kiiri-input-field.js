@@ -46,7 +46,7 @@ input.directive("inputField", [
                 placeholder: "@?",
                 type: "@?",
                 value: "=",
-                onEnter: "=?",
+                onEnter: "&?",
                 stripe: "@?",
                 size: "@?"
             },

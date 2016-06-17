@@ -13,8 +13,8 @@
 
 var dropdown = angular.module("kiiri.angular.dropdown", []);
 
-dropdown.controller("dropdownController", ["$element", "$scope", "Helpers",
-    function ($element, $scope, Helpers) {
+dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "Helpers",
+    function ($element, $scope, $timeout, Helpers) {
         "use strict";
 
         Helpers.defaultValue($scope, "items", []);
@@ -63,12 +63,16 @@ dropdown.controller("dropdownController", ["$element", "$scope", "Helpers",
 
         $scope.closeDropdown = function() {
             $scope.dropdownOpen = false;
+
+            if ($scope.currentTabSelectedIndex !== undefined && $scope.currentTabSelectedIndex !== -1) {
+                $scope.selectedItem = $scope.items[$scope.currentTabSelectedIndex];
+            }
+
+            $scope.currentTabSelectedIndex = undefined;
         };
 
         $scope.openDropdown = function() {
             $scope.dropdownOpen = true;
-            // Unset current tab selected for the tabIndex events. See tabIndexKeyDown below.
-            $scope.currentTabSelectedIndex = undefined;
         };
 
         $scope.dropdownItems = function() {
@@ -83,33 +87,56 @@ dropdown.controller("dropdownController", ["$element", "$scope", "Helpers",
 
         $scope.tabIndexKeyDown = function($event) {
             var keyEvent = $event || window.event;
-            keyEvent.preventDefault();
 
             if ($scope.currentTabSelectedIndex === undefined) {
                 $scope.currentTabSelectedIndex = -1;
             }
 
-            if (keyEvent.keyCode === 40 || keyEvent.keyCode === 39) {
+            if (keyEvent.keyCode === 40 || keyEvent.keyCode === 39) { // Down and Right
                 if (!$scope.dropdownOpen) {
                     $scope.openDropdown();
                 } else if ($scope.currentTabSelectedIndex < $scope.items.length - 1) {
                     $scope.currentTabSelectedIndex += 1;
                     $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[$scope.currentTabSelectedIndex], { scrollInertia: 0 });
                 }
-            } else if (keyEvent.keyCode === 38 || keyEvent.keyCode === 37) {
+
+                keyEvent.preventDefault();
+            } else if (keyEvent.keyCode === 38 || keyEvent.keyCode === 37) { // Up and Left
                 if (!$scope.currentTabSelectedIndex) {
                     $scope.closeDropdown();
                 } else {
                     $scope.currentTabSelectedIndex -= 1;
                     $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[$scope.currentTabSelectedIndex], { scrollInertia: 0 });
                 }
-            } else if (keyEvent.keyCode === 13) {
-                if ($scope.currentTabSelectedIndex !== undefined) {
-                    $scope.selectedItem = $scope.items[$scope.currentTabSelectedIndex];
-                    $scope.closeDropdown();
-                }
-            } else if (keyEvent.keyCode === 27) {
+
+                keyEvent.preventDefault();
+            } else if (keyEvent.keyCode === 13) { // Enter
                 $scope.closeDropdown();
+                keyEvent.preventDefault();
+            } else if (keyEvent.keyCode === 27) { // ESC
+                $scope.currentTabSelectedIndex = undefined;
+                $scope.closeDropdown();
+                keyEvent.preventDefault();
+            } else if (keyEvent.keyCode === 9) { // Tab
+                $scope.closeDropdown();
+            } else if (keyEvent.keyCode >= 48 && keyEvent.keyCode <= 90) { // 0-9, a-z
+                if (!$scope.dropdownOpen) {
+                    $scope.openDropdown();
+                }
+
+                $timeout(function() {
+                    for (var i = 0; i < $scope.items.length; i++) {
+                        var item = angular.isObject($scope.items[i]) ? $scope.items[i].name : $scope.items[i];
+                        var key = String.fromCharCode(keyEvent.keyCode);
+
+                        if (item && item[0] && key && item[0].toLowerCase() === key.toLowerCase()) {
+                            $scope.currentTabSelectedIndex = i;
+                            $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[i], { scrollInertia: 0 });
+                            keyEvent.preventDefault();
+                            return;
+                        }
+                    }
+                }, 100);
             }
         };
 
