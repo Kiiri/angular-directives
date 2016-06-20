@@ -79,6 +79,35 @@ button, textarea {
     }
 }
 
+.kiiri-or-divider {
+    color: $light-grey-sw-2;
+    font-size: $default-font-size;
+    line-height: $default-line-height;
+    margin: 20px 0;
+    position: relative;
+    text-align: center;
+
+    &:before {
+        background-color: $background-white;
+        content: " OR ";
+        display: inline-block;
+        padding: 0 10px;
+        position: relative;
+        z-index: 2;
+    }
+
+    &:after {
+        content: " ";
+        background-color: $light-grey;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        top: calc(50% - 0.5px);
+        width: 100%;
+        z-index: 1;
+    }
+}
+
 .opacity-overlay {
     cursor: pointer;
     position: relative;
