@@ -41,6 +41,7 @@ input.directive("inputField", [
                 isDisabled: "=?",
                 fill: "=?",
                 icon: "@?",
+                kiiriIcon: "@?",
                 invalid: "=?",
                 name: "@?",
                 placeholder: "@?",

@@ -1,7 +1,7 @@
 
 @import "../constants";
 
-kiiri-dropdown {
+dropdown {
     display: inline-block;
 
     &.fill {
@@ -9,6 +9,12 @@ kiiri-dropdown {
 
         .kiiri-dropdown {
             width: 100%;
+        }
+    }
+
+    &.no-left-padding {
+        .kiiri-dropdown .kiiri-dropdown-current-item {
+            padding-left: 0;
         }
     }
 }
@@ -21,10 +27,19 @@ kiiri-dropdown {
     text-align: left;
     height: 40px;
     cursor: pointer;
+    outline: none;
     z-index: 0;
 
     &.open {
         z-index: 100;
+
+        .kiiri-dropdown-current-item {
+            color: $primary-theme;
+
+            icon.kiiri-dropdown-current-item-arrow {
+                right: 0;
+            }
+        }
     }
 
     &.empty, &.disabled {
@@ -33,6 +48,15 @@ kiiri-dropdown {
 
     &.fill {
         width: 100%;
+    }
+
+    &.large {
+        height: 50px;
+
+        .kiiri-dropdown-current-item, .kiiri-dropdown-item {
+            height: 50px;
+            line-height: 50px;
+        }
     }
 
     table {
@@ -59,10 +83,6 @@ kiiri-dropdown {
         }
     }
 
-    .kiiri-dropdown-current-item {
-        border-radius: 4px;
-    }
-
     .kiiri-dropdown-current-item, .kiiri-dropdown-item {
         position: relative;
         width: 100%;
@@ -71,13 +91,30 @@ kiiri-dropdown {
         background-size: 20px 20px;
         background-position: 15px center;
         background-repeat: no-repeat;
-        background-color: $background-theme;
+        background-color: transparent;
         cursor: pointer;
-        padding: 0px 40px 0px 20px;
+        padding: 0px 50px 0px 20px;
         color: $default-font-color;
+        transition: all 150ms ease-in-out;
+
+        &:hover {
+            color: $primary-theme;
+
+            icon.kiiri-dropdown-current-item-arrow {
+                right: 0;
+            }
+        }
 
         &.has-icon {
             padding-left: 50px;
+        }
+
+        &.has-kiiri-icon {
+            padding-left: 10px;
+        }
+
+        icon {
+            margin-right: 10px;
         }
 
         &.empty, &.disabled {
@@ -87,19 +124,23 @@ kiiri-dropdown {
         }
     }
 
-    .kiiri-dropdown-current-item:after {
-        content: "";
-        position: absolute;
-        right: 10px;
-        width: 20px;
+    .kiiri-dropdown-current-item {
+        border-radius: 4px;
+    }
+
+    icon.kiiri-dropdown-current-item-arrow {
         height: 100%;
-        background: transparent url("icons/arrow-down.png") no-repeat 0px center;
-        background-size: 14px 9px;
+        margin-right: 0;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        transition: right 150ms ease-in-out;
     }
 
     .kiiri-dropdown-items {
-        box-shadow: 0 0 5px rgba(0,0,0,.1);
-        border-radius: 4px;
+        background: $background-white;
+        box-shadow: $default-box-shadow;
+        border-radius: 2px;
         margin-top: 5px;
         z-index: -1;
 
@@ -121,9 +162,14 @@ kiiri-dropdown {
         }
 
         .kiiri-dropdown-item {
+            background-color: $background-white;
             display: block;
             transition: $transition-all;
             white-space: nowrap;
+
+            &.has-kiiri-icon {
+                padding-left: 50px;
+            }
 
             &:first-child {
                 border-top-left-radius: 4px;
@@ -136,8 +182,8 @@ kiiri-dropdown {
             }
 
             &:hover, &.tab-index-selected {
-                background: $primary-theme;
-                color: $button-font-color;
+                background: $background-theme;
+                color: $primary-theme;
             }
         }
     }

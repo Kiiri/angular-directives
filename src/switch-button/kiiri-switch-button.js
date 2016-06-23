@@ -38,7 +38,8 @@ switchButton.directive("switchButton", [
                 selectedValue: "=?",
                 fill: "@?",
                 onChange: "&?",
-                disabled: "=?"
+                disabled: "=?",
+                type: "@?"
             },
             controller: "switchButtonController",
             link: function ($scope, element) {
@@ -50,6 +51,11 @@ switchButton.directive("switchButton", [
 
                         element.find(".kiiri-switch-item, .kiiri-switch-slider").width(largerWidth);
                     });
+                }
+
+                // For backwards compatibility
+                if ($scope.fill) {
+                    $(element).addClass("fill");
                 }
             }
         };

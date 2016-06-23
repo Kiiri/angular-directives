@@ -1,0 +1,34 @@
+
+@import "../constants";
+
+.kiiri-side-panel {
+    background: $background-navy;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 350px;
+    z-index: 999;
+
+    &.slide {
+        transition: right 0.5s ease-out;
+
+        &.not-visible {
+            right: -100%;
+        }
+
+        &.visible {
+            right: 0;
+        }
+    }
+
+    &:not(.slide) {
+        &.not-visible {
+            display: none;
+        }
+
+        &.visible {
+            display: block;
+        }
+    }
+}

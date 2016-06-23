@@ -1,11 +1,7 @@
 @import "../constants";
 
-.kiiri-switch-button {
-    border-radius: 4px;
-    background: $background-theme;
+switch-button {
     display: inline-block;
-    position: relative;
-    vertical-align: top;
 
     &.fill {
         width: 100%;
@@ -18,6 +14,14 @@
             width: 100%;
         }
     }
+}
+
+.kiiri-switch-button {
+    border-radius: 4px;
+    background: $background-theme;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
 
     .kiiri-switch-item, .kiiri-switch-slider {
         color: $light-grey;

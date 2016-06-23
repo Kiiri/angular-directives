@@ -24,6 +24,12 @@ input-field {
         left: 15px;
     }
 
+    icon {
+        position: absolute;
+        top: 5px;
+        left: 0;
+    }
+
     &.fill {
         width: 100%;
     }
@@ -59,6 +65,14 @@ input-field {
             }
         }
 
+        &[type='transparent'] {
+            background: transparent;
+
+            &:disabled {
+                background: transparent;
+            }
+        }
+
         &[type='underline'] {
             background: transparent;
             border-bottom: 1px solid transparent;
@@ -90,6 +104,10 @@ input-field {
 
         &.has-icon {
             padding-left: 45px;
+        }
+
+        &.has-kiiri-icon {
+            padding-left: 40px;
         }
 
         &:focus {

@@ -43,18 +43,22 @@ $main-font:                     'Quattrocento Sans', sans-serif;
 $header-font:                   'Montserrat', sans-serif;
 $button-font-color:             #FFFFFF;
 $black-font-color:              #000000;
+$white-font-color:              #FFFFFF;
 $default-font-color:            #777777;
 $default-font-family:           $main-font;
 $default-font-size:             14px;
+$caption-font-size:             12px;
 $default-font-weight:           400;
 $default-line-height:           1.5;
 $default-letter-spacing:        .05em;
+$default-box-shadow:            0 0 5px rgba(0,0,0,.15);
 
 // Default Transitions
 $transition-all:            all 150ms ease-in-out;
 $transition-cubic:          all 500ms cubic-bezier(.09,.38,.35,.69);
 
 // Breakpoints
+$medium-devices:        970px;
 $tablet:                768px;
 $small-screen-size:     400px;
 

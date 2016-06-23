@@ -45,6 +45,10 @@ angular-button {
         padding: 0 40px;
     }
 
+    &.round {
+        border-radius: 30px;
+    }
+
     &.sliding, &.hollow {
         &:before {
             background: -webkit-linear-gradient(left, #6A9EEB  ,#00E2E2 60%);

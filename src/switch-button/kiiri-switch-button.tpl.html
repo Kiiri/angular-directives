@@ -1,5 +1,5 @@
 
-<div class="kiiri-switch-button" ng-class="{ fill: fill }">
+<div class="kiiri-switch-button {{ type }}" ng-class="{ fill: fill }">
     <div class="kiiri-switch-item left-switch" ng-class="{ selected: selectedValue === leftValue }" ng-click="select(leftValue)">
         <span>{{ leftValue }}</span>
         <div class="kiiri-switch-slider" ng-class="{ 'left-switch': selectedValue === leftValue, 'right-switch': selectedValue === rightValue }"></div>

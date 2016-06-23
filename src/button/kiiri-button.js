@@ -45,7 +45,8 @@ button.directive("angularButton", [
                 disabled: "=?",
                 fill: "=?",
                 link: "@?",
-                size: "@?"
+                size: "@?",
+                round: "@?"
             },
             transclude: true,
             controller: "buttonController",

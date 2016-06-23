@@ -13,6 +13,9 @@ h6, .h6 {  font-family: $header-font; font-size: 1.125em; line-height: $default-
     box-sizing: border-box;
 }
 
+// Content
+.c1 { font-family: $default-font-family; font-size: $caption-font-size; line-height: $default-line-height; }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
@@ -123,4 +126,12 @@ button, textarea {
             width: 100%;
         }
     }
+}
+
+.table {
+    display: table;
+}
+
+.table-cell {
+    display: table-cell;
 }

@@ -47,12 +47,17 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
         };
 
         $scope.selectItem = function(item) {
-            $scope.selectedItem = item;
-            $scope.dropdownOpen = false;
+            if ($scope.triggerOnSelect) {
+                $scope.triggerOnSelect(item);
+            } else {
+                $scope.selectedItem = item;
 
-            if ($scope.inputFilter) {
-                $scope.fields.filterValue = angular.copy($scope.selectedItem);
+                if ($scope.inputFilter) {
+                    $scope.fields.filterValue = angular.copy($scope.selectedItem);
+                }
             }
+
+            $scope.dropdownOpen = false;
         };
 
         $scope.toggleDropdown = function() {
@@ -160,6 +165,7 @@ dropdown.directive("dropdown", [
                 disabled: "=?",
                 emptyText: "@?",
                 icon: "@?",
+                kiiriIcon: "@?",
                 imageIcon: "@?",
                 formName: "@?",
                 items: "=?",
@@ -170,7 +176,8 @@ dropdown.directive("dropdown", [
                 menuHeight: "@?",
                 inputFilter: "@?",
                 fill: "@?",
-                type: "@?"
+                type: "@?",
+                triggerOnSelect: "=?"
             },
             transclude: true,
             controller: "dropdownController",

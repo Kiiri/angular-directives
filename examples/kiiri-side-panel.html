@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html ng-app="Examples">
+    <head>
+        <title>Kiiri Angular Directive Examples</title>
+        <meta charset="utf-8">
+        <link href='https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="../build/kiiri-angular-directives.min.css"></link>
+        <style>
+            .example-modal {
+                margin: 0px auto;
+                width: 500px;
+                padding: 40px;
+            }
+
+            .example-modal .title {
+                font-size: 24px;
+                font-weight: 300;
+                color: #666666;
+                text-align: center;
+                margin-bottom: 40px;
+                line-height: 24px;
+            }
+
+            .kiiri-input-field, .kiiri-text-area {
+                margin-bottom: 10px;
+            }
+
+        </style>
+    </head>
+    <body ng-controller="ExampleController">
+        <angular-button click="sidePanelOpen = true">Open Side Panel</angular-button>
+        <side-panel open="sidePanelOpen">
+            SOME CONTENT
+        </side-panel>
+
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="../build/kiiri-angular-directives.min.js"></script>
+
+        <script>
+            var examples = angular.module("Examples", ["kiiri.angular"]);
+
+            angular.module("Examples").controller("ExampleController", function($scope, $timeout) {
+
+            });
+        </script>
+    </body>
+</html>
