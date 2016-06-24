@@ -130,8 +130,22 @@ button, textarea {
 
 .table {
     display: table;
+    margin-bottom: 0;
 }
 
 .table-cell {
     display: table-cell;
+}
+
+.left {
+    float: left;
+}
+
+.dollar {
+    &::before {
+        content: "$";
+        display: inline-block;
+        font-size: 0.6em;
+        vertical-align: top;
+    }
 }

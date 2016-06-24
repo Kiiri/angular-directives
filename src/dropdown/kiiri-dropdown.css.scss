@@ -51,6 +51,10 @@ dropdown {
             icon.kiiri-dropdown-current-item-arrow {
                 right: 5px;
             }
+
+            .description {
+                color: $dark-grey;
+            }
         }
     }
 
@@ -65,13 +69,8 @@ dropdown {
     &.large {
         height: 50px;
 
-        icon.kiiri-dropdown-current-item-arrow {
-            top: 10px;
-        }
-
         .kiiri-dropdown-current-item, .kiiri-dropdown-item {
             height: 50px;
-            line-height: 50px;
         }
     }
 
@@ -83,6 +82,10 @@ dropdown {
         &.open {
             z-index: 100;
         }
+    }
+
+    .table {
+        width: auto;
     }
 
     input {
@@ -100,24 +103,28 @@ dropdown {
     }
 
     .kiiri-dropdown-current-item, .kiiri-dropdown-item {
-        position: relative;
-        width: 100%;
-        height: 40px;
-        line-height: 40px;
-        background-size: 20px 20px;
+        background-color: transparent;
         background-position: 15px center;
         background-repeat: no-repeat;
-        background-color: transparent;
-        cursor: pointer;
-        padding: 0px 50px 0px 20px;
+        background-size: 20px 20px;
         color: $default-font-color;
+        cursor: pointer;
+        height: 40px;
+        line-height: $default-line-height;
+        padding: 0px 50px 0px 20px;
+        position: relative;
         transition: all 150ms ease-in-out;
+        width: 100%;
 
         &:hover {
             color: $primary-theme;
 
             icon.kiiri-dropdown-current-item-arrow {
                 right: 5px;
+            }
+
+            .description {
+                color: $dark-grey;
             }
         }
 
@@ -126,10 +133,12 @@ dropdown {
         }
 
         &.has-kiiri-icon {
+            background-position: center;
             padding-left: 10px;
         }
 
         icon {
+            height: 100%;
             margin-right: 10px;
         }
 
@@ -138,18 +147,39 @@ dropdown {
             background-color: $background-grey;
             cursor: not-allowed;
         }
+
+        .table {
+            height: 100%;
+
+            .text-wrapper {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .description {
+                color: $dark-grey;
+                font-size: $caption-font-size;
+            }
+        }
     }
 
     .kiiri-dropdown-current-item {
         border-radius: 4px;
+
+        &.has-description {
+            height: 70px;
+        }
+
+        span {
+            vertical-align: middle;
+        }
     }
 
     icon.kiiri-dropdown-current-item-arrow {
-        height: 100%;
         margin-right: 0;
         position: absolute;
         right: 10px;
-        top: 5px;
+        top: 0;
         transition: right 150ms ease-in-out;
     }
 
@@ -183,6 +213,10 @@ dropdown {
             transition: $transition-all;
             white-space: nowrap;
 
+            &.has-description {
+                height: 70px;
+            }
+
             &.has-kiiri-icon {
                 padding-left: 50px;
             }
@@ -200,6 +234,10 @@ dropdown {
             &:hover, &.tab-index-selected {
                 background: $background-theme;
                 color: $primary-theme;
+
+                .description {
+                    color: $default-font-color;
+                }
             }
         }
     }
@@ -220,6 +258,10 @@ dropdown {
 
             .kiiri-dropdown-current-item {
                 height: 60px;
+
+                &.has-description {
+                    height: 70px;
+                }
             }
 
             .kiiri-dropdown-items {

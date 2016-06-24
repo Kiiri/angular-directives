@@ -13,6 +13,8 @@
         <form id="test-form">
             <h2> Default Dropdowns </h2>
             <dropdown empty-text="No valid items found" items="sortBy" default-text="Sort By" selected-item="fields.sortByOne" form-name="sortOne" kiiri-icon="time"></dropdown><br/><br/>
+            <dropdown empty-text="No valid items found" items="sortByObjectsWithAlternateText" default-text="Sort By" selected-item="fields.sortByOneAlt" form-name="sortOne" kiiri-icon="time"></dropdown><br/><br/>
+
             <dropdown class="no-left-padding" empty-text="No valid items found" items="sortByObjects" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true"></dropdown><br/><br/>
             <dropdown empty-text="No valid items found" items="sortByObjects" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true"></dropdown><br/><br/>
             <dropdown empty-text="No valid items found" items="sortByObjects" link-items="linkItems" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true">
@@ -51,6 +53,28 @@
                     {
                         name: "Distance",
                         value: "distance"
+                    }
+                ];
+                $scope.sortByObjectsWithAlternateText = [
+                    {
+                        name: "Number of Bolts",
+                        value: "numBolts",
+                        description: "Some Description"
+                    },
+                    {
+                        name: "Seat Availability",
+                        value: "seatsAvaliable",
+                        description: "Some Description"
+                    },
+                    {
+                        name: "Popularity",
+                        value: "popular",
+                        description: "Some Description"
+                    },
+                    {
+                        name: "Distance",
+                        value: "distance",
+                        description: "Some Description"
                     }
                 ];
                 $scope.linkItems = [
