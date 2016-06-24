@@ -13,8 +13,20 @@ dropdown {
     }
 
     &.no-left-padding {
-        .kiiri-dropdown .kiiri-dropdown-current-item {
-            padding-left: 0;
+        .kiiri-dropdown {
+            icon.kiiri-dropdown-current-item-arrow {
+                right: 5px;
+            }
+
+            &:hover, &.open {
+                icon.kiiri-dropdown-current-item-arrow {
+                    right: 0;
+                }
+            }
+
+            .kiiri-dropdown-current-item {
+                padding-left: 0;
+            }
         }
     }
 }
@@ -37,7 +49,7 @@ dropdown {
             color: $primary-theme;
 
             icon.kiiri-dropdown-current-item-arrow {
-                right: 0;
+                right: 5px;
             }
         }
     }
@@ -52,6 +64,10 @@ dropdown {
 
     &.large {
         height: 50px;
+
+        icon.kiiri-dropdown-current-item-arrow {
+            top: 10px;
+        }
 
         .kiiri-dropdown-current-item, .kiiri-dropdown-item {
             height: 50px;
@@ -101,7 +117,7 @@ dropdown {
             color: $primary-theme;
 
             icon.kiiri-dropdown-current-item-arrow {
-                right: 0;
+                right: 5px;
             }
         }
 
@@ -132,7 +148,7 @@ dropdown {
         height: 100%;
         margin-right: 0;
         position: absolute;
-        right: 5px;
+        right: 10px;
         top: 5px;
         transition: right 150ms ease-in-out;
     }
@@ -192,9 +208,23 @@ dropdown {
         cursor: auto;
     }
 
-    &.white {
-        .kiiri-dropdown-current-item, .kiiri-dropdown-item {
-            background-color: $background-white;
+    &.expand {
+        &:hover table {
+            box-shadow: $default-box-shadow;
+        }
+
+        &.open {
+            table {
+                box-shadow: $default-box-shadow;
+            }
+
+            .kiiri-dropdown-current-item {
+                height: 60px;
+            }
+
+            .kiiri-dropdown-items {
+                box-shadow: none;
+            }
         }
     }
 }
