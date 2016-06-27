@@ -12,6 +12,7 @@ input.controller("inputController", ["$scope", "Helpers",
     function ($scope, Helpers) {
         "use strict";
 
+        Helpers.defaultValue($scope, "guid", Helpers.guid());
         Helpers.defaultValue($scope, "fill", false);
         Helpers.defaultValue($scope, "invalid", false);
         Helpers.defaultValue($scope, "type", "text");
@@ -26,6 +27,20 @@ input.controller("inputController", ["$scope", "Helpers",
 
         $scope.clearInvalid = function() {
             $scope.invalid = false;
+        };
+
+        $scope.geolocate = function() {
+            if (navigator && navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var geolocation = new google.maps.LatLng(
+                    position.coords.latitude, position.coords.longitude);
+                    var circle = new google.maps.Circle({
+                        center: geolocation,
+                        radius: position.coords.accuracy
+                    });
+                    $scope.autocomplete.setBounds(circle.getBounds());
+                });
+            }
         };
     }
 ]);
@@ -49,13 +64,29 @@ input.directive("inputField", [
                 value: "=",
                 onEnter: "&?",
                 stripe: "@?",
-                size: "@?"
+                size: "@?",
+                onMapSelect: "=?"
             },
             controller: "inputController",
             link: function($scope, element, attributes) {
                 // For backwards compatibility
                 if ($scope.fill) {
                     $(element).addClass("fill");
+                }
+
+                if ($scope.type === "address") {
+                    $(element).find("input").attr("id", $scope.guid);
+
+                    if (google) {
+                        // Create the autocomplete object, restricting the search
+                        // to geographical location types.
+                        $scope.autocomplete = new google.maps.places.Autocomplete(document.getElementById($scope.guid), { types: ['geocode'] });
+                        // When the user selects an address from the dropdown,
+                        // populate the address fields in the form.
+                        google.maps.event.addListener($scope.autocomplete, 'place_changed', function() {
+                            ($scope.onMapSelect || angular.noop)($scope.autocomplete.getPlace());
+                        });
+                    }
                 }
             }
         };
