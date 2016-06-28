@@ -9,7 +9,7 @@ button.controller("buttonController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, "slideHover", false);
 
         $scope.onClick = function($event) {
-            if (!$scope.propagate) {
+            if ($event && !$scope.propagate) {
                 $event.stopPropagation();
             }
 

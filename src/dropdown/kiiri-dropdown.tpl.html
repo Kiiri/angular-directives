@@ -1,5 +1,5 @@
 
-<div class="kiiri-dropdown {{ type }}" ng-click="toggleDropdown()" clickoutside on-click-outside="closeDropdown" is-enabled="dropdownOpen" ng-class="{ empty: (items.length === 0), disabled: disabled, open: dropdownOpen, fill: fill }" ng-mouseleave="openOnHover && closeDropdown()" tabindex="0" ng-keydown="tabIndexKeyDown($event)">
+<div class="kiiri-dropdown {{ type }}" ng-click="toggleDropdown()" clickoutside on-click-outside="closeDropdown" is-enabled="dropdownOpen" ng-class="{ empty: (items.length === 0), disabled: disabled, open: dropdownOpen, fill: fill }" ng-mouseleave="openOnHover && closeDropdown()" ng-attr-tabindex="{{ !inputFilter && '0' }}" ng-keydown="tabIndexKeyDown($event)">
     <table ng-class="{ open: dropdownOpen }">
         <tr><td>
             <div class="kiiri-dropdown-current-item" ng-style="{'background-image': (icon && 'url('+icon+')')}" ng-class="{ 'has-icon': icon, 'has-kiiri-icon': kiiriIcon, empty: (items.length === 0), disabled: disabled, 'has-description': (selectedItem && selectedItem.description) }" ng-mouseout="dropdownHover = false" ng-mouseover="(dropdownHover = true) && openOnHover && openDropdown()" ng-if="!inputFilter">
@@ -13,7 +13,7 @@
                 </div>
                 <icon class="kiiri-dropdown-current-item-arrow arrow-down" ng-class="{ 'icon-primary': (dropdownHover || dropdownOpen), 'arrow-up': dropdownOpen }"></icon>
             </div>
-            <input-field ng-if="inputFilter" value="fields.filterValue" fill="true" placeholder="{{ defaultText }}"></input-field>
+            <input-field ng-if="inputFilter" value="fields.filterValue" fill="true" placeholder="{{ defaultText }}" on-enter="onEnter()"></input-field>
         </td></tr>
         <tr ng-click="$event.stopPropagation()" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
             <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }" scrollbar ng-style="{ 'max-height': (menuHeight + 'px')}">
