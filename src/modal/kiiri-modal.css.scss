@@ -84,6 +84,7 @@
         background: #FFFFFF;
         border-radius: 6px;
         padding: 8px 0 0;
+        min-width: 400px;
 
         &:before {
             @extend .default-gradient;

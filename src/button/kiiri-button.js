@@ -19,12 +19,16 @@ button.controller("buttonController", ["$scope", "Helpers",
         };
 
         $scope.buttonHover = function() {
+            $scope.buttonHovering = true;
+
             if ($scope.slideHover) {
                 $scope.sliding = true;
             }
         };
 
         $scope.buttonLeave = function() {
+            $scope.buttonHovering = false;
+
             if ($scope.slideHover) {
                 $scope.sliding = false;
             }
@@ -46,7 +50,9 @@ button.directive("angularButton", [
                 fill: "=?",
                 link: "@?",
                 size: "@?",
-                round: "@?"
+                round: "@?",
+                typeOnHover: "@?",
+                buttonHovering: "=?"
             },
             transclude: true,
             controller: "buttonController",

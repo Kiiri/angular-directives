@@ -1,0 +1,22 @@
+@import "../constants";
+
+menu {
+    display: block;
+
+    .kiiri-menu {
+        box-shadow: $default-box-shadow;
+        position: absolute;
+    }
+
+    .kiiri-menu-item {
+        background: $background-white;
+        color: $default-font-color;
+        cursor: pointer;
+        padding: 10px 20px;
+
+        &:hover {
+            background: $background-theme;
+            color: $primary-theme;
+        }
+    }
+}
