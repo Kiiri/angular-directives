@@ -1,4 +1,7 @@
 
-<div class="kiiri-menu" ng-show="open" ng-style="{ top: top, left: left, right: right, bottom: bottom, width: width }" clickoutside on-click-outside="closeMenu">
-    <div class="kiiri-menu-item" ng-repeat="item in items" ng-click="menuItemClicked(item)">{{ item.name }}</div>
+<div class="kiiri-menu" ng-show="open" ng-style="{ width: width }" clickoutside on-click-outside="closeMenu">
+    <div class="kiiri-menu-item" ng-repeat="item in items track by $index" ng-click="menuItemClicked($index); $event.stopPropagation()" ng-class="{ selected: item.selected }">
+        {{ item.name }}
+        <icon class="check icon-primary" ng-show="item.selected"></icon>
+    </div>
 </div>

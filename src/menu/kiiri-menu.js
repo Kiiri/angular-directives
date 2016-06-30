@@ -12,11 +12,21 @@ menu.controller("menuController", ["$log", "$scope", "Helpers",
             $scope.open = false;
         };
 
-        $scope.menuItemClicked = function(item) {
+        $scope.menuItemClicked = function(index) {
+            if ($scope.selectItem) {
+                for (var i = 0; i < $scope.items.length; i++) {
+                    $scope.items[i].selected = (i === index);
+                }
+
+                $scope.selected = $scope.items[index];
+            }
+
+            var item = $scope.items[index];
+
             if (item.url) {
                 window.location.href = item.url;
             } else if (item.click) {
-                item.click();
+                item.click($scope.clickTarget);
             } else {
                 $log.error("Neither URL nor click was defined for the menu item");
             }
@@ -55,9 +65,29 @@ menu.directive("menu", [
                 left: "@?",
                 right: "@?",
                 bottom: "@?",
-                closeOnClick: "@?"
+                closeOnClick: "@?",
+                clickTarget: "=?",
+                selectItem: "@?",
+                selected: "=?"
             },
-            controller: "menuController"
+            controller: "menuController",
+            link: function($scope, element, attributes) {
+                if ($scope.top) {
+                    element.css("top", $scope.top);
+                }
+
+                if ($scope.left) {
+                    element.css("left", $scope.left);
+                }
+
+                if ($scope.bottom) {
+                    element.css("bottom", $scope.bottom);
+                }
+
+                if ($scope.right) {
+                    element.css("right", $scope.right);
+                }
+            }
         };
     }
 ]);

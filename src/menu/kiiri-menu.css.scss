@@ -2,21 +2,38 @@
 
 menu {
     display: block;
+    padding-left: 0;
+    position: absolute;
+    z-index: 999;
 
     .kiiri-menu {
         box-shadow: $default-box-shadow;
-        position: absolute;
     }
 
     .kiiri-menu-item {
         background: $background-white;
         color: $default-font-color;
         cursor: pointer;
-        padding: 10px 20px;
+        font-family: $default-font-family;
+        font-size: $default-font-size;
+        font-weight: $default-font-weight;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 20px;
 
         &:hover {
             background: $background-theme;
             color: $primary-theme;
+        }
+
+        &.selected {
+            color: $primary-theme;
+        }
+
+        icon.check {
+            float: right;
+            position: relative;
+            top: 5px;
         }
     }
 }
