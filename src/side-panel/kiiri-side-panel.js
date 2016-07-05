@@ -14,7 +14,9 @@ sidePanel.controller("sidePanelController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, "type", "slide");
 
         $scope.closePanel = function() {
-            $scope.open = false;
+            if ($scope.closeOnClickOutside !== "false") {
+                $scope.open = false;
+            }
         };
     }
 ]);
@@ -27,7 +29,8 @@ sidePanel.directive("sidePanel", [
             templateUrl: "src/side-panel/kiiri-side-panel.tpl.html",
             scope: {
                 open: "=",
-                type: "@?"
+                type: "@?",
+                closeOnClickOutside: "@?"
             },
             transclude: true,
             controller: "sidePanelController"
