@@ -131,10 +131,16 @@ button, textarea {
 .table {
     display: table;
     margin-bottom: 0;
+
+    &.fill {
+        height: 100%;
+        width: 100%;
+    }
 }
 
 .table-cell {
     display: table-cell;
+    vertical-align: middle;
 }
 
 .left {
@@ -148,6 +154,14 @@ button, textarea {
         font-size: 0.6em;
         vertical-align: top;
     }
+}
+
+.absolute-container {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 /* Adapted from http://tinyurl.com/jq5ew3g. Use like: .circle-draw: .circle-half */

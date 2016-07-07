@@ -5,6 +5,7 @@ button.controller("buttonController", ["$scope", "Helpers",
     function ($scope, Helpers) {
         "use strict";
 
+        Helpers.defaultValue($scope, "round", "true");
         Helpers.defaultValue($scope, "propagate", false);
         Helpers.defaultValue($scope, "slideHover", false);
 

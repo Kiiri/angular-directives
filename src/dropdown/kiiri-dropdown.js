@@ -178,7 +178,7 @@ dropdown.directive("dropdown", [
                 fill: "@?",
                 type: "@?",
                 triggerOnSelect: "=?",
-                onEnter: "=?"
+                onEnter: "&?"
             },
             transclude: true,
             controller: "dropdownController",

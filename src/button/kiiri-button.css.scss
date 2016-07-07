@@ -42,7 +42,7 @@ angular-button {
         padding: 0 40px;
     }
 
-    &.round {
+    &.round, &.round.sliding:before, &.round.hollow:before {
         border-radius: 30px;
     }
 
