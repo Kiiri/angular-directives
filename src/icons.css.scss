@@ -1,6 +1,7 @@
 
 @import "constants";
 
+
 $colors: (
     icon-default: $dark-grey,
     icon-primary: $primary-theme,
@@ -123,11 +124,15 @@ $icons: (
     @return url("data:image/svg+xml;charset=utf8,#{$icon}");
 }
 
+@function urlEscapeColorHex($hex) {
+    @return "%23" + str-slice("" + $hex, 2)
+}
+
 @mixin iconVariants($icon-name) {
     background-image: icon($icon-name, map-get($colors, icon-default));
 
     @each $color, $hex in $colors {
-        &.#{$color} { background-image: icon($icon-name, $hex); }
+        &.#{$color} { background-image: icon($icon-name, urlEscapeColorHex($hex)); }
     }
 }
 
