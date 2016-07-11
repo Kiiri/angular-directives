@@ -129,7 +129,7 @@ $icons: (
 }
 
 @mixin iconVariants($icon-name) {
-    background-image: icon($icon-name, map-get($colors, icon-default));
+    background-image: icon($icon-name, urlEscapeColorHex(map-get($colors, icon-default)));
 
     @each $color, $hex in $colors {
         &.#{$color} { background-image: icon($icon-name, urlEscapeColorHex($hex)); }
