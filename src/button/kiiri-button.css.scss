@@ -167,6 +167,17 @@ angular-button {
         }
     }
 
+    &.white {
+        background: $background-white;
+        border: 2px solid $primary-theme;
+        color: $primary-theme;
+    }
+
+    &.red {
+        background: $primary-red;
+        color: $white-font-color;
+    }
+
     &.text {
         background: transparent;
         color: $default-font-color;
