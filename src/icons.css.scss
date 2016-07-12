@@ -132,7 +132,7 @@ $icons: (
     background-image: icon($icon-name, urlEscapeColorHex(map-get($colors, icon-default)));
 
     @each $color, $hex in $colors {
-        &.#{$color} { background-image: icon($icon-name, urlEscapeColorHex($hex)); }
+        &.#{$color}, &.hover-#{$color}:hover { background-image: icon($icon-name, urlEscapeColorHex($hex)); }
     }
 }
 

@@ -37,6 +37,10 @@ button, textarea {
     letter-spacing: $default-letter-spacing;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .default-gradient {
     background: -webkit-gradient(linear, left center, right center, from($light-blue),color-stop(100%,  $primary-theme));
     background: -webkit-linear-gradient(left,$light-blue, $primary-theme 100%);
