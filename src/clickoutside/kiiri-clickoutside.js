@@ -18,7 +18,8 @@ clickOutside.directive("clickoutside", ["$document", "Helpers",
             scope: {
                 onClickOutside: "=?",
                 isEnabled: "=?",
-                clickoutside: "&?"
+                clickoutside: "&?",
+                triggerId: "@?"
             },
             link: function($scope, element, attributes) {
                 // If the element has an id, hook onto that id, else generate a guid to use as an id for the element
@@ -46,6 +47,11 @@ clickOutside.directive("clickoutside", ["$document", "Helpers",
 
                         // The click event is inside the container, so just return
                         if (id !== undefined && id === $scope.mainElementId) {
+                            return;
+                        }
+
+                        // The click event is inside of the triggerId given, so just return
+                        if (id !== undefined && id === $scope.triggerId) {
                             return;
                         }
                     }

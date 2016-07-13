@@ -29,7 +29,8 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.switch",
                                            "kiiri.angular.textarea",
                                            "kiiri.angular.timepicker",
-                                           "kiiri.angular.tooltip"]);
+                                           "kiiri.angular.tooltip",
+                                           "kiiri.angular.uuid"]);
 
 /*
  * Extends angular's default $q service to support success and error chaining.

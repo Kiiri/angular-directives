@@ -68,7 +68,8 @@ menu.directive("menu", [
                 closeOnClick: "@?",
                 clickTarget: "=?",
                 selectItem: "@?",
-                selected: "=?"
+                selected: "=?",
+                triggerId: "@?"
             },
             controller: "menuController",
             link: function($scope, element, attributes) {
