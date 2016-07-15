@@ -102,3 +102,17 @@ app.directive("ngEnter", function() {
         });
     };
 });
+
+app.filter("truncate", ['$filter',
+    function($filter) {
+        return function(input, limit) {
+            if (input) {
+                if (input.length <= limit) {
+                    return input;
+                } else {
+                    return $filter("limitTo")(input, limit).trim() + "...";
+                }
+            }
+        };
+    }
+]);
