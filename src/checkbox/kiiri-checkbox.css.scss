@@ -1,48 +1,45 @@
 @import "../constants";
 
+checkbox {
+    display: inline-block;
+}
+
 .kiiri-checkbox {
     display: inline-block;
 
     input[type=checkbox] {
-        display:none;
+        display: none;
     }
 
     input[type=checkbox] + label {
-       background: url('icons/checkbox.png');
-       background-size: 20px 20px;
-       background-position: 0px 0px;
-       background-repeat: no-repeat;
-       height: 20px;
-       display:inline-block;
-       padding-left: 29px;
-       line-height: 20px;
-       font-weight: normal;
-       width: 100%;
-       text-align: left;
-       margin-left: 0px;
-       color: $dark-grey-sw-2;
+        cursor: pointer;
+        display:inline-block;
+        font-weight: $default-font-weight;
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        text-align: left;
+        width: 100%;
+
+        icon {
+            border: 1px solid $primary-grey;
+            display: inline-block;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: top;
+            width: 20px;
+        }
+
+        &:hover {
+            icon {
+                border: 1px solid $primary-theme;
+            }
+        }
     }
 
     input[type=checkbox]:checked + label {
-        background: url('icons/checkbox-checked.png');
-        background-size: 20px 20px;
-        background-position: 0px 0px;
-        height: 20px;
-        background-repeat: no-repeat;
-        display: inline-block;
-        color: $main-text-color;
-    }
-
-    input[type=checkbox]:disabled + label {
-        background: image-url('icons/checkbox-disabled.png');
-        background-size: 20px 20px;
-        background-position: 0px 0px;
-        background-repeat: no-repeat;
-    }
-
-    label {
-        cursor: pointer;
-        font-size: $main-font-size;
-        line-height: 20px;
+        icon {
+            border: 1px solid $primary-theme;
+        }
     }
 }

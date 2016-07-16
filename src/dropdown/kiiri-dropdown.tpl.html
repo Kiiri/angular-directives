@@ -7,8 +7,8 @@
                 <icon ng-hide="!kiiriIcon" class="{{kiiriIcon}} left" ng-class="{ 'icon-primary': (dropdownHover || dropdownOpen) }"></icon>
                 <div class="table left">
                     <div class="text-wrapper">
-                        {{ itemDisplay(selectedItem) || (items.length === 0 && emptyText) || defaultText }}
-                        <span class="description" ng-show="selectedItem && selectedItem.description"><br/>{{ selectedItem.description }}</span>
+                        {{ itemDisplay(selectedItem) || (items.length === 0 && emptyText) || defaultText }}<br/>
+                        <span class="description" ng-show="selectedItem && selectedItem.description" ng-bind-html="selectedItem.description"></span>
                     </div>
                 </div>
                 <icon class="kiiri-dropdown-current-item-arrow arrow-down" ng-class="{ 'icon-primary': (dropdownHover || dropdownOpen), 'arrow-up': dropdownOpen }"></icon>
@@ -26,8 +26,8 @@
                     <div class="table">
                         <div class="text-wrapper">
                             <dropdown-item item="item">
-                                {{itemDisplay(item)}}
-                                <span class="description" ng-show="item && item.description"><br/>{{ item.description }}</span>
+                                {{itemDisplay(item)}}<br/>
+                                <span class="description" ng-show="item && item.description" ng-bind-html="item.description"></span>
                             </dropdown-item>
                         </div>
                     </div>

@@ -1,5 +1,8 @@
 
 <div class="kiiri-checkbox">
     <input id="{{identifier}}" type="checkbox" ng-model="checked" ng-disabled="isDisabled"></input>
-    <label for="{{identifier}}"><span ng-transclude></span></label>
+    <label for="{{identifier}}">
+        <icon class="icon-primary" ng-class="{ check: checked }"></icon>
+        <span ng-transclude></span>
+    </label>
 </div>

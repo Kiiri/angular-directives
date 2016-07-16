@@ -1,0 +1,58 @@
+
+@import "../constants";
+
+.kiiri-timeslider {
+    .kiiri-timeslider-display {
+        font-size: $default-font-size;
+        line-height: $default-line-height;
+
+        .kiiri-timeslider-display-start {
+            float: left;
+        }
+        .kiiri-timeslider-display-end {
+            float: right;
+        }
+
+        &::after {
+            content: " ";
+            clear: both;
+            display: block;
+        }
+    }
+
+    .kiiri-timeslider-bar {
+        border: none;
+        height: 20px;
+        position: relative;
+
+        &::before {
+            background: $background-grey;
+            content: " ";
+            height: 5px;
+            position: absolute;
+            top: 7.5px;
+            width: 100%;
+        }
+
+        .ui-slider-handle {
+            background: $background-white;
+            border: 1px solid $primary-theme;
+            border-radius: 100%;
+            display: inline-block;
+            height: 20px;
+            position: absolute;
+            top: 0;
+            width: 20px;
+        }
+
+        .ui-slider-range {
+            background-color: $primary-theme;
+            border: none;
+            border-radius: 0;
+            height: 5px;
+            margin-left: 10px;
+            position: absolute;
+            top: 7.5px;
+        }
+    }
+}
