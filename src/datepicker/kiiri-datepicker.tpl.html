@@ -4,5 +4,5 @@
         <img ng-src="{{icon}}" ng-if="icon"></img>
         <input ng-model="currentDate" ng-class="{ 'has-icon': icon }" ng-click="toggleDatepicker(); $event.stopPropagation()"></input>
     </div><br/>
-    <div class="kiiri-datepicker-container datepicker-{{position}}" clickoutside on-click-outside="closeDatepicker" ng-show="isOpen"></div>
+    <div class="kiiri-datepicker-container datepicker-{{position}}" clickoutside on-click-outside="closeDatepicker" ng-show="isOpen" ng-click="$event.stopPropagation()"></div>
 </div>
