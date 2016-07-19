@@ -1,0 +1,8 @@
+
+<div class="kiiri-image-drop" ng-click="openFileInput()" ng-class="{ preview: image }">
+    <input type="file" file-change="fileInputChanged()" ng-model="fileInput"></input>
+    <div class="kiiri-image-drop-text" ng-show="!image">
+        <icon class="camera"></icon> Click to browse or drop files here
+    </div>
+    <img ng-show="image" class="kiiri-image-drop-preview" ng-src="{{image}}"></img>
+</div>

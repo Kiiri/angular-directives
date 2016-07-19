@@ -1,0 +1,60 @@
+
+@import "../constants";
+
+image-drop {
+    cursor: pointer;
+    display: inline-block;
+    height: 300px;
+    position: relative;
+    width: 300px;
+
+    &:hover {
+        .kiiri-image-drop {
+            border-color: $primary-theme;
+        }
+    }
+}
+
+.kiiri-image-drop {
+    background: $background-theme;
+    border: 2px dashed $primary-grey;
+    display: table;
+    height: 100%;
+    width: 100%;
+
+    .kiiri-image-drop-text {
+        display: table-cell;
+        line-height: 30px;
+        text-align: center;
+        vertical-align: middle;
+
+        icon {
+            margin-right: 5px;
+        }
+    }
+
+    input[type="file"] {
+        height: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 0;
+    }
+
+    .kiiri-image-drop-preview {
+        bottom:0;
+        left: 0;
+        right: 0;
+        margin:auto;
+        max-height:100%;
+        max-width:100%;
+        position:absolute;
+        top:0;
+    }
+
+    &.preview {
+        background: none;
+        border: 0;
+        display: inline-block;
+    }
+}
