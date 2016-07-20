@@ -23,6 +23,7 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
         Helpers.defaultValue($scope, "openOnHover", false);
         Helpers.defaultValue($scope, "menuHeight", 200);
         Helpers.defaultValue($scope, "inputFilter", false);
+        Helpers.defaultValue($scope, "currentItemClick", angular.noop);
 
         $scope.fields = {
             filterValue: angular.copy($scope.selectedItem)
@@ -178,7 +179,8 @@ dropdown.directive("dropdown", [
                 fill: "@?",
                 type: "@?",
                 triggerOnSelect: "=?",
-                onEnter: "&?"
+                onEnter: "&?",
+                currentItemClick: "&?"
             },
             transclude: true,
             controller: "dropdownController",
