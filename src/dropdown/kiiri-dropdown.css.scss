@@ -113,7 +113,7 @@ dropdown {
         line-height: $default-line-height;
         padding: 0px 50px 0px 20px;
         position: relative;
-        transition: all 150ms ease-in-out;
+        transition: $transition-all;
         width: 100%;
 
         &:hover {

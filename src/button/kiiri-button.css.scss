@@ -175,6 +175,7 @@ angular-button {
 
     &.red {
         background: $primary-red;
+        border: 2px solid $primary-red;
         color: $white-font-color;
     }
 

@@ -1,12 +1,13 @@
 @import "constants";
 
 // Headers
-h1, .h1 {  font-family: $header-font; font-size: 2em; line-height: $default-line-height; margin: 30px 0 20px; }
-h2, .h2 {  font-family: $header-font; font-size: 1.75em; line-height: $default-line-height; margin: 30px 0 20px; }
-h3, .h3 {  font-family: $header-font; font-size: 1.5em;  line-height: $default-line-height; margin: 30px 0 20px; }
-h4, .h4 {  font-family: $header-font; font-size: 1.375em; line-height: $default-line-height; margin: 30px 0 20px; }
-h5, .h5 {  font-family: $header-font; font-size: 1.25em; line-height: $default-line-height; margin: 30px 0 20px; }
-h6, .h6 {  font-family: $header-font; font-size: 1.125em; line-height: $default-line-height; margin: 30px 0 20px; }
+h1, .h1 {  font-family: $header-font; font-size: 2em; line-height: $default-line-height; margin: 0; }
+h2, .h2 {  font-family: $header-font; font-size: 1.75em; line-height: $default-line-height; margin: 0; }
+h3, .h3 {  font-family: $header-font; font-size: 1.5em;  line-height: $default-line-height; margin: 0; }
+h4, .h4 {  font-family: $header-font; font-size: 1.375em; line-height: $default-line-height; margin: 0; }
+h5, .h5 {  font-family: $header-font; font-size: 1.25em; line-height: $default-line-height; margin: 0; }
+h6, .h6 {  font-family: $header-font; font-size: 1.125em; line-height: $default-line-height; margin: 0; }
+h7, .h7 {  font-family: $header-font; line-height: $default-line-height; margin: 0; }
 
 // Default Base CSS
 *, *:before, *:after {
@@ -156,7 +157,7 @@ button, textarea {
         content: "$";
         display: inline-block;
         font-size: 0.6em;
-        vertical-align: top;
+        vertical-align: text-top;
     }
 }
 
