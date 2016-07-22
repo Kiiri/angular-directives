@@ -16,6 +16,13 @@
         right: 10px;
     }
 
+    &.border {
+        textarea {
+            background: transparent;
+            border: 1px solid $ruler-grey;
+        }
+    }
+
     textarea {
         border-radius: 4px;
         background: $background-theme;

@@ -36,7 +36,8 @@ textarea.directive("textArea", [
                 "name": "@?",
                 "placeholder": "@?",
                 "value": "=",
-                "max": "@?"
+                "max": "@?",
+                "type": "@?"
             },
             controller: "textareaController"
         };
