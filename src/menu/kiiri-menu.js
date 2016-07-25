@@ -13,6 +13,10 @@ menu.controller("menuController", ["$log", "$scope", "Helpers",
         };
 
         $scope.menuItemClicked = function(index) {
+            if ($scope.items[index].disabled) {
+                return;
+            }
+
             if ($scope.selectItem) {
                 for (var i = 0; i < $scope.items.length; i++) {
                     $scope.items[i].selected = (i === index);
