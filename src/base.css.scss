@@ -244,6 +244,19 @@ button, textarea {
     }
 }
 
+.circle-transition {
+    height: 60px;
+    margin: 0 auto 40px;
+    position: relative;
+    width: 60px;
+
+    icon, .circle-draw {
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+}
+
 @keyframes circledisplay {
     0% { opacity: 0; }
     100% { opacity: 1; }

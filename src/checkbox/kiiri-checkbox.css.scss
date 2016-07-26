@@ -35,11 +35,58 @@ checkbox {
                 border: 1px solid $primary-theme;
             }
         }
+
+        .switch-button {
+            background-color: $background-grey;
+            border: 1px solid $ruler-grey;
+            border-radius: 10px;
+            font-size: $default-font-size;
+            height: 100%;
+            line-height: 18px;
+            transition: $transition-all;
+
+            &:before {
+                color: $primary-grey;
+                content: "Off";
+                display: inline-block;
+                padding-left: 25px;
+                padding-right: 10px;
+            }
+
+            &:after {
+                background-color: $background-white;
+                border-radius: 100%;
+                content: " ";
+                display: block;
+                height: 18px;
+                position: absolute;
+                left: 1px;
+                top: 1px;
+                width: 18px;
+            }
+        }
     }
 
     input[type=checkbox]:checked + label {
         icon {
             border: 1px solid $primary-theme;
+        }
+
+        .switch-button {
+            background-color: $primary-theme;
+            border: 1px solid $primary-theme;
+
+            &:before {
+                color: $white-font-color;
+                content: "On";
+                padding-right: 25px;
+                padding-left: 10px;
+            }
+
+            &:after {
+                left: initial;
+                right: 1px;
+            }
         }
     }
 }

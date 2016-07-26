@@ -19,7 +19,8 @@ checkbox.directive("checkbox", [
             scope: {
                 checked: "=",
                 identifier: "=?",
-                isDisabled: "=?"
+                isDisabled: "=?",
+                type: "@?"
             },
             transclude: true,
             controller: "checkboxController"
