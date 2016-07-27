@@ -15,7 +15,7 @@ radioButton.controller("radioButtonController", ["$scope", "Helpers",
         Helpers.defaultValue($scope, "value", "");
         Helpers.defaultValue($scope, "name", "");
 
-        if ($scope.defaultSelected === "true") {
+        if ($scope.defaultSelected === "true" || $scope.defaultSelected === $scope.value) {
             $scope.checked = $scope.value;
         }
     }

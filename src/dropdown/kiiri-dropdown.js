@@ -25,6 +25,10 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
         Helpers.defaultValue($scope, "inputFilter", false);
         Helpers.defaultValue($scope, "currentItemClick", angular.noop);
 
+        if ($scope.defaultSelected) {
+            $scope.selectedItem = $scope.defaultSelected;
+        }
+
         $scope.fields = {
             filterValue: angular.copy($scope.selectedItem)
         };
@@ -163,6 +167,7 @@ dropdown.directive("dropdown", [
             scope: {
                 autoSelect: "=?",
                 defaultText: "@?",
+                defaultSelected: "@?",
                 disabled: "=?",
                 emptyText: "@?",
                 icon: "@?",
