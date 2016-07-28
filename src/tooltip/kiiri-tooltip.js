@@ -1,8 +1,8 @@
 
 var tooltip = angular.module("kiiri.angular.tooltip", []);
 
-tooltip.controller("tooltipController", ["$scope", "Helpers",
-    function ($scope, Helpers) {
+tooltip.controller("tooltipController", ["$element", "$scope", "Helpers",
+    function ($element, $scope, Helpers) {
         "use strict";
 
         Helpers.defaultValue($scope, "isVisible", false);
@@ -11,12 +11,13 @@ tooltip.controller("tooltipController", ["$scope", "Helpers",
 
         $scope.showTooltip = function($event) {
             if (!$scope.isDisabled && $scope.text) {
-                var element = $($event.currentTarget).parent();
-                var $tooltipContent = $(element).find(".tooltip-content");
+                var calculatorElement = $element.find(".kiiri-tooltip-length-calculator");
+                $scope.tooltipWidth = calculatorElement.width();
+                var $tooltipContent = $element.find(".tooltip-content");
                 $tooltipContent.css("width", $scope.tooltipWidth + 40);
 
                 if ($scope.position === "bottom") {
-                    $tooltipContent.css("left", $event.pageX - $(element).offset().left - 25);
+                    $tooltipContent.css("left", $event.pageX - $element.offset().left - 25);
                     $tooltipContent.css("top", $($event.currentTarget).height() + 12);
                 } else if ($scope.position === "right") {
                     $tooltipContent.css("left", $($event.currentTarget).width() + 12);
