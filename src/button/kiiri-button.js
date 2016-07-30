@@ -50,6 +50,7 @@ button.directive("angularButton", [
                 disabled: "=?",
                 fill: "=?",
                 link: "@?",
+                propagate: "@?",
                 size: "@?",
                 round: "@?",
                 typeOnHover: "@?",
