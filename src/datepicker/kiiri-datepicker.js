@@ -15,14 +15,21 @@
             Helpers.defaultValue($scope, "currentDatepickerMonth", new Date().getMonth());
             Helpers.defaultValue($scope, "position", "left");
 
+            if ($scope.currentDateObject) {
+                $scope.currentDate = $filter("date")($scope.currentDateObject, "MM/dd/yyyy");
+            } else {
+                $scope.currentDateObject = moment($scope.currentDate, "MM/DD/YYYY").toDate();
+            }
+
             $timeout(function() {
-                $element.find(".kiiri-datepicker-container").datepicker({
+                var parameters = {
                     showOtherMonths: true,
                     selectOtherMonths: true,
                     onSelect: function(date) {
                         $scope.$apply(function() {
                             if (date) {
                                 $scope.currentDate = date;
+                                $scope.currentDateObject = moment($scope.currentDate, "MM/DD/YYYY").toDate();
                                 $scope.closeDatepicker();
                             }
                         });
@@ -30,7 +37,25 @@
                     onChangeMonthYear: function(year, month) {
                         $scope.selectedDatepickerMonth = month;
                     }
-                });
+                };
+
+                if ($scope.minDate) {
+                    parameters.minDate = $scope.minDate;
+                }
+
+                if ($scope.maxDate) {
+                    parameters.maxDate = $scope.maxDate;
+                }
+
+                if ($scope.beforeShowDay) {
+                    parameters.beforeShowDay = $scope.beforeShowDay;
+                }
+
+                if ($scope.defaultDate) {
+                    parameters.defaultDate = $scope.defaultDate;
+                }
+
+                $element.find(".kiiri-datepicker-container").datepicker(parameters);
             }, 0);
 
             $scope.closeDatepicker = function() {
@@ -54,9 +79,15 @@
                 controller: "datepickerController",
                 scope: {
                     currentDate: "=?",
+                    currentDateObject: "=?",
                     fill: "@?",
                     icon: "@?",
-                    position: "@?"
+                    position: "@?",
+                    kiiriIcon: "@?",
+                    minDate: "=?",
+                    maxDate: "=?",
+                    beforeShowDay: "=?",
+                    defaultDate: "=?"
                 },
                 templateUrl: "src/datepicker/kiiri-datepicker.tpl.html"
             };

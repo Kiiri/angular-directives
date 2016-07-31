@@ -2,7 +2,8 @@
 <div class="kiiri-datepicker">
     <div class="kiiri-input-field" ng-class="{ fill: fill }">
         <img ng-src="{{icon}}" ng-if="icon"></img>
-        <input ng-model="currentDate" ng-class="{ 'has-icon': icon }" ng-click="toggleDatepicker(); $event.stopPropagation()"></input>
+        <icon class="{{kiiriIcon}}" ng-if="kiiriIcon"></icon>
+        <input ng-model="currentDate" ng-class="{ 'has-icon': icon || kiiriIcon }" ng-click="toggleDatepicker(); $event.stopPropagation()"></input>
     </div><br/>
     <div class="kiiri-datepicker-container datepicker-{{position}}" clickoutside on-click-outside="closeDatepicker" ng-show="isOpen" ng-click="$event.stopPropagation()"></div>
 </div>
