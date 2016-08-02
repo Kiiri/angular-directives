@@ -13,35 +13,10 @@
         background-color: #000000;
         opacity: .5;
 
-        .modal-close-cross {
+        icon.cross {
+            right: 10px;
             position: absolute;
-            top: 75px;
-            right: 75px;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-
-            &::before {
-                background: $primary-background;
-                content: ' ';
-                height: 42.42px;
-                position: absolute;
-                top: -7px;
-                transform: rotate(45deg);
-                right: 13px;
-                width: 2px;
-            }
-
-            &:after {
-                background: $primary-background;
-                content: ' ';
-                height: 2px;
-                left: -5px;
-                position: absolute;
-                top: 13px;
-                transform: rotate(225deg);
-                width: 42.42px;
-            }
+            top: 10px;
         }
     }
 
@@ -49,12 +24,11 @@
         position: fixed;
         left: 50%;
         z-index: 1000;
-        background-color: #F5F5F5;
-        border: 1px solid #999999;
-        border: 1px solid rgba(0,0,0,0.3);
-        border-radius: 6px;
+        background-color: $background-white;
+        border: none;
+        border-radius: 4px;
         outline: 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        box-shadow: 0 1px 5px rgba(0,0,0,0.5);
         background-clip: padding-box;
         overflow-x: hidden;
         overflow-y: auto;

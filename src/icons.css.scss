@@ -157,6 +157,18 @@ icon {
         width: 20px;
     }
 
+    &.medium {
+        background-size: 36px;
+        height: 36px;
+        width: 36px;
+    }
+
+    &.large {
+        background-size: 45px;
+        height: 45px;
+        width: 45px;
+    }
+
     &.xlarge {
         background-size: 60px;
         height: 60px;

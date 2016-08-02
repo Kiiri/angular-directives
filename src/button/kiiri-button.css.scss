@@ -10,12 +10,13 @@ angular-button {
 
 .kiiri-button {
     background: $primary-theme;
+    border: 1px solid $primary-theme;
     border-radius: 4px;
     color: $button-font-color;
     cursor: pointer;
     display: inline-block;
-    height: 40px;
-    line-height: 40px;
+    height: 32px;
+    line-height: 32px;
     outline: none;
     overflow: hidden;
     padding: 0 30px;
@@ -26,19 +27,24 @@ angular-button {
     width: 100%;
 
     &.small {
-        height: 32px;
-        line-height: 32px;
+        height: 22px;
+        line-height: 20px;
+    }
+
+    &.medium {
+        height: 36px;
+        line-height: 34px;
     }
 
     &.large {
-        height: 50px;
-        line-height: 50px;
+        height: 38px;
+        line-height: 36px;
         padding: 0 40px;
     }
 
     &.xlarge {
         height: 60px;
-        line-height: 60px;
+        line-height: 58px;
         padding: 0 40px;
     }
 
@@ -72,21 +78,25 @@ angular-button {
 
     &.hollow, &.border {
         background: transparent;
-        border: 2px solid $primary-theme;
+        border: 1px solid $primary-theme;
         color: $primary-theme;
-        line-height: 36px;
+        line-height: 30px;
         transition: color 500ms cubic-bezier(.09,.38,.35,.69);
 
         &.small {
-            line-height: 28px;
+            line-height: 20px;
+        }
+
+        &.medium {
+            line-height: 34px;
         }
 
         &.large {
-            line-height: 46px;
+            line-height: 36px;
         }
 
         &.xlarge {
-            line-height: 56px;
+            line-height: 58px;
         }
 
 
@@ -105,6 +115,14 @@ angular-button {
             &:before {
                 opacity: 1;
             }
+        }
+    }
+
+    &.hollow {
+        background: $background-white;
+
+        &:hover {
+            border-color: $dark-theme;
         }
     }
 
@@ -138,24 +156,45 @@ angular-button {
 
     &:hover {
         background: $dark-theme;
+        border-color: $dark-theme;
     }
 
     &.disabled, &.disabled:hover {
         background: $disabled-theme;
+        border-color: $disabled-theme;
         cursor: not-allowed;
     }
 
     &.loading, &.loading:hover {
-        cursor: wait;
         background: $disabled-theme;
+        border-color: $disabled-theme;
+        cursor: wait;
 
-        .fa-refresh {
+        icon.spinner {
             margin-left: 5px;
+            vertical-align: top;
+        }
+
+        &.small {
+            icon.spinner {
+                background-size: 20px;
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        &.large {
+            icon.spinner {
+                background-size: 36px;
+                height: 36px;
+                width: 36px;
+            }
         }
     }
 
     &.grey {
         background: $ruler-grey;
+        border-color: $ruler-grey;
         color: $primary-theme;
 
         &:hover:not(.disabled, .loading) {
@@ -169,18 +208,24 @@ angular-button {
 
     &.white {
         background: $background-white;
-        border: 2px solid $primary-theme;
+        border: 1px solid $primary-theme;
         color: $primary-theme;
     }
 
     &.red {
         background: $primary-red;
-        border: 2px solid $primary-red;
+        border-color: $primary-red;
         color: $white-font-color;
+
+        &:hover {
+            background: $dark-red;
+            border-color: $dark-red;
+        }
     }
 
     &.text {
         background: transparent;
+        border-color: transparent;
         color: $default-font-color;
 
         &:hover:not(.disabled) {
