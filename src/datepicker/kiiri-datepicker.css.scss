@@ -48,13 +48,10 @@
                 margin: 0;
             }
 
-            .ui-datepicker-month {
+            .ui-datepicker-month, .ui-datepicker-year {
                 color: $default-font-color;
                 font-size: 14px;
                 font-weight: 700;
-            }
-            .ui-datepicker-year {
-                display: none;
             }
 
             .ui-datepicker-next, .ui-datepicker-prev {

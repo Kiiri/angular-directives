@@ -7,6 +7,18 @@ checkbox {
 .kiiri-checkbox {
     display: inline-block;
 
+    &.disabled {
+        color: $primary-grey;
+
+        input[type=checkbox] + label {
+            &:hover {
+                icon {
+                    border-color: $primary-grey;
+                }
+            }
+        }
+    }
+
     input[type=checkbox] {
         display: none;
     }

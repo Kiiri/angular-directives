@@ -1,5 +1,5 @@
 
-<div class="kiiri-checkbox">
+<div class="kiiri-checkbox" ng-class="{ disabled: isDisabled }">
     <input id="{{identifier}}" type="checkbox" ng-model="checked" ng-disabled="isDisabled"></input>
     <label for="{{identifier}}" ng-switch="type">
         <span ng-switch-when="switch">

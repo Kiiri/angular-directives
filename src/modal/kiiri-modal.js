@@ -48,7 +48,7 @@ modal.directive("modal", ["$window",
                 // Ensures that the modal is centered properly on the screen
                 $scope.$watch("isOpen", function(newValue, oldValue) {
                     var width = $(element).find(".modal-frame").width();
-                    $(".modal-frame").css("margin-left", -1 * (width/2));
+                    $(element).find(".modal-frame").css("margin-left", -1 * (width/2));
 
                     if (newValue !== oldValue) {
                         $scope.fadeOut = !$scope.isOpen;

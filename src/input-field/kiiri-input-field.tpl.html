@@ -2,5 +2,5 @@
 <div class="kiiri-input-field {{ type }} {{ size }}" ng-class="{ fill: fill, disabled: disabled }">
     <img ng-src="{{icon}}" ng-if="icon"></img>
     <icon class="{{kiiriIcon}}" ng-if="kiiriIcon"></icon>
-    <input type="{{type}}" placeholder="{{placeholder}}" name="{{name}}" ng-model="value" ng-class="{ invalid: invalid, 'has-icon': icon, 'has-kiiri-icon': kiiriIcon }" ng-disabled="isDisabled" ng-enter="onEnter()" data-stripe="{{stripe}}" ng-change="clearInvalid()" ng-focus="type === 'address' && geolocate()"></input>
+    <input type="{{type}}" placeholder="{{placeholder}}" name="{{name}}" ng-model="value" ng-class="{ invalid: invalid, 'has-icon': icon, 'has-kiiri-icon': kiiriIcon }" ng-disabled="isDisabled" ng-enter="onEnter()" data-stripe="{{stripe}}" ng-change="clearInvalid()" ng-focus="type === 'address' && geolocate()" ng-blur="onBlur()"></input>
 </div>

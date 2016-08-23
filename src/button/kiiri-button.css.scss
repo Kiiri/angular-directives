@@ -26,6 +26,10 @@ angular-button {
     vertical-align: top;
     width: 100%;
 
+    icon {
+        vertical-align: top;
+    }
+
     &.small {
         height: 22px;
         line-height: 20px;
@@ -172,7 +176,6 @@ angular-button {
 
         icon.spinner {
             margin-left: 5px;
-            vertical-align: top;
         }
 
         &.small {

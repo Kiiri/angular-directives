@@ -75,6 +75,15 @@ input-field {
             }
         }
 
+        &[type='clear'] {
+            background: transparent;
+            border-bottom: 1px solid transparent;
+
+            &:focus {
+                border-color: transparent;
+            }
+        }
+
         &[type='underline'] {
             background: transparent;
             border-bottom: 1px solid transparent;
@@ -154,7 +163,7 @@ input-field {
         &:disabled {
             color: $light-grey;
             cursor: not-allowed;
-            background: $background-grey;
+            background: transparent;
 
             &::-webkit-input-placeholder { /* WebKit browsers */
                 color: $light-grey;

@@ -11,14 +11,17 @@
 
     datepicker.controller("datepickerController", ["$element", "$filter", "$scope", "$timeout", "Helpers",
         function($element, $filter, $scope, $timeout, Helpers) {
-            Helpers.defaultValue($scope, "currentDate", $filter("date")(new Date(), "MM/dd/yyyy"));
             Helpers.defaultValue($scope, "currentDatepickerMonth", new Date().getMonth());
             Helpers.defaultValue($scope, "position", "left");
 
-            if ($scope.currentDateObject) {
-                $scope.currentDate = $filter("date")($scope.currentDateObject, "MM/dd/yyyy");
-            } else {
-                $scope.currentDateObject = moment($scope.currentDate, "MM/DD/YYYY").toDate();
+            if (!$scope.defaultBlank) {
+                Helpers.defaultValue($scope, "currentDate", $filter("date")(new Date(), "MM/dd/yyyy", "UTC"));
+
+                if ($scope.currentDateObject) {
+                    $scope.currentDate = $filter("date")($scope.currentDateObject, "MM/dd/yyyy", "UTC");
+                } else {
+                    $scope.currentDateObject = moment($scope.currentDate, "MM/DD/YYYY").toDate();
+                }
             }
 
             $timeout(function() {
@@ -80,6 +83,7 @@
                 scope: {
                     currentDate: "=?",
                     currentDateObject: "=?",
+                    isOpen: "=?",
                     fill: "@?",
                     icon: "@?",
                     position: "@?",
@@ -87,7 +91,9 @@
                     minDate: "=?",
                     maxDate: "=?",
                     beforeShowDay: "=?",
-                    defaultDate: "=?"
+                    defaultDate: "=?",
+                    placeholder: "@?",
+                    defaultBlank: "@?"
                 },
                 templateUrl: "src/datepicker/kiiri-datepicker.tpl.html"
             };

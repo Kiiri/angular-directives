@@ -24,9 +24,78 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
         Helpers.defaultValue($scope, "menuHeight", 200);
         Helpers.defaultValue($scope, "inputFilter", false);
         Helpers.defaultValue($scope, "currentItemClick", angular.noop);
+        Helpers.defaultValue($scope, "onBlur", angular.noop);
 
         if ($scope.defaultSelected) {
             $scope.selectedItem = $scope.defaultSelected;
+        }
+
+        if ($scope.type === "time") {
+            $scope.items = ["12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM", "3:00 AM", "3:30 AM", "4:00 AM", "4:30 AM", "5:00 AM", "5:30 AM", "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"];
+            $scope.inputFilter = true;
+            $scope.filterOff = true;
+
+            $scope.$watch("fields.filterValue", function(newValue, oldValue) {
+                if (newValue !== oldValue && !$scope.fields.filterValue) {
+                    $scope.dropdownOpen = true;
+                } else {
+                    $scope.dropdownOpen = false;
+                }
+            });
+
+            $scope.onBlur = function() {
+                if (!$scope.fields.filterValue) {
+                    return;
+                }
+
+                $scope.fields.filterValue = $scope.fields.filterValue.replace(/\s/g, "");
+
+                var match = $scope.fields.filterValue.match(/([0-9]{1,2}):?([0-9]{1,2})?(am|pm|AM|PM|aM|Am|pM|Pm|a|p|A|P)?/);
+                var hour, minute, timeOfDay;
+
+                if (parseInt(match[1])) {
+                    hour = parseInt(match[1]);
+
+                    if (hour <= 0) {
+                        hour = 1;
+                    } else if (hour > 12) {
+                        if (hour >= 24) {
+                            hour = 12;
+                        } else {
+                            hour = hour - 12;
+                        }
+                    }
+                } else {
+                    hour = 1;
+                }
+
+                if (parseInt(match[2])) {
+                    minute = parseInt(match[2]);
+
+                    if (minute < 0 || minute > 59) {
+                        minute = 0;
+                    }
+                } else {
+                    minute = 0;
+                }
+
+                // Pad minutes with leading 0's
+                minute = ("0" + minute).slice(-2);
+
+                if (match[3]) {
+                    if (["a", "A"].indexOf(match[3]) !== -1) {
+                        timeOfDay = "AM";
+                    } else if (["p", "P"].indexOf(match[3]) !== -1) {
+                        timeOfDay = "PM";
+                    } else {
+                        timeOfDay = match[3].toUpperCase();
+                    }
+                } else {
+                    timeOfDay = "AM";
+                }
+
+                $scope.fields.filterValue = hour + ":" + minute + " " + timeOfDay;
+            };
         }
 
         $scope.fields = {
@@ -85,13 +154,13 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
             $scope.dropdownOpen = true;
         };
 
-        $scope.dropdownItems = function() {
-            if ($scope.inputFilter && $scope.fields.filterValue) {
-                return $scope.items.filter(function(item) {
+        $scope.dropdownItems = function(items) {
+            if ($scope.inputFilter && $scope.fields.filterValue && !$scope.filterOff) {
+                return items.filter(function(item) {
                     return String(item).toLowerCase().indexOf(String($scope.fields.filterValue).toLowerCase()) !== -1;
                 });
             } else {
-                return $scope.items;
+                return items;
             }
         };
 
@@ -169,6 +238,7 @@ dropdown.directive("dropdown", [
                 defaultText: "@?",
                 defaultSelected: "@?",
                 disabled: "=?",
+                dropdownOpen: "=?",
                 emptyText: "@?",
                 icon: "@?",
                 kiiriIcon: "@?",
@@ -176,6 +246,7 @@ dropdown.directive("dropdown", [
                 formName: "@?",
                 items: "=?",
                 linkItems: "=?",
+                menuItems: "=?",
                 selectedItem: "=?",
                 hideSelected: "=?",
                 openOnHover: "@?",

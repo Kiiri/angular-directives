@@ -65,7 +65,8 @@ input.directive("inputField", [
                 onEnter: "&?",
                 stripe: "@?",
                 size: "@?",
-                onMapSelect: "=?"
+                onMapSelect: "=?",
+                onBlur: "&?"
             },
             controller: "inputController",
             link: function($scope, element, attributes) {

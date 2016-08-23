@@ -1,5 +1,5 @@
 
-<div class="kiiri-dropdown {{ type }}" ng-click="toggleDropdown()" clickoutside on-click-outside="closeDropdown" is-enabled="dropdownOpen" ng-class="{ empty: (items.length === 0), disabled: disabled, open: dropdownOpen, fill: fill }" ng-mouseleave="openOnHover && closeDropdown()" ng-attr-tabindex="{{ !inputFilter && '0' }}" ng-keydown="tabIndexKeyDown($event)">
+<div class="kiiri-dropdown {{ type }}" ng-click="toggleDropdown()" clickoutside is-enabled="dropdownOpen" on-click-outside="closeDropdown" is-enabled="dropdownOpen" ng-class="{ empty: (items.length === 0), disabled: disabled, open: dropdownOpen, fill: fill }" ng-mouseleave="openOnHover && closeDropdown()" ng-attr-tabindex="{{ !inputFilter && '0' }}" ng-keydown="tabIndexKeyDown($event)" trigger-id="{{ uuid }}">
     <table ng-class="{ open: dropdownOpen }">
         <tr><td>
             <div class="kiiri-dropdown-current-item" ng-style="{'background-image': (icon && 'url('+icon+')')}" ng-class="{ 'has-icon': icon, 'has-kiiri-icon': kiiriIcon, empty: (items.length === 0), disabled: disabled, 'has-description': (selectedItem && selectedItem.description) }" ng-mouseout="dropdownHover = false" ng-mouseover="(dropdownHover = true) && openOnHover && openDropdown()" ng-click="currentItemClick()" ng-if="!inputFilter">
@@ -13,16 +13,26 @@
                 </div>
                 <icon class="kiiri-dropdown-current-item-arrow arrow-down" ng-class="{ 'icon-primary': (dropdownHover || dropdownOpen), 'arrow-up': dropdownOpen }"></icon>
             </div>
-            <input-field ng-if="inputFilter" value="fields.filterValue" fill="true" placeholder="{{ defaultText }}" on-enter="onEnter()"></input-field>
+            <input-field kiiri-icon="{{kiiriIcon}}" ng-if="inputFilter" value="fields.filterValue" fill="true" placeholder="{{ defaultText }}" on-enter="onEnter()" on-blur="onBlur()"></input-field>
         </td></tr>
-        <tr ng-click="$event.stopPropagation()" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
+        <tr uuid="uuid" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
             <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }" scrollbar ng-style="{ 'max-height': (menuHeight + 'px')}">
+                <div class="kiiri-dropdown-item" ng-repeat="item in dropdownItems(menuItems) track by $index" ng-class="{ 'has-icon': icon, 'has-kiiri-icon': kiiriIcon, 'tab-index-selected': currentTabSelectedIndex === $index, 'has-description': (item && item.description) }" ng-click="item.click($event, item); $event.stopPropagation()" ng-hide="hideSelected && selectedItem === item" >
+                    <div class="table">
+                        <div class="text-wrapper">
+                            <dropdown-item item="item">
+                                {{itemDisplay(item)}}<br/>
+                                <span class="description" ng-show="item && item.description" ng-bind-html="item.description"></span>
+                            </dropdown-item>
+                        </div>
+                    </div>
+                </div>
                 <a ng-repeat="item in linkItems track by $index" ng-href="{{item.href}}">
                     <div class="kiiri-dropdown-item" ng-class="{ 'has-icon': icon, 'has-kiiri-icon': kiiriIcon }">
                         <div class="table"><div class="text-wrapper">{{item.text}}</div></div>
                     </div>
                 </a>
-                <div class="kiiri-dropdown-item" ng-repeat="item in dropdownItems() track by $index" ng-class="{ 'has-icon': icon, 'has-kiiri-icon': kiiriIcon, 'tab-index-selected': currentTabSelectedIndex === $index, 'has-description': (item && item.description) }" ng-click="selectItem(item); $event.stopPropagation()" ng-hide="hideSelected && selectedItem === item" >
+                <div class="kiiri-dropdown-item" ng-repeat="item in dropdownItems(items) track by $index" ng-class="{ 'has-icon': icon, 'has-kiiri-icon': kiiriIcon, 'tab-index-selected': currentTabSelectedIndex === $index, 'has-description': (item && item.description) }" ng-click="selectItem(item); $event.stopPropagation()" ng-hide="hideSelected && selectedItem === item" >
                     <div class="table">
                         <div class="text-wrapper">
                             <dropdown-item item="item">
