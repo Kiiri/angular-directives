@@ -1,13 +1,15 @@
 
 var tooltip = angular.module("kiiri.angular.tooltip", []);
 
-tooltip.controller("tooltipController", ["$element", "$scope", "Helpers",
-    function ($element, $scope, Helpers) {
+tooltip.controller("tooltipController", ["$element", "$sce", "$scope", "Helpers",
+    function ($element, $sce, $scope, Helpers) {
         "use strict";
 
         Helpers.defaultValue($scope, "isVisible", false);
         Helpers.defaultValue($scope, "isDisabled", false);
         Helpers.defaultValue($scope, "position", "bottom");
+
+        $scope.$sce = $sce;
 
         $scope.showTooltip = function($event) {
             if (!$scope.isDisabled && $scope.text) {
@@ -44,7 +46,8 @@ tooltip.directive("tooltip", [
                 isVisible: "=?",
                 isDisabled: "=?",
                 position: "@?",
-                fill: "=?"
+                fill: "=?",
+                icon: "@?"
             },
             link: function($scope, element, attributes) {
                 $scope.$watch("text", function() {

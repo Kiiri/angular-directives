@@ -32,6 +32,7 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.timepicker",
                                            "kiiri.angular.timeslider",
                                            "kiiri.angular.tooltip",
+                                           "kiiri.angular.tooltipAcorn",
                                            "kiiri.angular.uuid"]);
 
 /*

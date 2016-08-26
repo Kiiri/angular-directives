@@ -1,0 +1,56 @@
+
+@import "../constants";
+
+tooltip-acorn {
+    icon.acorn {
+        cursor: pointer;
+        position: relative;
+    }
+
+    .tooltip-acorn-wrapper {
+        position: absolute;
+        width: 300px;
+
+        .tooltip-acorn-container-wrapper {
+            background: $background-theme;
+            box-shadow: $default-box-shadow;
+            display: inline-block;
+            padding: 10px 20px;
+            max-width: 300px;
+            z-index: 9999;
+        }
+
+
+        &.right {
+            left: calc(100% + 10px);
+            margin-top: -7.5px;
+
+            .tooltip-acorn-container-wrapper {
+                @include left-arrow(8px, $background-theme, 15.5px, 1px, rgba(0,0,0,.08));
+            }
+        }
+
+        &.bottom {
+            left: 0;
+            margin-left: -7.5px;
+            top: 40px;
+
+            .tooltip-acorn-container-wrapper {
+                @include top-arrow(8px, $background-theme, 15.5px, 1px, rgba(0,0,0,.08));
+            }
+        }
+
+        .tooltip-acorn-container {
+            display: table;
+        }
+
+        .tooltip-acorn-text-wrapper {
+            display: table-row;
+
+            .tooltip-acorn-text {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+}

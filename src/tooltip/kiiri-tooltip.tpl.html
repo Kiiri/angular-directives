@@ -1,7 +1,13 @@
 
 <div class="kiiri-tooltip" ng-class="{ fill: fill }">
-    <div class="tooltip-hover" ng-mouseover="showTooltip($event)" ng-mouseout="hideTooltip()" ng-transclude></div>
-    <div class="tooltip-content {{position}}" ng-class="{ visible: isVisible }" ng-bind-html="text"></div>
+    <div ng-if="!icon">
+        <div class="tooltip-hover" ng-mouseover="showTooltip($event)" ng-mouseout="hideTooltip()" ng-transclude></div>
+        <div class="tooltip-content {{position}}" ng-class="{ visible: isVisible }" ng-bind-html="$sce.trustAsHtml(text)"></div>
+    </div>
+    <div ng-if="icon">
+        <icon class="acorn hover-icon-primary" ng-mouseover="showTooltip($event)" ng-mouseout="hideTooltip()"></icon>
+        <div class="tooltip-content {{position}}" ng-class="{ visible: isVisible }" ng-bind-html="$sce.trustAsHtml(text)"></div>
+    </div>
 </div>
 
 <div class="kiiri-tooltip-length-calculator">{{ text }}</div>
