@@ -27,7 +27,16 @@
                     if (!$scope.maxFileSize || (((size / 1024) / 1024) < $scope.maxFileSize)) {
                         if (!$scope.validMimeTypes || $scope.validMimeTypes.indexOf(type) !== -1) {
                             $scope.$apply(function() {
-                                $scope.image = event.target.result;
+                                console.log(type);
+                                if (type.indexOf("image") !== -1) {
+                                    $scope.image = event.target.result;
+                                    $scope.fileName = name;
+                                    $scope.file = event.target.result;
+                                } else {
+                                    $scope.fileName = name;
+                                    $scope.file = event.target.result;
+                                    $scope.image = undefined;
+                                }
                             });
                         } else {
                             $log.error("Invalid file type given. File type must be one of the following: " + $scope.validMimeTypes);
@@ -64,7 +73,9 @@
                     currentProgress: "&?",
                     image: "=?",
                     maxFileSize: "&?",
-                    validMimeTypes: "&?"
+                    validMimeTypes: "&?",
+                    fileName: "=?",
+                    file: "=?"
                 },
                 transclude: true,
                 controller: "imageDropController",

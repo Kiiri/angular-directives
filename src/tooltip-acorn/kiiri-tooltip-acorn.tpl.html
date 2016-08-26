@@ -1,8 +1,9 @@
 
-<icon class="acorn hover-icon-primary" ng-mouseover="showTooltip($event)" ng-mouseout="hideTooltip($event)">
+<div class="kiiri-tooltip-icon-container" ng-class="{ open: visible }" ng-mouseover="showTooltip($event)" ng-mouseout="hideTooltip($event)">
+    <div class="kiiri-tooltip-icon"></div>
     <div class="tooltip-acorn-wrapper {{position}}" ng-show="visible">
         <div class="tooltip-acorn-container-wrapper"><div class="tooltip-acorn-container">
             <div class="tooltip-acorn-text-wrapper"><div class="tooltip-acorn-text">{{ text }}</div></div>
         </div></div>
     </div>
-</icon>
+</div>

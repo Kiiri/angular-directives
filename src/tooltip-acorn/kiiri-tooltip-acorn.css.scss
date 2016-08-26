@@ -1,20 +1,49 @@
 
 @import "../constants";
 
-tooltip-acorn {
-    icon.acorn {
-        cursor: pointer;
-        position: relative;
+.kiiri-tooltip-icon-container {
+    cursor: pointer;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+
+    &.open {
+        .kiiri-tooltip-icon {
+            border-color: $primary-theme;
+            color: $primary-theme;
+        }
+    }
+
+    .kiiri-tooltip-icon {
+        border: 1px solid $default-font-color;
+        border-radius: 100%;
+        display: inline-block;
+        font-size: 14px;
+        height: 18px;
+        line-height: 18px;
+        text-align: center;
+        vertical-align: middle;
+        width: 18px;
+
+        &:before {
+            content: "?";
+            display: inline;
+        }
     }
 
     .tooltip-acorn-wrapper {
         position: absolute;
+        text-align: left;
         width: 300px;
 
         .tooltip-acorn-container-wrapper {
             background: $background-theme;
             box-shadow: $default-box-shadow;
             display: inline-block;
+            line-height: $default-line-height;
             padding: 10px 20px;
             max-width: 300px;
             z-index: 9999;
@@ -24,6 +53,7 @@ tooltip-acorn {
         &.right {
             left: calc(100% + 10px);
             margin-top: -7.5px;
+            top: 0;
 
             .tooltip-acorn-container-wrapper {
                 @include left-arrow(8px, $background-theme, 15.5px, 1px, rgba(0,0,0,.08));
