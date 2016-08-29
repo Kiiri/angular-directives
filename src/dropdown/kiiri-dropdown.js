@@ -135,6 +135,12 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
             $scope.dropdownOpen = false;
         };
 
+
+        $scope.nullSelected = function() {
+            $scope.selectedItem = null;
+            $scope.dropdownOpen = false;
+        };
+
         $scope.toggleDropdown = function() {
             if (!$scope.disabled) {
                 $scope.dropdownOpen = !$scope.dropdownOpen;
@@ -268,7 +274,9 @@ dropdown.directive("dropdown", [
                 type: "@?",
                 triggerOnSelect: "=?",
                 onEnter: "&?",
-                currentItemClick: "&?"
+                currentItemClick: "&?",
+                allowNull: "@?",
+                nullText: "@?"
             },
             transclude: true,
             controller: "dropdownController",

@@ -12,7 +12,7 @@
     <body ng-controller="ExampleController">
         <form id="test-form">
             <h2> Default Dropdowns </h2>
-            <dropdown empty-text="No valid items found" items="sortBy" default-text="Sort By" selected-item="fields.sortByOne" form-name="sortOne" kiiri-icon="time"></dropdown><br/><br/>
+            <dropdown empty-text="No valid items found" items="sortBy" default-text="Sort By" selected-item="fields.sortByOneItem" form-name="sortOne" kiiri-icon="time" allow-null="true" null-text="None"></dropdown><br/><br/>
             <dropdown empty-text="No valid items found" items="sortByObjectsWithAlternateText" default-text="Sort By" selected-item="fields.sortByOneAlt" form-name="sortOne" kiiri-icon="time"></dropdown><br/><br/>
 
             <dropdown class="no-left-padding" empty-text="No valid items found" items="sortByObjects" default-text="Sort By" selected-item="fields.sortByTwo" form-name="sortTwo" auto-select="true"></dropdown><br/><br/>

@@ -7,7 +7,7 @@
                 <icon ng-hide="!kiiriIcon" class="{{kiiriIcon}} left" ng-class="{ 'icon-primary': (dropdownHover || dropdownOpen) }"></icon>
                 <div class="table left">
                     <div class="text-wrapper">
-                        {{ itemDisplay(selectedItem) || (items.length === 0 && emptyText) || defaultText }}<br/>
+                        {{ itemDisplay(selectedItem) || (items.length === 0 && emptyText) || (allowNull && nullText) || defaultText }}<br/>
                         <span class="description" ng-show="selectedItem && selectedItem.description" ng-bind-html="selectedItem.description"></span>
                     </div>
                 </div>
@@ -17,6 +17,7 @@
         </td></tr>
         <tr uuid="uuid" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
             <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }" scrollbar ng-style="{ 'max-height': (menuHeight + 'px')}">
+                <div class="kiiri-dropdown-item empty-item" ng-show="allowNull" ng-click="nullSelected(); $event.stopPropagation()" ng-class="{ 'has-icon': icon, 'has-kiiri-icon': kiiriIcon }">{{ nullText }}</div>
                 <div class="kiiri-dropdown-item" ng-repeat="item in dropdownItems(menuItems) track by $index" ng-class="{ 'has-icon': icon, 'has-kiiri-icon': kiiriIcon, 'tab-index-selected': currentTabSelectedIndex === $index, 'has-description': (item && item.description) }" ng-click="item.click($event, item); $event.stopPropagation()" ng-hide="hideSelected && selectedItem === item" >
                     <div class="table">
                         <div class="text-wrapper">

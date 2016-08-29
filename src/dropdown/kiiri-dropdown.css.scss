@@ -137,6 +137,10 @@ dropdown {
             padding-left: 10px;
         }
 
+        &.empty-item {
+            line-height: 40px;
+        }
+
         icon {
             height: 100%;
             margin-right: 10px;
