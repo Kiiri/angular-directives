@@ -27,7 +27,6 @@
                     if (!$scope.maxFileSize || (((size / 1024) / 1024) < $scope.maxFileSize)) {
                         if (!$scope.validMimeTypes || $scope.validMimeTypes.indexOf(type) !== -1) {
                             $scope.$apply(function() {
-                                console.log(type);
                                 if (type.indexOf("image") !== -1) {
                                     $scope.image = event.target.result;
                                     $scope.fileName = name;

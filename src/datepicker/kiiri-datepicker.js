@@ -15,10 +15,18 @@
             Helpers.defaultValue($scope, "position", "left");
 
             if (!$scope.defaultBlank) {
-                Helpers.defaultValue($scope, "currentDate", $filter("date")(new Date(), "MM/dd/yyyy", "UTC"));
+                if ($scope.utc) {
+                    Helpers.defaultValue($scope, "currentDate", $filter("date")(new Date(), "MM/dd/yyyy", "UTC"));
+                } else {
+                    Helpers.defaultValue($scope, "currentDate", $filter("date")(new Date(), "MM/dd/yyyy"));
+                }
 
                 if ($scope.currentDateObject) {
-                    $scope.currentDate = $filter("date")($scope.currentDateObject, "MM/dd/yyyy", "UTC");
+                    if ($scope.utc) {
+                        $scope.currentDate = $filter("date")($scope.currentDateObject, "MM/dd/yyyy", "UTC");
+                    } else {
+                        $scope.currentDate = $filter("date")($scope.currentDateObject, "MM/dd/yyyy");
+                    }
                 } else {
                     $scope.currentDateObject = moment($scope.currentDate, "MM/DD/YYYY").toDate();
                 }
@@ -72,6 +80,16 @@
             $scope.toggleDatepicker = function() {
                 $scope.isOpen = !$scope.isOpen;
             };
+
+            $scope.$watch("currentDate", function(newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    if ($scope.utc && ($filter("date")($scope.currentDateObject, "MM/dd/yyyy", "UTC") !== $scope.currentDate)) {
+                        $element.find(".kiiri-datepicker-container").datepicker("setDate", moment($scope.currentDate, "MM/DD/YYYY").toDate());
+                    } else if ($filter("date")($scope.currentDateObject, "MM/dd/yyyy") !== $scope.currentDate) {
+                        $element.find(".kiiri-datepicker-container").datepicker("setDate", moment($scope.currentDate, "MM/DD/YYYY").toDate());
+                    }
+                }
+            });
         }
     ]);
 
@@ -93,7 +111,8 @@
                     beforeShowDay: "=?",
                     defaultDate: "=?",
                     placeholder: "@?",
-                    defaultBlank: "@?"
+                    defaultBlank: "@?",
+                    utc: "@?"
                 },
                 templateUrl: "src/datepicker/kiiri-datepicker.tpl.html"
             };
