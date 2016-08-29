@@ -2,6 +2,7 @@
 @import "../constants";
 
 .kiiri-datepicker {
+    line-height: $default-line-height;
     position: relative;
 
     .kiiri-input-field img {

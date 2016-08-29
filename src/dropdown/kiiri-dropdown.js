@@ -167,7 +167,6 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
 
         $scope.tabIndexKeyDown = function($event) {
             var keyEvent = $event || window.event;
-            keyEvent.preventDefault();
 
             if ($scope.currentTabSelectedIndex === undefined) {
                 $scope.currentTabSelectedIndex = -1;
@@ -180,6 +179,7 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
                     $scope.currentTabSelectedIndex += 1;
                     $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[$scope.currentTabSelectedIndex], { scrollInertia: 0 });
                 }
+                keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 38 || keyEvent.keyCode === 37) { // Up and Left
                 if (!$scope.currentTabSelectedIndex) {
                     $scope.closeDropdown();
@@ -187,13 +187,17 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
                     $scope.currentTabSelectedIndex -= 1;
                     $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[$scope.currentTabSelectedIndex], { scrollInertia: 0 });
                 }
+                keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 13) { // Enter
                 $scope.closeDropdown();
+                keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 27) { // ESC
                 $scope.currentTabSelectedIndex = undefined;
                 $scope.closeDropdown();
+                keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 9) { // Tab
                 $scope.closeDropdown();
+                keyEvent.preventDefault();
             } else if (keyEvent.keyCode >= 48 && keyEvent.keyCode <= 90) { // 0-9, a-z
                 if (!$scope.dropdownOpen) {
                     $scope.openDropdown();

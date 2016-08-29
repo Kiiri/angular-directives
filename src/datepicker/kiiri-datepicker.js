@@ -85,8 +85,10 @@
                 if (newValue !== oldValue) {
                     if ($scope.utc && ($filter("date")($scope.currentDateObject, "MM/dd/yyyy", "UTC") !== $scope.currentDate)) {
                         $element.find(".kiiri-datepicker-container").datepicker("setDate", moment($scope.currentDate, "MM/DD/YYYY").toDate());
+                        $scope.currentDateObject = moment($scope.currentDate, "MM/DD/YYYY").toDate();
                     } else if ($filter("date")($scope.currentDateObject, "MM/dd/yyyy") !== $scope.currentDate) {
                         $element.find(".kiiri-datepicker-container").datepicker("setDate", moment($scope.currentDate, "MM/DD/YYYY").toDate());
+                        $scope.currentDateObject = moment($scope.currentDate, "MM/DD/YYYY").toDate();
                     }
                 }
             });
