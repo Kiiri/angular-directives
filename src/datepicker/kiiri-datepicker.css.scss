@@ -1,5 +1,6 @@
 
 @import "../constants";
+@import "../icons_base";
 
 .kiiri-datepicker {
     line-height: $default-line-height;
@@ -36,7 +37,7 @@
         width: auto;
 
         .ui-datepicker-header {
-            background: $background-theme;
+            background: $primary-theme;
             border: none;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
@@ -50,26 +51,40 @@
             }
 
             .ui-datepicker-month, .ui-datepicker-year {
-                color: $default-font-color;
-                font-size: 14px;
-                font-weight: 700;
+                color: $white-font-color;
+                font-family: $header-font;
+                font-size: $default-font-size;
+                font-weight: $default-font-weight;
             }
 
             .ui-datepicker-next, .ui-datepicker-prev {
-                background-image: url("icons/arrow-lnr-666.png");
-                background-position: -9px center;
+                background-position: center;
                 background-repeat: no-repeat;
-                background-size: 18px 14px;
                 cursor: pointer;
-                top: 19.5px;
+                display: inline-block;
+                top: 12px;
                 right: 30px;
-                height: 14px;
-                width: 9px;
+                height: 30px;
+                vertical-align: middle;
+                width: 30px;
+
+                &.ui-datepicker-next {
+                    @include iconVariant("arrow-right", "icon-white");
+                }
 
                 &.ui-datepicker-prev {
-                    background-position: 0px center;
+                    @include iconVariant("arrow-left", "icon-white");
                     left: 30px;
                     right: auto;
+                }
+
+                &.ui-state-hover {
+                    background-color: transparent;
+                    border: none;
+                }
+
+                .ui-icon.ui-icon-circle-triangle-e {
+                    background-image: none;
                 }
             }
         }
@@ -97,7 +112,8 @@
 
                     &.ui-state-active {
                         background: $primary-theme;
-                        color: $button-font-color !important;
+                        border-radius: 100%;
+                        color: $white-font-color !important;
                         font-weight: 400;
                     }
                 }
