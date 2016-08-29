@@ -25,6 +25,7 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
         Helpers.defaultValue($scope, "inputFilter", false);
         Helpers.defaultValue($scope, "currentItemClick", angular.noop);
         Helpers.defaultValue($scope, "onBlur", angular.noop);
+        Helpers.defaultValue($scope, "currentTabSearch", "");
 
         if ($scope.defaultSelected) {
             $scope.selectedItem = $scope.defaultSelected;
@@ -166,6 +167,7 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
 
         $scope.tabIndexKeyDown = function($event) {
             var keyEvent = $event || window.event;
+            keyEvent.preventDefault();
 
             if ($scope.currentTabSelectedIndex === undefined) {
                 $scope.currentTabSelectedIndex = -1;
@@ -178,8 +180,6 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
                     $scope.currentTabSelectedIndex += 1;
                     $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[$scope.currentTabSelectedIndex], { scrollInertia: 0 });
                 }
-
-                keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 38 || keyEvent.keyCode === 37) { // Up and Left
                 if (!$scope.currentTabSelectedIndex) {
                     $scope.closeDropdown();
@@ -187,15 +187,11 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
                     $scope.currentTabSelectedIndex -= 1;
                     $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[$scope.currentTabSelectedIndex], { scrollInertia: 0 });
                 }
-
-                keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 13) { // Enter
                 $scope.closeDropdown();
-                keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 27) { // ESC
                 $scope.currentTabSelectedIndex = undefined;
                 $scope.closeDropdown();
-                keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 9) { // Tab
                 $scope.closeDropdown();
             } else if (keyEvent.keyCode >= 48 && keyEvent.keyCode <= 90) { // 0-9, a-z
@@ -204,18 +200,30 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
                 }
 
                 $timeout(function() {
-                    for (var i = 0; i < $scope.items.length; i++) {
-                        var item = angular.isObject($scope.items[i]) ? $scope.items[i].name : $scope.items[i];
-                        var key = String.fromCharCode(keyEvent.keyCode);
+                    var key = String.fromCharCode(keyEvent.keyCode);
+                    $scope.currentTabSearch += key.toLowerCase();
 
-                        if (item && item[0] && key && item[0].toLowerCase() === key.toLowerCase()) {
-                            $scope.currentTabSelectedIndex = i;
-                            $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[i], { scrollInertia: 0 });
-                            keyEvent.preventDefault();
-                            return;
+                    var search = function() {
+                        for (var i = 0; i < $scope.items.length; i++) {
+                            var item = angular.isObject($scope.items[i]) ? $scope.items[i].name.toLowerCase() : $scope.items[i].toLowerCase();
+
+                            if (item && typeof item === "string" && key && item.indexOf($scope.currentTabSearch) === 0) {
+                                $scope.currentTabSelectedIndex = i;
+                                $element.find("scrollbar").mCustomScrollbar("scrollTo", $element.find(".kiiri-dropdown-item")[i], { scrollInertia: 0 });
+                                return;
+                            }
                         }
-                    }
-                }, 100);
+
+                        if ($scope.currentTabSearch.length > 1) {
+                            $scope.currentTabSearch = key.toLowerCase();
+                            search();
+                        } else {
+                            $scope.currentTabSearch = "";
+                        }
+                    };
+
+                    search();
+                }, 0);
             }
         };
 
