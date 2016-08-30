@@ -203,7 +203,6 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
                 keyEvent.preventDefault();
             } else if (keyEvent.keyCode === 9) { // Tab
                 $scope.closeDropdown();
-                keyEvent.preventDefault();
             } else if (keyEvent.keyCode >= 48 && keyEvent.keyCode <= 90) { // 0-9, a-z
                 if (!$scope.dropdownOpen) {
                     $scope.openDropdown();
