@@ -60,7 +60,7 @@ module.exports = function(grunt) {
                     undef: true,
                 },
                 files: {
-                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js", "!src/image-input/*.min.js", "!src/image-input/canvas-toBlob.js", "!src/scrollbar/jquery.mCustomScrollbar.concat.min.js", "!src/timepicker/moment.js", "!src/draggable/jquery-ui-draggable.min.js", "!src/datepicker/jquery-ui-datepicker.min.js", "!src/input-field/angular-google-places-autocomplete.js"]
+                    src: ["src/**/*.js", "!src/qrcode-scanner/*.min.js", "!src/image-input/*.min.js", "!src/image-input/canvas-toBlob.js", "!src/scrollbar/jquery.mCustomScrollbar.concat.min.js", "!src/timeslider/moment.js", "!src/datepicker/jquery-ui-datepicker.min.js", "!src/input-field/angular-google-places-autocomplete.js"]
                 },
             }
         },
