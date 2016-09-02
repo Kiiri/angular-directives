@@ -162,9 +162,13 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
         };
 
         $scope.dropdownItems = function(items) {
-            if ($scope.inputFilter && $scope.fields.filterValue && !$scope.filterOff) {
+            if (items && $scope.inputFilter && $scope.fields.filterValue && !$scope.filterOff) {
                 return items.filter(function(item) {
-                    return String(item).toLowerCase().indexOf(String($scope.fields.filterValue).toLowerCase()) !== -1;
+                    try {
+                        return String(item).toLowerCase().indexOf(String($scope.fields.filterValue).toLowerCase()) !== -1;
+                    } catch (e) {
+                        return false;
+                    }
                 });
             } else {
                 return items;
@@ -214,7 +218,7 @@ dropdown.controller("dropdownController", ["$element", "$scope", "$timeout", "He
 
                     var search = function() {
                         for (var i = 0; i < $scope.items.length; i++) {
-                            var item = angular.isObject($scope.items[i]) ? $scope.items[i].name.toLowerCase() : $scope.items[i].toLowerCase();
+                            var item = angular.isObject($scope.items[i]) ? $scope.items[i].name.toLowerCase() : String($scope.items[i]).toLowerCase();
 
                             if (item && typeof item === "string" && key && item.indexOf($scope.currentTabSearch) === 0) {
                                 $scope.currentTabSelectedIndex = i;
