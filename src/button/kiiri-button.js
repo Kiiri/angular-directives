@@ -1,8 +1,8 @@
 
 var button = angular.module("kiiri.angular.button", []);
 
-button.controller("buttonController", ["$scope", "Helpers",
-    function ($scope, Helpers) {
+button.controller("buttonController", ["$http", "$scope", "Helpers", "LOGGING_ENDPOINT",
+    function ($http, $scope, Helpers, LOGGING_ENDPOINT) {
         "use strict";
 
         Helpers.defaultValue($scope, "round", "true");
@@ -16,6 +16,17 @@ button.controller("buttonController", ["$scope", "Helpers",
 
             if (!$scope.disabled && !$scope.loading) {
                 $scope.click();
+                $scope.logRequest();
+            }
+        };
+
+        $scope.logRequest = function() {
+            if (LOGGING_ENDPOINT) {
+                if ($scope.log) {
+                    $http.post(LOGGING_ENDPOINT, { type: "ButtonClick", name: $scope.log, details: $scope.logDetails });
+                } else {
+                    $http.post(LOGGING_ENDPOINT, { type: "ButtonClick", name: "ButtonClick", details: { url: window.location.href } });
+                }
             }
         };
 
@@ -54,7 +65,9 @@ button.directive("angularButton", [
                 size: "@?",
                 round: "@?",
                 typeOnHover: "@?",
-                buttonHovering: "=?"
+                buttonHovering: "=?",
+                log: "@?",
+                logDetails: "&?"
             },
             transclude: true,
             controller: "buttonController",

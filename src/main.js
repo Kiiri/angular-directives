@@ -33,6 +33,8 @@ var app = angular.module("kiiri.angular", ["kiiri.angular.autocomplete",
                                            "kiiri.angular.tooltipAcorn",
                                            "kiiri.angular.uuid"]);
 
+app.value("LOGGING_ENDPOINT", null);
+
 /*
  * Extends angular's default $q service to support success and error chaining.
  * Adapted from: http://tiny/eujp44y8/stacques1679howc
