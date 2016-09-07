@@ -9,6 +9,7 @@
     position: relative;
     text-align: center;
     width: 30px;
+    z-index: 2;
 
     &.open {
         .kiiri-tooltip-icon {
