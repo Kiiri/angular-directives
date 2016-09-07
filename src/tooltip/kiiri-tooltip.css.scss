@@ -26,10 +26,12 @@ tooltip {
         box-shadow: 0 0 5px rgba(0,0,0,.15);
         font-size: 14px;
         padding: 20px;
+        line-height: $default-line-height;
         max-width: 400px;
+        text-align: left;
         visibility: hidden;
         white-space: normal;
-        z-index: 2;
+        z-index: 9999;
 
         &.bottom {
             @include top-arrow(8px, $primary-background, 20px, 1px, rgba(0,0,0,.08));
