@@ -11,6 +11,7 @@ textarea.controller("textareaController", ["$scope", "$timeout", "Helpers",
     function ($scope, $timeout, Helpers) {
         "use strict";
         Helpers.defaultValue($scope, "value", "");
+        Helpers.defaultValue($scope, "focus", angular.noop);
 
         // This is to fix some issues with the size calculation when the textarea
         // is initially hidden
@@ -37,7 +38,8 @@ textarea.directive("textArea", [
                 "placeholder": "@?",
                 "value": "=",
                 "max": "@?",
-                "type": "@?"
+                "type": "@?",
+                "focus": "&?"
             },
             controller: "textareaController"
         };
