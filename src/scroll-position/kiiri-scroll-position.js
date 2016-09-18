@@ -21,11 +21,23 @@ scrollPosition.directive("scrollPosition", ["$timeout", "$window",
                 minScrollHeight: "@?",
                 maxScrollHeight: "@?",
                 currentScrollHeight: "=?",
-                pageHeight: "=?"
+                pageHeight: "=?",
+                scrollClass: "@?",
+                hideElement: "@?"
             },
             link: function ($scope, element) {
                 $scope.currentScrollHeight = $window.scrollY;
                 $scope.pageHeight = $window.innerHeight;
+
+                var toggleClasses = function(trigger) {
+                    if ($scope.scrollClass) {
+                        if (trigger) {
+                            $(element).addClass($scope.scrollClass);
+                        } else {
+                            $(element).removeClass($scope.scrollClass);
+                        }
+                    }
+                };
 
                 var refreshElementDisplay = function() {
                     $timeout(function() {
@@ -45,11 +57,20 @@ scrollPosition.directive("scrollPosition", ["$timeout", "$window",
                     } catch (ex) {}
 
                     if ($scope.minScrollHeight && $window.scrollY < $scope.minScrollHeight) {
-                        $(element).hide();
+                        if ($scope.hideElement !== "false") {
+                            $(element).hide();
+                        }
+                        toggleClasses(false);
                     } else if ($scope.maxScrollHeight && $window.scrollY > $scope.maxScrollHeight) {
-                        $(element).hide();
+                        if ($scope.hideElement !== "false") {
+                            $(element).hide();
+                        }
+                        toggleClasses(false);
                     } else {
-                        $(element).show();
+                        if ($scope.hideElement !== "false") {
+                            $(element).show();
+                        }
+                        toggleClasses(true);
                     }
                 };
 
