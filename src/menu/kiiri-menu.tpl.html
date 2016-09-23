@@ -1,7 +1,9 @@
 
 <div class="kiiri-menu" ng-show="open" ng-style="{ width: width }" clickoutside on-click-outside="closeMenu" is-enabled="open" trigger-id="{{triggerId}}">
-    <div class="kiiri-menu-item" ng-repeat="item in items track by $index" ng-click="menuItemClicked($index); $event.stopPropagation()" ng-class="{ selected: item.selected, disabled: item.disabled }">
-        {{ item.name }}
-        <icon class="check icon-primary" ng-show="item.selected"></icon>
-    </div>
+    <a ng-href="{{ item.url }}" ng-repeat="item in items track by $index">
+        <div class="kiiri-menu-item" ng-click="menuItemClicked($index); $event.stopPropagation()" ng-class="{ selected: item.selected, disabled: item.disabled }">
+            {{ item.name }}
+            <icon class="check icon-primary" ng-show="item.selected"></icon>
+        </div>
+    </a>
 </div>

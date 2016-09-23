@@ -28,7 +28,7 @@ menu.controller("menuController", ["$log", "$scope", "Helpers",
             var item = $scope.items[index];
 
             if (item.url) {
-                window.location.href = item.url;
+                return;
             } else if (item.click) {
                 item.click($scope.clickTarget);
             } else {
@@ -63,7 +63,8 @@ menu.directive("menu", [
             templateUrl: "src/menu/kiiri-menu.tpl.html",
             scope: {
                 open: "=",
-                items: "=",
+                items: "=?",
+                dynamicItemFunction: "=?",
                 width: "@?",
                 top: "@?",
                 left: "@?",
@@ -91,6 +92,14 @@ menu.directive("menu", [
 
                 if ($scope.right) {
                     element.css("right", $scope.right);
+                }
+
+                if ($scope.dynamicItemFunction) {
+                    $scope.items = $scope.dynamicItemFunction($scope.clickTarget);
+
+                    $scope.$watch("clickTarget", function() {
+                        $scope.items = $scope.dynamicItemFunction($scope.clickTarget);
+                    }, true);
                 }
             }
         };

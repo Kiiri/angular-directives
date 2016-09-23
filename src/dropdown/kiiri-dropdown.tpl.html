@@ -13,7 +13,7 @@
                 </div>
                 <icon class="kiiri-dropdown-current-item-arrow arrow-down" ng-class="{ 'icon-primary': (dropdownHover || dropdownOpen), 'arrow-up': dropdownOpen }"></icon>
             </div>
-            <input-field kiiri-icon="{{kiiriIcon}}" ng-if="inputFilter" value="fields.filterValue" fill="true" placeholder="{{ defaultText }}" on-enter="onEnter()" on-blur="onBlur()"></input-field>
+            <input-field kiiri-icon="{{kiiriIcon}}" ng-if="inputFilter" value="fields.filterValue" fill="true" placeholder="{{ defaultText }}" on-enter="onEnter()" is-disabled="disabled" on-blur="onBlur()"></input-field>
         </td></tr>
         <tr uuid="uuid" ng-class="{ 'clear-cursor': !dropdownOpen }"><td>
             <div class="kiiri-dropdown-items" ng-class="{ visible: dropdownOpen }" scrollbar ng-style="{ 'max-height': (menuHeight + 'px')}">
